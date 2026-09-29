@@ -293,22 +293,32 @@ main{
   display:block;
   color:#98a2b3;
   margin-top:5px;
+  margin-bottom:10px;
 }
 
-.announcement-list{
+.material-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.announcement-list,
+.result-list{
   margin-top:20px;
   display:grid;
   gap:10px;
 }
 
-.announcement-item{
+.announcement-item,
+.result-item{
   border:1px solid #e0e5ed;
   border-radius:10px;
   padding:14px;
   background:#fafbfc;
 }
 
-.announcement-item strong{
+.announcement-item strong,
+.result-item strong{
   display:block;
   margin-bottom:5px;
 }
@@ -319,7 +329,8 @@ main{
   margin-bottom:8px;
 }
 
-.announcement-item small{
+.announcement-item small,
+.result-item small{
   color:#98a2b3;
   display:block;
   margin-bottom:10px;
@@ -356,35 +367,140 @@ main{
   color:#b42318;
 }
 
-.result-list{
+/* ================================
+   DOUBT SYSTEM
+================================ */
+
+.doubt-list{
   margin-top:20px;
   display:grid;
-  gap:10px;
+  gap:14px;
 }
 
-.result-item{
+.doubt-item{
   border:1px solid #e0e5ed;
-  border-radius:10px;
-  padding:15px;
+  border-radius:12px;
+  padding:18px;
   background:#fafbfc;
 }
 
-.result-item strong{
+.doubt-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+  margin-bottom:12px;
+}
+
+.doubt-student{
+  font-weight:700;
+  font-size:16px;
+  color:#172033;
+}
+
+.doubt-meta{
+  color:#667085;
+  font-size:12px;
+  margin-top:3px;
+}
+
+.doubt-status{
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.status-pending{
+  background:#fff7ed;
+  color:#c2410c;
+}
+
+.status-replied{
+  background:#ecfdf3;
+  color:#027a48;
+}
+
+.doubt-question{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:9px;
+  padding:13px;
+  margin-bottom:14px;
+}
+
+.doubt-question strong{
   display:block;
+  color:#4355d8;
   margin-bottom:5px;
 }
 
-.result-item span{
-  display:block;
-  color:#667085;
-  font-size:13px;
+.doubt-reply-area{
+  margin-top:10px;
 }
 
-.result-item small{
+.doubt-reply-area label{
   display:block;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.doubt-reply-area textarea{
+  width:100%;
+  min-height:90px;
+  resize:vertical;
+  padding:11px;
+  border:1px solid #d9dee8;
+  border-radius:9px;
+  font-size:13px;
+  outline:none;
+}
+
+.doubt-reply-area textarea:focus{
+  border-color:#4355d8;
+}
+
+.doubt-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.reply-btn{
+  background:#4355d8;
+  color:white;
+}
+
+.reply-btn:hover{
+  background:#3548c5;
+}
+
+.doubt-delete-btn{
+  background:#fef3f2;
+  color:#b42318;
+}
+
+.existing-reply{
+  background:#ecfdf3;
+  border-left:4px solid #16a34a;
+  border-radius:8px;
+  padding:12px;
+  margin-bottom:12px;
+}
+
+.existing-reply strong{
+  display:block;
+  color:#027a48;
+  margin-bottom:4px;
+}
+
+.doubt-date{
   color:#98a2b3;
-  margin-top:6px;
-  margin-bottom:10px;
+  font-size:11px;
+  margin-top:8px;
 }
 
 .logged-user{
@@ -434,6 +550,10 @@ footer{
     width:100%;
   }
 
+  .doubt-header{
+    flex-direction:column;
+  }
+
 }
 
 </style>
@@ -444,487 +564,469 @@ footer{
 
 <header class="admin-header">
 
-  <div class="container header-inner">
+<div class="container header-inner">
 
-    <div class="header-title">
+<div class="header-title">
 
-      <h1>🔐 Admin Panel</h1>
+<h1>🔐 Admin Panel</h1>
 
-      <p>DELIGHT MINDSET CLASSES</p>
+<p>DELIGHT MINDSET CLASSES</p>
 
-    </div>
+</div>
 
-    <div class="header-buttons">
+<div class="header-buttons">
 
-      <span
-        id="loggedUser"
-        class="logged-user hidden"
-      ></span>
+<span id="loggedUser" class="logged-user hidden"></span>
 
-      <a
-        href="index.html"
-        class="back-btn"
-      >
-        ← Website
-      </a>
+<a href="index.html" class="back-btn">
+← Website
+</a>
 
-      <button
-        id="logoutButton"
-        class="logout-btn hidden"
-        onclick="logoutAdmin()"
-      >
-        Logout
-      </button>
+<button
+id="logoutButton"
+class="logout-btn hidden"
+onclick="logoutAdmin()"
+>
+Logout
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </header>
 
 
 <section id="loginSection">
 
-  <div class="container">
+<div class="container">
 
-    <div class="login-box">
+<div class="login-box">
 
-      <h2>🔐 Admin Login</h2>
+<h2>🔐 Admin Login</h2>
 
-      <p>
-        Only authorised admin can access the dashboard.
-      </p>
+<p>
+Only authorised admin can access the dashboard.
+</p>
 
-      <div class="form-group">
+<div class="form-group">
 
-        <label>Admin Email</label>
+<label>Admin Email</label>
 
-        <input
-          type="email"
-          id="loginEmail"
-          placeholder="Enter admin email"
-        >
+<input
+type="email"
+id="loginEmail"
+placeholder="Enter admin email"
+>
 
-      </div>
+</div>
 
-      <div class="form-group">
+<div class="form-group">
 
-        <label>Password</label>
+<label>Password</label>
 
-        <input
-          type="password"
-          id="loginPassword"
-          placeholder="Enter password"
-        >
+<input
+type="password"
+id="loginPassword"
+placeholder="Enter password"
+>
 
-      </div>
+</div>
 
-      <button
-        id="loginButton"
-        class="btn primary"
-        onclick="loginAdmin()"
-      >
-        Login
-      </button>
+<button
+id="loginButton"
+class="btn primary"
+onclick="loginAdmin()"
+>
+Login
+</button>
 
-      <div
-        id="loginMessage"
-        class="message"
-      ></div>
+<div
+id="loginMessage"
+class="message"
+></div>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
-<main
-  id="dashboardSection"
-  class="hidden"
+<main id="dashboardSection" class="hidden">
+
+<div class="container">
+
+<div class="page-title">
+
+<h2>Dashboard</h2>
+
+<p>Website content management</p>
+
+</div>
+
+
+<div class="admin-grid">
+
+
+<!-- STUDY MATERIAL -->
+
+<div class="admin-card">
+
+<h3>📚 Add Study Material</h3>
+
+<p class="admin-card-description">
+Upload Notes, Questions, DPP, Practice Sheets,
+PYQs, Test Papers and Important Questions.
+</p>
+
+<div class="form-group">
+
+<label>Select Class</label>
+
+<select id="materialClass">
+
+<option value="">Select Class</option>
+
+<option value="9">Class 9</option>
+
+<option value="10">Class 10</option>
+
+<option value="11">Class 11</option>
+
+<option value="12">Class 12</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Select Subject</label>
+
+<select id="materialSubject">
+
+<option value="">Select Subject</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Material Type</label>
+
+<select id="materialType">
+
+<option value="">Select Material Type</option>
+
+<option value="Notes">Notes</option>
+
+<option value="Questions">Questions</option>
+
+<option value="DPP">DPP</option>
+
+<option value="Practice Sheets">Practice Sheets</option>
+
+<option value="PYQs">PYQs</option>
+
+<option value="Test Papers">Test Papers</option>
+
+<option value="Important Questions">Important Questions</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Material Title</label>
+
+<input
+type="text"
+id="materialTitle"
+placeholder="Example: Chapter 1 Notes"
 >
 
-  <div class="container">
+</div>
 
-    <div class="page-title">
+<div class="form-group">
 
-      <h2>Dashboard</h2>
+<label>Select File</label>
 
-      <p>Website content management</p>
+<div class="file-box">
 
-    </div>
+<input
+type="file"
+id="materialFile"
+accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png"
+>
 
+<div class="file-help">
+PDF, DOC, DOCX, PPT, PPTX, JPG or PNG
+<br>
+Maximum size: 10 MB
+</div>
 
-    <div class="admin-grid">
+<div
+id="selectedFile"
+class="selected-file"
+></div>
 
+</div>
 
-      <!-- STUDY MATERIAL -->
+</div>
 
-      <div class="admin-card">
+<button
+id="uploadButton"
+class="btn primary"
+onclick="saveMaterial()"
+>
+📤 Upload Material
+</button>
 
-        <h3>📚 Add Study Material</h3>
+<div
+id="materialMessage"
+class="message"
+></div>
 
-        <p class="admin-card-description">
-          Upload Notes, Questions, DPP, Practice Sheets,
-          PYQs, Test Papers and Important Questions.
-        </p>
+</div>
 
-        <div class="form-group">
 
-          <label>Select Class</label>
+<!-- ANNOUNCEMENT -->
 
-          <select id="materialClass">
+<div class="admin-card">
 
-            <option value="">
-              Select Class
-            </option>
+<h3>📢 Announcement</h3>
 
-            <option value="9">
-              Class 9
-            </option>
+<p class="admin-card-description">
+Create and manage announcements for students.
+</p>
 
-            <option value="10">
-              Class 10
-            </option>
+<div class="form-group">
 
-            <option value="11">
-              Class 11
-            </option>
+<label>Announcement Title</label>
 
-            <option value="12">
-              Class 12
-            </option>
+<input
+type="text"
+id="announcementTitle"
+placeholder="Example: Test on Sunday"
+>
 
-          </select>
+</div>
 
-        </div>
+<div class="form-group">
 
-        <div class="form-group">
+<label>Announcement Details</label>
 
-          <label>Select Subject</label>
+<textarea
+id="announcementText"
+placeholder="Write announcement details..."
+></textarea>
 
-          <select id="materialSubject">
+</div>
 
-            <option value="">
-              Select Subject
-            </option>
+<button
+id="announcementButton"
+class="btn primary"
+onclick="saveAnnouncement()"
+>
+📢 Publish Announcement
+</button>
 
-          </select>
+<div
+id="announcementMessage"
+class="message"
+></div>
 
-        </div>
+<div
+id="announcementList"
+class="announcement-list"
+></div>
 
-        <div class="form-group">
+</div>
 
-          <label>Material Type</label>
 
-          <select id="materialType">
+<!-- RESULTS -->
 
-            <option value="">
-              Select Material Type
-            </option>
+<div class="admin-card">
 
-            <option value="Notes">
-              Notes
-            </option>
+<h3>🏆 Add Result</h3>
 
-            <option value="Questions">
-              Questions
-            </option>
+<p class="admin-card-description">
+Add and manage Class 10th and Class 12th student results.
+</p>
 
-            <option value="DPP">
-              DPP
-            </option>
+<div class="form-group">
 
-            <option value="Practice Sheets">
-              Practice Sheets
-            </option>
+<label>Select Class</label>
 
-            <option value="PYQs">
-              PYQs
-            </option>
+<select id="resultClass">
 
-            <option value="Test Papers">
-              Test Papers
-            </option>
+<option value="">Select Class</option>
 
-            <option value="Important Questions">
-              Important Questions
-            </option>
+<option value="10">Class 10</option>
 
-          </select>
+<option value="12">Class 12</option>
 
-        </div>
+</select>
 
-        <div class="form-group">
+</div>
 
-          <label>Material Title</label>
+<div class="form-group">
 
-          <input
-            type="text"
-            id="materialTitle"
-            placeholder="Example: Chapter 1 Notes"
-          >
+<label>Student Name</label>
 
-        </div>
+<input
+type="text"
+id="studentName"
+placeholder="Enter student name"
+>
 
-        <div class="form-group">
+</div>
 
-          <label>Select File</label>
+<div class="form-group">
 
-          <div class="file-box">
+<label>Roll Number</label>
 
-            <input
-              type="file"
-              id="materialFile"
-              accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png"
-            >
+<input
+type="text"
+id="rollNumber"
+placeholder="Enter roll number"
+>
 
-            <div class="file-help">
-              PDF, DOC, DOCX, PPT, PPTX, JPG or PNG
-              <br>
-              Maximum size: 10 MB
-            </div>
+</div>
 
-            <div
-              id="selectedFile"
-              class="selected-file"
-            ></div>
+<div class="form-group">
 
-          </div>
+<label>Marks</label>
 
-        </div>
+<input
+type="text"
+id="marks"
+placeholder="Example: 475 / 500"
+>
 
-        <button
-          id="uploadButton"
-          class="btn primary"
-          onclick="saveMaterial()"
-        >
-          📤 Upload Material
-        </button>
+</div>
 
-        <div
-          id="materialMessage"
-          class="message"
-        ></div>
+<div class="form-group">
 
-      </div>
+<label>Percentage</label>
 
+<input
+type="text"
+id="percentage"
+placeholder="Example: 95%"
+>
 
-      <!-- ANNOUNCEMENT -->
+</div>
 
-      <div class="admin-card">
+<div class="form-group">
 
-        <h3>📢 Announcement</h3>
+<label>Rank</label>
 
-        <p class="admin-card-description">
-          Create and manage announcements for students.
-        </p>
+<input
+type="text"
+id="rank"
+placeholder="Example: 1st"
+>
 
-        <div class="form-group">
+</div>
 
-          <label>Announcement Title</label>
+<button
+id="resultButton"
+class="btn primary"
+onclick="saveResult()"
+>
+🏆 Add Result
+</button>
 
-          <input
-            type="text"
-            id="announcementTitle"
-            placeholder="Example: Test on Sunday"
-          >
+<div
+id="resultMessage"
+class="message"
+></div>
 
-        </div>
+<div
+id="resultList"
+class="result-list"
+></div>
 
-        <div class="form-group">
+</div>
 
-          <label>Announcement Details</label>
 
-          <textarea
-            id="announcementText"
-            placeholder="Write announcement details..."
-          ></textarea>
+<!-- TEACHERS -->
 
-        </div>
+<div class="admin-card">
 
-        <button
-          id="announcementButton"
-          class="btn primary"
-          onclick="saveAnnouncement()"
-        >
-          📢 Publish Announcement
-        </button>
+<h3>👨‍🏫 Teachers</h3>
 
-        <div
-          id="announcementMessage"
-          class="message"
-        ></div>
+<p class="admin-card-description">
+Manage teacher information.
+</p>
 
-        <div
-          id="announcementList"
-          class="announcement-list"
-        ></div>
+<div class="info-box">
 
-      </div>
+Teacher management will be connected
+with the online database later.
 
+<br><br>
 
-      <!-- RESULTS -->
+Current teachers are already displayed
+on the main website.
 
-      <div class="admin-card">
+</div>
 
-        <h3>🏆 Add Result</h3>
+</div>
 
-        <p class="admin-card-description">
-          Add and manage Class 10th and Class 12th student results.
-        </p>
 
-        <div class="form-group">
+<!-- DOUBTS -->
 
-          <label>Select Class</label>
+<div class="admin-card" style="grid-column:1/-1;">
 
-          <select id="resultClass">
+<h3>💬 Student Doubts</h3>
 
-            <option value="">
-              Select Class
-            </option>
+<p class="admin-card-description">
+Students के doubts यहाँ दिखाई देंगे। आप यहीं से personally reply कर सकते हैं।
+</p>
 
-            <option value="10">
-              Class 10
-            </option>
+<div
+id="doubtList"
+class="doubt-list"
+>
 
-            <option value="12">
-              Class 12
-            </option>
+<div class="info-box">
+Loading student doubts...
+</div>
 
-          </select>
+</div>
 
-        </div>
+</div>
 
-        <div class="form-group">
 
-          <label>Student Name</label>
+</div>
 
-          <input
-            type="text"
-            id="studentName"
-            placeholder="Enter student name"
-          >
 
-        </div>
+<!-- MATERIAL LIST -->
 
-        <div class="form-group">
+<div class="admin-card saved-materials">
 
-          <label>Roll Number</label>
+<h3>📂 Uploaded Materials</h3>
 
-          <input
-            type="text"
-            id="rollNumber"
-            placeholder="Enter roll number"
-          >
+<div
+id="savedMaterials"
+class="material-list"
+></div>
 
-        </div>
+</div>
 
-        <div class="form-group">
-
-          <label>Marks</label>
-
-          <input
-            type="text"
-            id="marks"
-            placeholder="Example: 475 / 500"
-          >
-
-        </div>
-
-        <div class="form-group">
-
-          <label>Percentage</label>
-
-          <input
-            type="text"
-            id="percentage"
-            placeholder="Example: 95%"
-          >
-
-        </div>
-
-        <div class="form-group">
-
-          <label>Rank</label>
-
-          <input
-            type="text"
-            id="rank"
-            placeholder="Example: 1st"
-          >
-
-        </div>
-
-        <button
-          id="resultButton"
-          class="btn primary"
-          onclick="saveResult()"
-        >
-          🏆 Add Result
-        </button>
-
-        <div
-          id="resultMessage"
-          class="message"
-        ></div>
-
-        <div
-          id="resultList"
-          class="result-list"
-        ></div>
-
-      </div>
-
-
-      <!-- TEACHERS -->
-
-      <div class="admin-card">
-
-        <h3>👨‍🏫 Teachers</h3>
-
-        <p class="admin-card-description">
-          Manage teacher information.
-        </p>
-
-        <div class="info-box">
-
-          Teacher management will be connected
-          with the online database later.
-
-          <br><br>
-
-          Current teachers are already displayed
-          on the main website.
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- MATERIAL LIST -->
-
-    <div class="admin-card saved-materials">
-
-      <h3>📂 Uploaded Materials</h3>
-
-      <div
-        id="savedMaterials"
-        class="material-list"
-      ></div>
-
-    </div>
-
-  </div>
+</div>
 
 </main>
 
 
 <footer>
 
-  DELIGHT MINDSET CLASSES • Admin Panel
+DELIGHT MINDSET CLASSES • Admin Panel
 
 </footer>
 
@@ -936,16 +1038,16 @@ footer{
 ===================================================== */
 
 const SUPABASE_URL =
-  "https://sbckafdncwclnchvzubl.supabase.co";
+"https://sbckafdncwclnchvzubl.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
-  "sb_publishable_Yvlr5Wdv8X4ViOgPyD3MFA_6NnRl9z6";
+"sb_publishable_Yvlr5Wdv8X4ViOgPyD3MFA_6NnRl9z6";
 
 const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
+);
 
 
 /* =====================================================
@@ -954,33 +1056,33 @@ const supabaseClient =
 
 const subjects = {
 
-  "9":[
-    "Maths",
-    "Science",
-    "English"
-  ],
+"9":[
+"Maths",
+"Science",
+"English"
+],
 
-  "10":[
-    "Maths",
-    "Science",
-    "English"
-  ],
+"10":[
+"Maths",
+"Science",
+"English"
+],
 
-  "11":[
-    "Physics",
-    "Chemistry",
-    "Maths",
-    "Biology",
-    "English"
-  ],
+"11":[
+"Physics",
+"Chemistry",
+"Maths",
+"Biology",
+"English"
+],
 
-  "12":[
-    "Physics",
-    "Chemistry",
-    "Maths",
-    "Biology",
-    "English"
-  ]
+"12":[
+"Physics",
+"Chemistry",
+"Maths",
+"Biology",
+"English"
+]
 
 };
 
@@ -990,38 +1092,34 @@ const subjects = {
 ===================================================== */
 
 document
-  .getElementById("materialClass")
-  .addEventListener("change",function(){
+.getElementById("materialClass")
+.addEventListener("change",function(){
 
-    const classValue =
-      this.value;
+const classValue = this.value;
 
-    const subjectSelect =
-      document.getElementById("materialSubject");
+const subjectSelect =
+document.getElementById("materialSubject");
 
-    subjectSelect.innerHTML =
-      '<option value="">Select Subject</option>';
+subjectSelect.innerHTML =
+'<option value="">Select Subject</option>';
 
-    if(classValue === ""){
-      return;
-    }
+if(classValue === ""){
+return;
+}
 
-    subjects[classValue].forEach(function(subject){
+subjects[classValue].forEach(function(subject){
 
-      const option =
-        document.createElement("option");
+const option =
+document.createElement("option");
 
-      option.value =
-        subject;
+option.value = subject;
+option.textContent = subject;
 
-      option.textContent =
-        subject;
+subjectSelect.appendChild(option);
 
-      subjectSelect.appendChild(option);
+});
 
-    });
-
-  });
+});
 
 
 /* =====================================================
@@ -1029,34 +1127,29 @@ document
 ===================================================== */
 
 document
-  .getElementById("materialFile")
-  .addEventListener("change",function(){
+.getElementById("materialFile")
+.addEventListener("change",function(){
 
-    const file =
-      this.files[0];
+const file = this.files[0];
 
-    const selectedFile =
-      document.getElementById("selectedFile");
+const selectedFile =
+document.getElementById("selectedFile");
 
-    if(!file){
+if(!file){
 
-      selectedFile.style.display =
-        "none";
+selectedFile.style.display = "none";
+selectedFile.textContent = "";
 
-      selectedFile.textContent =
-        "";
+return;
 
-      return;
+}
 
-    }
+selectedFile.style.display = "block";
 
-    selectedFile.style.display =
-      "block";
+selectedFile.textContent =
+"📄 " + file.name;
 
-    selectedFile.textContent =
-      "📄 " + file.name;
-
-  });
+});
 
 
 /* =====================================================
@@ -1065,97 +1158,78 @@ document
 
 async function loginAdmin(){
 
-  const email =
-    document
-      .getElementById("loginEmail")
-      .value
-      .trim();
+const email =
+document.getElementById("loginEmail")
+.value
+.trim();
 
-  const password =
-    document
-      .getElementById("loginPassword")
-      .value;
+const password =
+document.getElementById("loginPassword")
+.value;
 
-  const message =
-    document
-      .getElementById("loginMessage");
+const message =
+document.getElementById("loginMessage");
 
-  const button =
-    document
-      .getElementById("loginButton");
+const button =
+document.getElementById("loginButton");
 
-  message.className =
-    "message";
+message.className = "message";
 
-  if(
-    email === "" ||
-    password === ""
-  ){
+if(email === "" || password === ""){
 
-    message.textContent =
-      "Please enter email and password.";
+message.textContent =
+"Please enter email and password.";
 
-    message.classList.add("error");
+message.classList.add("error");
 
-    return;
+return;
 
-  }
+}
 
-  button.disabled =
-    true;
+button.disabled = true;
+button.textContent = "Logging in...";
 
-  button.textContent =
-    "Logging in...";
+try{
 
-  try{
+const {data,error} =
+await supabaseClient.auth.signInWithPassword({
 
-    const { data, error } =
-      await supabaseClient.auth.signInWithPassword({
+email:email,
+password:password
 
-        email:email,
+});
 
-        password:password
+if(error){
 
-      });
+message.textContent = error.message;
+message.classList.add("error");
 
-    if(error){
+return;
 
-      message.textContent =
-        error.message;
+}
 
-      message.classList.add("error");
+if(data && data.session){
 
-      return;
+showDashboard(data.user);
 
-    }
+}
 
-    if(data && data.session){
+}catch(error){
 
-      showDashboard(
-        data.user
-      );
+console.error(error);
 
-    }
+message.textContent =
+"Login failed: " +
+(error.message || "Unknown error");
 
-  }catch(error){
+message.classList.add("error");
 
-    console.error(error);
+}finally{
 
-    message.textContent =
-      "Login failed: " +
-      (error.message || "Unknown error");
+button.disabled = false;
+button.textContent = "Login";
 
-    message.classList.add("error");
-
-  }finally{
-
-    button.disabled =
-      false;
-
-    button.textContent =
-      "Login";
-
-  }
+}
 
 }
 
@@ -1166,31 +1240,30 @@ async function loginAdmin(){
 
 function showDashboard(user){
 
-  document
-    .getElementById("loginSection")
-    .classList.add("hidden");
+document
+.getElementById("loginSection")
+.classList.add("hidden");
 
-  document
-    .getElementById("dashboardSection")
-    .classList.remove("hidden");
+document
+.getElementById("dashboardSection")
+.classList.remove("hidden");
 
-  document
-    .getElementById("logoutButton")
-    .classList.remove("hidden");
+document
+.getElementById("logoutButton")
+.classList.remove("hidden");
 
-  const loggedUser =
-    document.getElementById("loggedUser");
+const loggedUser =
+document.getElementById("loggedUser");
 
-  loggedUser.textContent =
-    "👤 " + (user.email || "Admin");
+loggedUser.textContent =
+"👤 " + (user.email || "Admin");
 
-  loggedUser.classList.remove("hidden");
+loggedUser.classList.remove("hidden");
 
-  loadMaterials();
-
-  loadAnnouncements();
-
-  loadResults();
+loadMaterials();
+loadAnnouncements();
+loadResults();
+loadDoubts();
 
 }
 
@@ -1201,23 +1274,23 @@ function showDashboard(user){
 
 async function logoutAdmin(){
 
-  await supabaseClient.auth.signOut();
+await supabaseClient.auth.signOut();
 
-  document
-    .getElementById("dashboardSection")
-    .classList.add("hidden");
+document
+.getElementById("dashboardSection")
+.classList.add("hidden");
 
-  document
-    .getElementById("loginSection")
-    .classList.remove("hidden");
+document
+.getElementById("loginSection")
+.classList.remove("hidden");
 
-  document
-    .getElementById("logoutButton")
-    .classList.add("hidden");
+document
+.getElementById("logoutButton")
+.classList.add("hidden");
 
-  document
-    .getElementById("loggedUser")
-    .classList.add("hidden");
+document
+.getElementById("loggedUser")
+.classList.add("hidden");
 
 }
 
@@ -1228,178 +1301,165 @@ async function logoutAdmin(){
 
 async function saveMaterial(){
 
-  const classValue =
-    document
-      .getElementById("materialClass")
-      .value;
+const classValue =
+document.getElementById("materialClass").value;
 
-  const subject =
-    document
-      .getElementById("materialSubject")
-      .value;
+const subject =
+document.getElementById("materialSubject").value;
 
-  const type =
-    document
-      .getElementById("materialType")
-      .value;
+const type =
+document.getElementById("materialType").value;
 
-  const title =
-    document
-      .getElementById("materialTitle")
-      .value
-      .trim();
+const title =
+document.getElementById("materialTitle")
+.value
+.trim();
 
-  const fileInput =
-    document
-      .getElementById("materialFile");
+const fileInput =
+document.getElementById("materialFile");
 
-  const file =
-    fileInput.files[0];
+const file =
+fileInput.files[0];
 
-  const message =
-    document
-      .getElementById("materialMessage");
+const message =
+document.getElementById("materialMessage");
 
-  const button =
-    document
-      .getElementById("uploadButton");
+const button =
+document.getElementById("uploadButton");
 
-  message.className =
-    "message";
+message.className = "message";
 
-  if(
-    classValue === "" ||
-    subject === "" ||
-    type === "" ||
-    title === "" ||
-    !file
-  ){
+if(
+classValue === "" ||
+subject === "" ||
+type === "" ||
+title === "" ||
+!file
+){
 
-    message.textContent =
-      "Please select Class, Subject, Material Type, Title and File.";
+message.textContent =
+"Please select Class, Subject, Material Type, Title and File.";
 
-    message.classList.add("error");
+message.classList.add("error");
 
-    return;
+return;
 
-  }
+}
 
-  const maxSize =
-    10 * 1024 * 1024;
+const maxSize =
+10 * 1024 * 1024;
 
-  if(file.size > maxSize){
+if(file.size > maxSize){
 
-    message.textContent =
-      "File size must be less than 10 MB.";
+message.textContent =
+"File size must be less than 10 MB.";
 
-    message.classList.add("error");
+message.classList.add("error");
 
-    return;
+return;
 
-  }
+}
 
-  button.disabled =
-    true;
+button.disabled = true;
+button.textContent = "Uploading...";
 
-  button.textContent =
-    "Uploading...";
+try{
 
-  try{
+const safeFileName =
+file.name
+.replace(/[^a-zA-Z0-9._-]/g,"_");
 
-    const safeFileName =
-      file.name
-        .replace(/[^a-zA-Z0-9._-]/g,"_");
+const filePath =
+classValue +
+"/" +
+subject.replace(/[^a-zA-Z0-9_-]/g,"_") +
+"/" +
+type.replace(/[^a-zA-Z0-9_-]/g,"_") +
+"/" +
+Date.now() +
+"_" +
+safeFileName;
 
-    const filePath =
-      classValue +
-      "/" +
-      subject.replace(/[^a-zA-Z0-9_-]/g,"_") +
-      "/" +
-      type.replace(/[^a-zA-Z0-9_-]/g,"_") +
-      "/" +
-      Date.now() +
-      "_" +
-      safeFileName;
+const {error:uploadError} =
+await supabaseClient
+.storage
+.from("study-materials")
+.upload(
+filePath,
+file,
+{
+cacheControl:"3600",
+upsert:false,
+contentType:
+file.type ||
+"application/octet-stream"
+}
+);
 
-    const { error:uploadError } =
-      await supabaseClient
-        .storage
-        .from("study-materials")
-        .upload(
-          filePath,
-          file,
-          {
-            cacheControl:"3600",
-            upsert:false,
-            contentType:file.type || "application/octet-stream"
-          }
-        );
+if(uploadError){
+throw uploadError;
+}
 
-    if(uploadError){
-      throw uploadError;
-    }
+const {error:databaseError} =
+await supabaseClient
+.from("materials")
+.insert({
 
-    const { error:databaseError } =
-      await supabaseClient
-        .from("materials")
-        .insert({
+class:classValue,
+subject:subject,
+material_type:type,
+title:title,
+file_name:file.name,
+file_path:filePath
 
-          class:classValue,
+});
 
-          subject:subject,
+if(databaseError){
 
-          material_type:type,
+await supabaseClient
+.storage
+.from("study-materials")
+.remove([filePath]);
 
-          title:title,
+throw databaseError;
 
-          file_name:file.name,
+}
 
-          file_path:filePath
+message.textContent =
+"✅ Material uploaded successfully!";
 
-        });
+message.classList.add("success");
 
-    if(databaseError){
-      throw databaseError;
-    }
+document
+.getElementById("materialTitle")
+.value = "";
 
-    message.textContent =
-      "✅ Material uploaded successfully!";
+fileInput.value = "";
 
-    message.classList.add("success");
+document
+.getElementById("selectedFile")
+.style.display = "none";
 
-    document
-      .getElementById("materialTitle")
-      .value = "";
+document
+.getElementById("selectedFile")
+.textContent = "";
 
-    fileInput.value = "";
+await loadMaterials();
 
-    document
-      .getElementById("selectedFile")
-      .style.display = "none";
+}catch(error){
 
-    document
-      .getElementById("selectedFile")
-      .textContent = "";
+console.error(error);
 
-    await loadMaterials();
+message.textContent =
+"Upload failed: " +
+(error.message || "Unknown error");
 
-  }catch(error){
+message.classList.add("error");
 
-    console.error(error);
+}
 
-    message.textContent =
-      "Upload failed: " +
-      (error.message || "Unknown error");
-
-    message.classList.add("error");
-
-  }
-
-  button.disabled =
-    false;
-
-  button.textContent =
-    "📤 Upload Material";
+button.disabled = false;
+button.textContent = "📤 Upload Material";
 
 }
 
@@ -1410,100 +1470,269 @@ async function saveMaterial(){
 
 async function loadMaterials(){
 
-  const container =
-    document.getElementById("savedMaterials");
+const container =
+document.getElementById("savedMaterials");
 
-  container.innerHTML = `
+container.innerHTML = `
 
-    <div class="info-box">
-      Loading materials...
-    </div>
+<div class="info-box">
+Loading materials...
+</div>
 
-  `;
+`;
 
-  const { data, error } =
-    await supabaseClient
-      .from("materials")
-      .select("*")
-      .order(
-        "created_at",
-        {
-          ascending:false
-        }
-      );
+const {data,error} =
+await supabaseClient
+.from("materials")
+.select("*")
+.order(
+"created_at",
+{
+ascending:false
+}
+);
 
-  if(error){
+if(error){
 
-    container.innerHTML = `
+container.innerHTML = `
 
-      <div class="info-box">
-        Could not load materials.
-        <br><br>
-        ${escapeHTML(error.message)}
-      </div>
+<div class="info-box">
+Could not load materials.
+<br><br>
+${escapeHTML(error.message)}
+</div>
 
-    `;
+`;
 
-    return;
+return;
 
-  }
+}
 
-  if(!data || data.length === 0){
+if(!data || data.length === 0){
 
-    container.innerHTML = `
+container.innerHTML = `
 
-      <div class="info-box">
-        अभी कोई material upload नहीं किया गया है।
-      </div>
+<div class="info-box">
+अभी कोई material upload नहीं किया गया है।
+</div>
 
-    `;
+`;
 
-    return;
+return;
 
-  }
+}
 
-  container.innerHTML = "";
+container.innerHTML = "";
 
-  data.forEach(function(material){
+data.forEach(function(material){
 
-    const item =
-      document.createElement("div");
+const item =
+document.createElement("div");
 
-    item.className =
-      "material-item";
+item.className =
+"material-item";
 
-    const date =
-      material.created_at
-        ? new Date(
-            material.created_at
-          ).toLocaleDateString("en-IN")
-        : "";
+const date =
+material.created_at
+? new Date(
+material.created_at
+).toLocaleDateString("en-IN")
+: "";
 
-    item.innerHTML = `
+const titleElement =
+document.createElement("strong");
 
-      <strong>
-        📄 ${escapeHTML(material.title)}
-      </strong>
+titleElement.textContent =
+"📄 " + material.title;
 
-      <span>
-        Class ${escapeHTML(material.class)}
-        •
-        ${escapeHTML(material.subject)}
-        •
-        ${escapeHTML(material.material_type)}
-      </span>
+const detailsElement =
+document.createElement("span");
 
-      <small>
-        File: ${escapeHTML(material.file_name)}
-        •
-        Added: ${escapeHTML(date)}
-      </small>
+detailsElement.textContent =
+"Class " +
+material.class +
+" • " +
+material.subject +
+" • " +
+material.material_type;
 
-    `;
+const fileElement =
+document.createElement("small");
 
-    container.appendChild(item);
+fileElement.textContent =
+"File: " +
+material.file_name +
+" • Added: " +
+date;
 
-  });
+const actions =
+document.createElement("div");
+
+actions.className =
+"material-actions";
+
+const deleteButton =
+document.createElement("button");
+
+deleteButton.type = "button";
+
+deleteButton.className =
+"small-btn delete-btn";
+
+deleteButton.textContent =
+"🗑️ Delete";
+
+deleteButton.addEventListener(
+"click",
+function(){
+
+deleteMaterial(
+material.id,
+material.file_path,
+material.title
+);
+
+}
+);
+
+actions.appendChild(deleteButton);
+
+item.appendChild(titleElement);
+item.appendChild(detailsElement);
+item.appendChild(fileElement);
+item.appendChild(actions);
+
+container.appendChild(item);
+
+});
+
+}
+
+
+/* =====================================================
+   DELETE MATERIAL
+===================================================== */
+
+async function deleteMaterial(
+id,
+filePath,
+title
+){
+
+const confirmDelete =
+confirm(
+"Are you sure you want to delete this study material?\n\n" +
+title +
+"\n\nThe file will be permanently removed from the website."
+);
+
+if(!confirmDelete){
+return;
+}
+
+const deleteButtons =
+document.querySelectorAll(
+".material-actions .delete-btn"
+);
+
+deleteButtons.forEach(function(button){
+
+button.disabled = true;
+button.textContent = "Deleting...";
+
+});
+
+try{
+
+const {
+data:storageData,
+error:storageError
+} =
+await supabaseClient
+.storage
+.from("study-materials")
+.remove([
+filePath
+]);
+
+console.log(
+"Storage delete response:",
+storageData
+);
+
+if(storageError){
+
+console.error(
+"Storage delete error:",
+storageError
+);
+
+alert(
+"File delete failed:\n\n" +
+storageError.message
+);
+
+return;
+
+}
+
+const {
+error:databaseError
+} =
+await supabaseClient
+.from("materials")
+.delete()
+.eq(
+"id",
+id
+);
+
+if(databaseError){
+
+console.error(
+"Database delete error:",
+databaseError
+);
+
+alert(
+"File was removed from Storage, but the database record could not be deleted.\n\n" +
+databaseError.message
+);
+
+await loadMaterials();
+
+return;
+
+}
+
+alert(
+"✅ Study material deleted successfully!"
+);
+
+await loadMaterials();
+
+}catch(error){
+
+console.error(
+"Delete material error:",
+error
+);
+
+alert(
+"Could not delete material:\n\n" +
+(error.message || "Unknown error")
+);
+
+}finally{
+
+deleteButtons.forEach(function(button){
+
+button.disabled = false;
+button.textContent = "🗑️ Delete";
+
+});
+
+}
 
 }
 
@@ -1514,102 +1743,87 @@ async function loadMaterials(){
 
 async function saveAnnouncement(){
 
-  const title =
-    document
-      .getElementById("announcementTitle")
-      .value
-      .trim();
+const title =
+document
+.getElementById("announcementTitle")
+.value
+.trim();
 
-  const text =
-    document
-      .getElementById("announcementText")
-      .value
-      .trim();
+const text =
+document
+.getElementById("announcementText")
+.value
+.trim();
 
-  const message =
-    document
-      .getElementById("announcementMessage");
+const message =
+document.getElementById("announcementMessage");
 
-  const button =
-    document
-      .getElementById("announcementButton");
+const button =
+document.getElementById("announcementButton");
 
-  message.className =
-    "message";
+message.className = "message";
 
-  if(
-    title === "" ||
-    text === ""
-  ){
+if(title === "" || text === ""){
 
-    message.textContent =
-      "Please enter announcement title and details.";
+message.textContent =
+"Please enter announcement title and details.";
 
-    message.classList.add("error");
+message.classList.add("error");
 
-    return;
+return;
 
-  }
+}
 
-  button.disabled =
-    true;
+button.disabled = true;
+button.textContent = "Publishing...";
 
-  button.textContent =
-    "Publishing...";
+try{
 
-  try{
+const {error} =
+await supabaseClient
+.from("announcements")
+.insert({
 
-    const { error } =
-      await supabaseClient
-        .from("announcements")
-        .insert({
+title:title,
+message:text,
+is_pinned:false,
+is_active:true
 
-          title:title,
+});
 
-          message:text,
+if(error){
+throw error;
+}
 
-          is_pinned:false,
+message.textContent =
+"✅ Announcement published successfully!";
 
-          is_active:true
+message.classList.add("success");
 
-        });
+document
+.getElementById("announcementTitle")
+.value = "";
 
-    if(error){
-      throw error;
-    }
+document
+.getElementById("announcementText")
+.value = "";
 
-    message.textContent =
-      "✅ Announcement published successfully!";
+await loadAnnouncements();
 
-    message.classList.add("success");
+}catch(error){
 
-    document
-      .getElementById("announcementTitle")
-      .value = "";
+console.error(error);
 
-    document
-      .getElementById("announcementText")
-      .value = "";
+message.textContent =
+"Announcement failed: " +
+(error.message || "Unknown error");
 
-    await loadAnnouncements();
+message.classList.add("error");
 
-  }catch(error){
+}
 
-    console.error(error);
-
-    message.textContent =
-      "Announcement failed: " +
-      (error.message || "Unknown error");
-
-    message.classList.add("error");
-
-  }
-
-  button.disabled =
-    false;
-
-  button.textContent =
-    "📢 Publish Announcement";
+button.disabled = false;
+button.textContent = "📢 Publish Announcement";
 
 }
 
@@ -1620,122 +1834,122 @@ async function saveAnnouncement(){
 
 async function loadAnnouncements(){
 
-  const container =
-    document.getElementById("announcementList");
+const container =
+document.getElementById("announcementList");
 
-  container.innerHTML = `
+container.innerHTML = `
 
-    <div class="info-box">
-      Loading announcements...
-    </div>
+<div class="info-box">
+Loading announcements...
+</div>
 
-  `;
+`;
 
-  const { data, error } =
-    await supabaseClient
-      .from("announcements")
-      .select("*")
-      .order(
-        "created_at",
-        {
-          ascending:false
-        }
-      );
+const {data,error} =
+await supabaseClient
+.from("announcements")
+.select("*")
+.order(
+"created_at",
+{
+ascending:false
+}
+);
 
-  if(error){
+if(error){
 
-    container.innerHTML = `
+container.innerHTML = `
 
-      <div class="info-box">
-        Could not load announcements.
-        <br><br>
-        ${escapeHTML(error.message)}
-      </div>
+<div class="info-box">
+Could not load announcements.
+<br><br>
+${escapeHTML(error.message)}
+</div>
 
-    `;
+`;
 
-    return;
+return;
 
-  }
+}
 
-  if(!data || data.length === 0){
+if(!data || data.length === 0){
 
-    container.innerHTML = `
+container.innerHTML = `
 
-      <div class="info-box">
-        अभी कोई announcement नहीं है।
-      </div>
+<div class="info-box">
+अभी कोई announcement नहीं है।
+</div>
 
-    `;
+`;
 
-    return;
+return;
 
-  }
+}
 
-  container.innerHTML = "";
+container.innerHTML = "";
 
-  data.forEach(function(announcement){
+data.forEach(function(announcement){
 
-    const item =
-      document.createElement("div");
+const item =
+document.createElement("div");
 
-    item.className =
-      "announcement-item";
+item.className =
+"announcement-item";
 
-    const date =
-      announcement.created_at
-        ? new Date(
-            announcement.created_at
-          ).toLocaleDateString("en-IN")
-        : "";
+const date =
+announcement.created_at
+? new Date(
+announcement.created_at
+).toLocaleDateString("en-IN")
+: "";
 
-    item.innerHTML = `
+item.innerHTML = `
 
-      <strong>
-        ${announcement.is_pinned ? "📌 " : "📢 "}
-        ${escapeHTML(announcement.title)}
-      </strong>
+<strong>
+${announcement.is_pinned ? "📌 " : "📢 "}
+${escapeHTML(announcement.title)}
+</strong>
 
-      <p>
-        ${escapeHTML(announcement.message)}
-      </p>
+<p>
+${escapeHTML(announcement.message)}
+</p>
 
-      <small>
-        ${announcement.is_active ? "🟢 Active" : "⚪ Inactive"}
-        •
-        ${escapeHTML(date)}
-      </small>
+<small>
+${announcement.is_active ? "🟢 Active" : "⚪ Inactive"}
+•
+${escapeHTML(date)}
+</small>
 
-      <div class="announcement-actions">
+<div class="announcement-actions">
 
-        <button
-          class="small-btn pin-btn"
-          onclick="togglePinned(${announcement.id},${announcement.is_pinned})"
-        >
-          ${announcement.is_pinned ? "Unpin" : "📌 Pin"}
-        </button>
+<button
+class="small-btn pin-btn"
+onclick="togglePinned(${announcement.id},${announcement.is_pinned})"
+>
+${announcement.is_pinned ? "Unpin" : "📌 Pin"}
+</button>
 
-        <button
-          class="small-btn active-btn"
-          onclick="toggleActive(${announcement.id},${announcement.is_active})"
-        >
-          ${announcement.is_active ? "Deactivate" : "Activate"}
-        </button>
+<button
+class="small-btn active-btn"
+onclick="toggleActive(${announcement.id},${announcement.is_active})"
+>
+${announcement.is_active ? "Deactivate" : "Activate"}
+</button>
 
-        <button
-          class="small-btn delete-btn"
-          onclick="deleteAnnouncement(${announcement.id})"
-        >
-          🗑️ Delete
-        </button>
+<button
+class="small-btn delete-btn"
+onclick="deleteAnnouncement(${announcement.id})"
+>
+🗑️ Delete
+</button>
 
-      </div>
+</div>
 
-    `;
+`;
 
-    container.appendChild(item);
+container.appendChild(item);
 
-  });
+});
 
 }
 
@@ -1746,31 +1960,31 @@ async function loadAnnouncements(){
 
 async function togglePinned(id,currentValue){
 
-  const { error } =
-    await supabaseClient
-      .from("announcements")
-      .update({
+const {error} =
+await supabaseClient
+.from("announcements")
+.update({
 
-        is_pinned:!currentValue
+is_pinned:!currentValue
 
-      })
-      .eq(
-        "id",
-        id
-      );
+})
+.eq(
+"id",
+id
+);
 
-  if(error){
+if(error){
 
-    alert(
-      "Could not update announcement: " +
-      error.message
-    );
+alert(
+"Could not update announcement: " +
+error.message
+);
 
-    return;
+return;
 
-  }
+}
 
-  await loadAnnouncements();
+await loadAnnouncements();
 
 }
 
@@ -1781,31 +1995,31 @@ async function togglePinned(id,currentValue){
 
 async function toggleActive(id,currentValue){
 
-  const { error } =
-    await supabaseClient
-      .from("announcements")
-      .update({
+const {error} =
+await supabaseClient
+.from("announcements")
+.update({
 
-        is_active:!currentValue
+is_active:!currentValue
 
-      })
-      .eq(
-        "id",
-        id
-      );
+})
+.eq(
+"id",
+id
+);
 
-  if(error){
+if(error){
 
-    alert(
-      "Could not update announcement: " +
-      error.message
-    );
+alert(
+"Could not update announcement: " +
+error.message
+);
 
-    return;
+return;
 
-  }
+}
 
-  await loadAnnouncements();
+await loadAnnouncements();
 
 }
 
@@ -1816,36 +2030,36 @@ async function toggleActive(id,currentValue){
 
 async function deleteAnnouncement(id){
 
-  const confirmDelete =
-    confirm(
-      "Are you sure you want to delete this announcement?"
-    );
+const confirmDelete =
+confirm(
+"Are you sure you want to delete this announcement?"
+);
 
-  if(!confirmDelete){
-    return;
-  }
+if(!confirmDelete){
+return;
+}
 
-  const { error } =
-    await supabaseClient
-      .from("announcements")
-      .delete()
-      .eq(
-        "id",
-        id
-      );
+const {error} =
+await supabaseClient
+.from("announcements")
+.delete()
+.eq(
+"id",
+id
+);
 
-  if(error){
+if(error){
 
-    alert(
-      "Could not delete announcement: " +
-      error.message
-    );
+alert(
+"Could not delete announcement: " +
+error.message
+);
 
-    return;
+return;
 
-  }
+}
 
-  await loadAnnouncements();
+await loadAnnouncements();
 
 }
 
@@ -1856,151 +2070,112 @@ async function deleteAnnouncement(id){
 
 async function saveResult(){
 
-  const classValue =
-    document
-      .getElementById("resultClass")
-      .value;
+const classValue =
+document.getElementById("resultClass").value;
 
-  const studentName =
-    document
-      .getElementById("studentName")
-      .value
-      .trim();
+const studentName =
+document.getElementById("studentName")
+.value
+.trim();
 
-  const rollNumber =
-    document
-      .getElementById("rollNumber")
-      .value
-      .trim();
+const rollNumber =
+document.getElementById("rollNumber")
+.value
+.trim();
 
-  const marks =
-    document
-      .getElementById("marks")
-      .value
-      .trim();
+const marks =
+document.getElementById("marks")
+.value
+.trim();
 
-  const percentage =
-    document
-      .getElementById("percentage")
-      .value
-      .trim();
+const percentage =
+document.getElementById("percentage")
+.value
+.trim();
 
-  const rank =
-    document
-      .getElementById("rank")
-      .value
-      .trim();
+const rank =
+document.getElementById("rank")
+.value
+.trim();
 
-  const message =
-    document
-      .getElementById("resultMessage");
+const message =
+document.getElementById("resultMessage");
 
-  const button =
-    document
-      .getElementById("resultButton");
+const button =
+document.getElementById("resultButton");
 
-  message.className =
-    "message";
+message.className = "message";
 
-  if(
-    classValue === "" ||
-    studentName === "" ||
-    rollNumber === "" ||
-    marks === "" ||
-    percentage === "" ||
-    rank === ""
-  ){
+if(
+classValue === "" ||
+studentName === "" ||
+rollNumber === "" ||
+marks === "" ||
+percentage === "" ||
+rank === ""
+){
 
-    message.textContent =
-      "Please fill all result fields.";
+message.textContent =
+"Please fill all result fields.";
 
-    message.classList.add("error");
+message.classList.add("error");
 
-    return;
+return;
 
-  }
+}
 
-  button.disabled =
-    true;
+button.disabled = true;
+button.textContent = "Saving...";
 
-  button.textContent =
-    "Saving...";
+try{
 
-  try{
+const {error} =
+await supabaseClient
+.from("results")
+.insert({
 
-    const { error } =
-      await supabaseClient
-        .from("results")
-        .insert({
+class:classValue,
+student_name:studentName,
+roll_number:rollNumber,
+marks:marks,
+percentage:percentage,
+rank:rank,
+is_active:true
 
-          class:classValue,
+});
 
-          student_name:studentName,
+if(error){
+throw error;
+}
 
-          roll_number:rollNumber,
+message.textContent =
+"✅ Result added successfully!";
 
-          marks:marks,
+message.classList.add("success");
 
-          percentage:percentage,
+document.getElementById("resultClass").value = "";
+document.getElementById("studentName").value = "";
+document.getElementById("rollNumber").value = "";
+document.getElementById("marks").value = "";
+document.getElementById("percentage").value = "";
+document.getElementById("rank").value = "";
 
-          rank:rank,
+await loadResults();
 
-          is_active:true
+}catch(error){
 
-        });
+console.error(error);
 
-    if(error){
-      throw error;
-    }
+message.textContent =
+"Result save failed: " +
+(error.message || "Unknown error");
 
-    message.textContent =
-      "✅ Result added successfully!";
+message.classList.add("error");
 
-    message.classList.add("success");
+}
 
-    document
-      .getElementById("resultClass")
-      .value = "";
-
-    document
-      .getElementById("studentName")
-      .value = "";
-
-    document
-      .getElementById("rollNumber")
-      .value = "";
-
-    document
-      .getElementById("marks")
-      .value = "";
-
-    document
-      .getElementById("percentage")
-      .value = "";
-
-    document
-      .getElementById("rank")
-      .value = "";
-
-    await loadResults();
-
-  }catch(error){
-
-    console.error(error);
-
-    message.textContent =
-      "Result save failed: " +
-      (error.message || "Unknown error");
-
-    message.classList.add("error");
-
-  }
-
-  button.disabled =
-    false;
-
-  button.textContent =
-    "🏆 Add Result";
+button.disabled = false;
+button.textContent = "🏆 Add Result";
 
 }
 
@@ -2011,124 +2186,124 @@ async function saveResult(){
 
 async function loadResults(){
 
-  const container =
-    document.getElementById("resultList");
+const container =
+document.getElementById("resultList");
 
-  container.innerHTML = `
+container.innerHTML = `
 
-    <div class="info-box">
-      Loading results...
-    </div>
+<div class="info-box">
+Loading results...
+</div>
 
-  `;
+`;
 
-  const { data, error } =
-    await supabaseClient
-      .from("results")
-      .select("*")
-      .order(
-        "created_at",
-        {
-          ascending:false
-        }
-      );
+const {data,error} =
+await supabaseClient
+.from("results")
+.select("*")
+.order(
+"created_at",
+{
+ascending:false
+}
+);
 
-  if(error){
+if(error){
 
-    container.innerHTML = `
+container.innerHTML = `
 
-      <div class="info-box">
-        Could not load results.
-        <br><br>
-        ${escapeHTML(error.message)}
-      </div>
+<div class="info-box">
+Could not load results.
+<br><br>
+${escapeHTML(error.message)}
+</div>
 
-    `;
+`;
 
-    return;
+return;
 
-  }
+}
 
-  if(!data || data.length === 0){
+if(!data || data.length === 0){
 
-    container.innerHTML = `
+container.innerHTML = `
 
-      <div class="info-box">
-        अभी कोई result add नहीं किया गया है।
-      </div>
+<div class="info-box">
+अभी कोई result add नहीं किया गया है।
+</div>
 
-    `;
+`;
 
-    return;
+return;
 
-  }
+}
 
-  container.innerHTML = "";
+container.innerHTML = "";
 
-  data.forEach(function(result){
+data.forEach(function(result){
 
-    const item =
-      document.createElement("div");
+const item =
+document.createElement("div");
 
-    item.className =
-      "result-item";
+item.className =
+"result-item";
 
-    const date =
-      result.created_at
-        ? new Date(
-            result.created_at
-          ).toLocaleDateString("en-IN")
-        : "";
+const date =
+result.created_at
+? new Date(
+result.created_at
+).toLocaleDateString("en-IN")
+: "";
 
-    item.innerHTML = `
+item.innerHTML = `
 
-      <strong>
-        🏆 ${escapeHTML(result.student_name)}
-      </strong>
+<strong>
+🏆 ${escapeHTML(result.student_name)}
+</strong>
 
-      <span>
-        Class ${escapeHTML(result.class)}
-        •
-        Roll No: ${escapeHTML(result.roll_number)}
-      </span>
+<span>
+Class ${escapeHTML(result.class)}
+•
+Roll No: ${escapeHTML(result.roll_number)}
+</span>
 
-      <span>
-        Marks: ${escapeHTML(result.marks)}
-        •
-        Percentage: ${escapeHTML(result.percentage)}
-        •
-        Rank: ${escapeHTML(result.rank)}
-      </span>
+<span>
+Marks: ${escapeHTML(result.marks)}
+•
+Percentage: ${escapeHTML(result.percentage)}
+•
+Rank: ${escapeHTML(result.rank)}
+</span>
 
-      <small>
-        ${result.is_active ? "🟢 Active" : "⚪ Inactive"}
-        •
-        Added: ${escapeHTML(date)}
-      </small>
+<small>
+${result.is_active ? "🟢 Active" : "⚪ Inactive"}
+•
+Added: ${escapeHTML(date)}
+</small>
 
-      <div class="result-actions">
+<div class="result-actions">
 
-        <button
-          class="small-btn active-btn"
-          onclick="toggleResultActive(${result.id},${result.is_active})"
-        >
-          ${result.is_active ? "Deactivate" : "Activate"}
-        </button>
+<button
+class="small-btn active-btn"
+onclick="toggleResultActive(${result.id},${result.is_active})"
+>
+${result.is_active ? "Deactivate" : "Activate"}
+</button>
 
-        <button
-          class="small-btn delete-btn"
-          onclick="deleteResult(${result.id})"
-        >
-          🗑️ Delete
-        </button>
+<button
+class="small-btn delete-btn"
+onclick="deleteResult(${result.id})"
+>
+🗑️ Delete
+</button>
 
-      </div>
+</div>
 
-    `;
+`;
 
-    container.appendChild(item);
+container.appendChild(item);
 
-  });
+});
 
 }
 
@@ -2139,31 +2314,31 @@ async function loadResults(){
 
 async function toggleResultActive(id,currentValue){
 
-  const { error } =
-    await supabaseClient
-      .from("results")
-      .update({
+const {error} =
+await supabaseClient
+.from("results")
+.update({
 
-        is_active:!currentValue
+is_active:!currentValue
 
-      })
-      .eq(
-        "id",
-        id
-      );
+})
+.eq(
+"id",
+id
+);
 
-  if(error){
+if(error){
 
-    alert(
-      "Could not update result: " +
-      error.message
-    );
+alert(
+"Could not update result: " +
+error.message
+);
 
-    return;
+return;
 
-  }
+}
 
-  await loadResults();
+await loadResults();
 
 }
 
@@ -2174,36 +2349,689 @@ async function toggleResultActive(id,currentValue){
 
 async function deleteResult(id){
 
-  const confirmDelete =
-    confirm(
-      "Are you sure you want to delete this result?"
-    );
+const confirmDelete =
+confirm(
+"Are you sure you want to delete this result?"
+);
 
-  if(!confirmDelete){
-    return;
-  }
+if(!confirmDelete){
+return;
+}
 
-  const { error } =
-    await supabaseClient
-      .from("results")
-      .delete()
-      .eq(
-        "id",
-        id
-      );
+const {error} =
+await supabaseClient
+.from("results")
+.delete()
+.eq(
+"id",
+id
+);
 
-  if(error){
+if(error){
 
-    alert(
-      "Could not delete result: " +
-      error.message
-    );
+alert(
+"Could not delete result: " +
+error.message
+);
 
-    return;
+return;
 
-  }
+}
 
-  await loadResults();
+await loadResults();
+
+}
+
+
+/* =====================================================
+   LOAD STUDENT DOUBTS
+===================================================== */
+
+async function loadDoubts(){
+
+const container =
+document.getElementById("doubtList");
+
+if(!container){
+return;
+}
+
+container.innerHTML = `
+
+<div class="info-box">
+Loading student doubts...
+</div>
+
+`;
+
+
+/*
+   पहले सभी doubts लेंगे।
+*/
+
+const {
+data:doubts,
+error:doubtError
+} =
+await supabaseClient
+.from("doubts")
+.select(
+"id,student_id,subject,doubt_text,reply_text,status,created_at"
+)
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+if(doubtError){
+
+console.error(
+"Load doubts error:",
+doubtError
+);
+
+container.innerHTML = `
+
+<div class="info-box">
+Doubts load नहीं हो पाए।
+<br><br>
+${escapeHTML(doubtError.message)}
+</div>
+
+`;
+
+return;
+
+}
+
+if(!doubts || doubts.length === 0){
+
+container.innerHTML = `
+
+<div class="info-box">
+अभी कोई student doubt नहीं है।
+</div>
+
+`;
+
+return;
+
+}
+
+
+/*
+   Student IDs collect करेंगे।
+*/
+
+const studentIds =
+[
+...new Set(
+doubts
+.map(function(doubt){
+return doubt.student_id;
+})
+.filter(Boolean)
+)
+];
+
+
+/*
+   Student profiles separately लेंगे।
+   इससे database relationship पर dependency नहीं रहेगी।
+*/
+
+let studentMap = {};
+
+if(studentIds.length > 0){
+
+const {
+data:students,
+error:studentError
+} =
+await supabaseClient
+.from("students")
+.select(
+"id,student_name,class,email"
+)
+.in(
+"id",
+studentIds
+);
+
+if(studentError){
+
+console.error(
+"Student profile load error:",
+studentError
+);
+
+}else if(students){
+
+students.forEach(function(student){
+
+studentMap[student.id] =
+student;
+
+});
+
+}
+
+}
+
+
+container.innerHTML = "";
+
+
+doubts.forEach(function(doubt){
+
+const student =
+studentMap[doubt.student_id];
+
+
+const studentName =
+student && student.student_name
+? student.student_name
+: "Unknown Student";
+
+
+const studentClass =
+student && student.class
+? "Class " + student.class
+: "Class -";
+
+
+const studentEmail =
+student && student.email
+? student.email
+: "";
+
+
+const status =
+(doubt.status || "pending")
+.toLowerCase();
+
+
+const item =
+document.createElement("div");
+
+item.className =
+"doubt-item";
+
+
+/* ================================
+   HEADER
+================================ */
+
+const header =
+document.createElement("div");
+
+header.className =
+"doubt-header";
+
+
+const studentInfo =
+document.createElement("div");
+
+studentInfo.innerHTML = `
+
+<div class="doubt-student">
+👤 ${escapeHTML(studentName)}
+</div>
+
+<div class="doubt-meta">
+${escapeHTML(studentClass)}
+${studentEmail
+? " • " + escapeHTML(studentEmail)
+: ""}
+</div>
+
+`;
+
+
+const statusBadge =
+document.createElement("span");
+
+statusBadge.className =
+"doubt-status " +
+(
+status === "replied"
+? "status-replied"
+: "status-pending"
+);
+
+statusBadge.textContent =
+status === "replied"
+? "REPLIED"
+: "PENDING";
+
+
+header.appendChild(
+studentInfo
+);
+
+header.appendChild(
+statusBadge
+);
+
+
+/* ================================
+   QUESTION
+================================ */
+
+const question =
+document.createElement("div");
+
+question.className =
+"doubt-question";
+
+
+const questionTitle =
+document.createElement("strong");
+
+questionTitle.textContent =
+"📚 " +
+(doubt.subject || "Subject");
+
+
+const questionText =
+document.createElement("div");
+
+questionText.textContent =
+doubt.doubt_text || "";
+
+
+question.appendChild(
+questionTitle
+);
+
+question.appendChild(
+questionText
+);
+
+
+/* ================================
+   EXISTING REPLY
+================================ */
+
+let existingReply = null;
+
+if(doubt.reply_text){
+
+existingReply =
+document.createElement("div");
+
+existingReply.className =
+"existing-reply";
+
+
+const replyTitle =
+document.createElement("strong");
+
+replyTitle.textContent =
+"✅ Your Reply";
+
+
+const replyText =
+document.createElement("div");
+
+replyText.textContent =
+doubt.reply_text;
+
+
+existingReply.appendChild(
+replyTitle
+);
+
+existingReply.appendChild(
+replyText
+);
+
+}
+
+
+/* ================================
+   REPLY AREA
+================================ */
+
+const replyArea =
+document.createElement("div");
+
+replyArea.className =
+"doubt-reply-area";
+
+
+const replyLabel =
+document.createElement("label");
+
+replyLabel.textContent =
+doubt.reply_text
+? "Edit Reply"
+: "Write Reply";
+
+
+const replyBox =
+document.createElement("textarea");
+
+replyBox.placeholder =
+"Write your reply to the student...";
+
+replyBox.value =
+doubt.reply_text || "";
+
+
+replyArea.appendChild(
+replyLabel
+);
+
+replyArea.appendChild(
+replyBox
+);
+
+
+/* ================================
+   ACTIONS
+================================ */
+
+const actions =
+document.createElement("div");
+
+actions.className =
+"doubt-actions";
+
+
+const replyButton =
+document.createElement("button");
+
+replyButton.type =
+"button";
+
+replyButton.className =
+"small-btn reply-btn";
+
+replyButton.textContent =
+doubt.reply_text
+? "✏️ Update Reply"
+: "📤 Send Reply";
+
+
+replyButton.addEventListener(
+"click",
+function(){
+
+replyToDoubt(
+doubt.id,
+replyBox.value,
+replyButton
+);
+
+}
+);
+
+
+const deleteButton =
+document.createElement("button");
+
+deleteButton.type =
+"button";
+
+deleteButton.className =
+"small-btn doubt-delete-btn";
+
+deleteButton.textContent =
+"🗑️ Delete Doubt";
+
+
+deleteButton.addEventListener(
+"click",
+function(){
+
+deleteDoubt(
+doubt.id
+);
+
+}
+);
+
+
+actions.appendChild(
+replyButton
+);
+
+actions.appendChild(
+deleteButton
+);
+
+
+/* ================================
+   DATE
+================================ */
+
+const date =
+document.createElement("div");
+
+date.className =
+"doubt-date";
+
+date.textContent =
+doubt.created_at
+? "Submitted: " +
+new Date(
+doubt.created_at
+).toLocaleString("en-IN")
+: "";
+
+
+/* ================================
+   ADD EVERYTHING
+================================ */
+
+item.appendChild(
+header
+);
+
+item.appendChild(
+question
+);
+
+if(existingReply){
+
+item.appendChild(
+existingReply
+);
+
+}
+
+item.appendChild(
+replyArea
+);
+
+item.appendChild(
+actions
+);
+
+item.appendChild(
+date
+);
+
+container.appendChild(
+item
+);
+
+});
+
+}
+
+
+/* =====================================================
+   REPLY TO DOUBT
+===================================================== */
+
+async function replyToDoubt(
+doubtId,
+replyText,
+button
+){
+
+const reply =
+String(replyText || "")
+.trim();
+
+if(reply === ""){
+
+alert(
+"Please reply लिखें."
+);
+
+return;
+
+}
+
+
+const oldText =
+button.textContent;
+
+button.disabled = true;
+
+button.textContent =
+"Sending...";
+
+
+try{
+
+const {
+error
+} =
+await supabaseClient
+.from("doubts")
+.update({
+
+reply_text:reply,
+
+status:"replied"
+
+})
+.eq(
+"id",
+doubtId
+);
+
+
+if(error){
+
+console.error(
+"Reply error:",
+error
+);
+
+alert(
+"Reply send नहीं हो पाया:\n\n" +
+error.message
+);
+
+return;
+
+}
+
+
+alert(
+"✅ Reply successfully sent to student!"
+);
+
+
+await loadDoubts();
+
+
+}catch(error){
+
+console.error(
+"Reply exception:",
+error
+);
+
+alert(
+"Reply send नहीं हो पाया:\n\n" +
+(error.message || "Unknown error")
+);
+
+}finally{
+
+button.disabled = false;
+
+button.textContent =
+oldText;
+
+}
+
+}
+
+
+/* =====================================================
+   DELETE DOUBT
+===================================================== */
+
+async function deleteDoubt(
+doubtId
+){
+
+const confirmDelete =
+confirm(
+"क्या आप इस doubt को permanently delete करना चाहते हैं?"
+);
+
+if(!confirmDelete){
+return;
+}
+
+
+try{
+
+const {
+error
+} =
+await supabaseClient
+.from("doubts")
+.delete()
+.eq(
+"id",
+doubtId
+);
+
+
+if(error){
+
+console.error(
+"Delete doubt error:",
+error
+);
+
+alert(
+"Doubt delete नहीं हो पाया:\n\n" +
+error.message
+);
+
+return;
+
+}
+
+
+await loadDoubts();
+
+
+}catch(error){
+
+console.error(
+"Delete doubt exception:",
+error
+);
+
+alert(
+"Doubt delete नहीं हो पाया:\n\n" +
+(error.message || "Unknown error")
+);
+
+}
 
 }
 
@@ -2214,12 +3042,12 @@ async function deleteResult(id){
 
 function escapeHTML(text){
 
-  return String(text)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+return String(text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
@@ -2230,37 +3058,37 @@ function escapeHTML(text){
 
 async function checkSession(){
 
-  try{
+try{
 
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .auth
-        .getSession();
+const {
+data,
+error
+} =
+await supabaseClient
+.auth
+.getSession();
 
-    if(
-      !error &&
-      data &&
-      data.session &&
-      data.session.user
-    ){
+if(
+!error &&
+data &&
+data.session &&
+data.session.user
+){
 
-      showDashboard(
-        data.session.user
-      );
+showDashboard(
+data.session.user
+);
 
-    }
+}
 
-  }catch(error){
+}catch(error){
 
-    console.error(
-      "Session check failed:",
-      error
-    );
+console.error(
+"Session check failed:",
+error
+);
 
-  }
+}
 
 }
 
@@ -2270,23 +3098,23 @@ async function checkSession(){
 ===================================================== */
 
 supabaseClient
-  .auth
-  .onAuthStateChange(
-    function(event,session){
+.auth
+.onAuthStateChange(
+function(event,session){
 
-      if(
-        session &&
-        session.user
-      ){
+if(
+session &&
+session.user
+){
 
-        showDashboard(
-          session.user
-        );
+showDashboard(
+session.user
+);
 
-      }
+}
 
-    }
-  );
+}
+);
 
 
 /* =====================================================
