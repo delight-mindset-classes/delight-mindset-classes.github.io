@@ -12,14 +12,9 @@
   content="DELIGHT MINDSET CLASSES - Study Material, Results, Teachers and Announcements"
 >
 
-<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
-/* =========================
-   BASIC
-========================= */
 
 *{
   box-sizing:border-box;
@@ -43,10 +38,7 @@ body{
   margin:auto;
 }
 
-
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .site-header{
   position:sticky;
@@ -121,10 +113,32 @@ nav a:hover{
   cursor:pointer;
 }
 
+/* AUTH BUTTON */
 
-/* =========================
-   HERO
-========================= */
+.auth-area{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.auth-btn{
+  border:0;
+  background:#4355d8;
+  color:white;
+  padding:9px 14px;
+  border-radius:9px;
+  cursor:pointer;
+  font-weight:700;
+  font-size:13px;
+}
+
+.auth-name{
+  font-size:13px;
+  font-weight:700;
+  color:#344054;
+}
+
+/* HERO */
 
 .hero{
   background:linear-gradient(135deg,#eef2ff,#ffffff);
@@ -225,10 +239,7 @@ nav a:hover{
   margin-top:8px;
 }
 
-
-/* =========================
-   SECTIONS
-========================= */
+/* SECTIONS */
 
 .section{
   padding:70px 0;
@@ -252,16 +263,7 @@ nav a:hover{
   margin-top:4px;
 }
 
-.text-link{
-  color:#4355d8;
-  text-decoration:none;
-  font-weight:700;
-}
-
-
-/* =========================
-   ANNOUNCEMENTS
-========================= */
+/* ANNOUNCEMENTS */
 
 .cards{
   display:grid;
@@ -302,10 +304,7 @@ nav a:hover{
   margin-top:12px;
 }
 
-
-/* =========================
-   STUDY MATERIAL
-========================= */
+/* MATERIAL */
 
 .material-selector{
   display:grid;
@@ -326,15 +325,9 @@ nav a:hover{
   outline:none;
 }
 
-.material-selector select:focus{
-  border-color:#4355d8;
-  box-shadow:0 0 0 3px rgba(67,85,216,.10);
-}
-
 .material-selector select:disabled{
   background:#f2f4f7;
   color:#98a2b3;
-  cursor:not-allowed;
 }
 
 .material-result{
@@ -351,10 +344,9 @@ nav a:hover{
 
 .material-result-card h3{
   margin-bottom:5px;
-  font-size:21px;
 }
 
-.material-result-card .material-info{
+.material-info{
   color:#667085;
   margin-bottom:18px;
 }
@@ -404,10 +396,7 @@ nav a:hover{
   font-weight:700;
 }
 
-
-/* =========================
-   RESULTS
-========================= */
+/* RESULTS */
 
 .result-grid{
   display:grid;
@@ -443,11 +432,6 @@ nav a:hover{
   margin:5px 0 14px;
 }
 
-
-/* =========================
-   RESULT LIST
-========================= */
-
 .student-result-list{
   margin-top:25px;
   display:grid;
@@ -474,16 +458,7 @@ nav a:hover{
   margin-top:3px;
 }
 
-.result-loading{
-  text-align:center;
-  padding:20px;
-  color:#667085;
-}
-
-
-/* =========================
-   TEACHERS
-========================= */
+/* TEACHERS */
 
 .teacher-grid{
   display:grid;
@@ -520,10 +495,7 @@ nav a:hover{
   color:#667085;
 }
 
-
-/* =========================
-   ABOUT
-========================= */
+/* ABOUT */
 
 .narrow{
   max-width:850px;
@@ -557,10 +529,7 @@ nav a:hover{
   color:#667085;
 }
 
-
-/* =========================
-   CONTACT
-========================= */
+/* CONTACT */
 
 .contact-section{
   background:#f3f6fa;
@@ -590,10 +559,7 @@ nav a:hover{
   text-decoration:none;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
   background:#101828;
@@ -611,10 +577,153 @@ footer{
   color:#b7c0cc;
 }
 
+/* AUTH MODAL */
 
-/* =========================
-   MOBILE
-========================= */
+.auth-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  background:rgba(16,24,40,.55);
+  padding:20px;
+  align-items:center;
+  justify-content:center;
+}
+
+.auth-modal.show{
+  display:flex;
+}
+
+.auth-box{
+  width:min(450px,100%);
+  background:white;
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
+  position:relative;
+}
+
+.auth-close{
+  position:absolute;
+  right:18px;
+  top:14px;
+  border:0;
+  background:none;
+  font-size:25px;
+  cursor:pointer;
+}
+
+.auth-box h2{
+  margin-bottom:5px;
+}
+
+.auth-subtitle{
+  color:#667085;
+  font-size:14px;
+  margin-bottom:22px;
+}
+
+.auth-tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:20px;
+}
+
+.auth-tab{
+  flex:1;
+  padding:10px;
+  border:1px solid #d9dee8;
+  background:white;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.auth-tab.active{
+  background:#4355d8;
+  color:white;
+  border-color:#4355d8;
+}
+
+.auth-form{
+  display:none;
+}
+
+.auth-form.active{
+  display:block;
+}
+
+.form-group{
+  margin-bottom:14px;
+}
+
+.form-group label{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.form-group input,
+.form-group select{
+  width:100%;
+  padding:12px;
+  border:1px solid #d9dee8;
+  border-radius:9px;
+  outline:none;
+  font-size:14px;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+  border-color:#4355d8;
+}
+
+.auth-submit{
+  width:100%;
+  margin-top:6px;
+}
+
+.auth-message{
+  margin-top:14px;
+  padding:11px;
+  border-radius:8px;
+  font-size:13px;
+  display:none;
+}
+
+.auth-message.show{
+  display:block;
+}
+
+.auth-message.success{
+  background:#ecfdf3;
+  color:#027a48;
+}
+
+.auth-message.error{
+  background:#fef3f2;
+  color:#b42318;
+}
+
+.logged-box{
+  display:none;
+}
+
+.logged-box.show{
+  display:block;
+}
+
+.logged-box p{
+  color:#667085;
+  margin:10px 0 18px;
+}
+
+.loading{
+  text-align:center;
+  padding:20px;
+  color:#667085;
+}
 
 @media(max-width:850px){
 
@@ -656,17 +765,24 @@ footer{
     grid-template-columns:1fr;
   }
 
-}
+  .auth-area{
+    margin-left:auto;
+  }
 
+}
 
 @media(max-width:550px){
 
   .brand strong{
-    font-size:13px;
+    font-size:12px;
   }
 
   .brand small{
     font-size:9px;
+  }
+
+  .auth-name{
+    display:none;
   }
 
   .hero{
@@ -713,51 +829,10 @@ footer{
 
 }
 
-
-/* =========================
-   NO MATERIAL MESSAGE
-========================= */
-
-.no-material{
-  text-align:center;
-  padding:30px 20px;
-}
-
-.no-material-icon{
-  font-size:40px;
-  margin-bottom:10px;
-}
-
-.no-material h3{
-  margin-bottom:6px;
-}
-
-.no-material p{
-  color:#667085;
-}
-
-
-/* =========================
-   LOADING
-========================= */
-
-.loading{
-  text-align:center;
-  padding:20px;
-  color:#667085;
-}
-
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header class="site-header">
 
@@ -765,24 +840,14 @@ footer{
 
     <a class="brand" href="#home">
 
-      <span class="brand-mark">
-        DMC
-      </span>
+      <span class="brand-mark">DMC</span>
 
       <span>
-
-        <strong>
-          DELIGHT MINDSET CLASSES
-        </strong>
-
-        <small>
-          Learn • Practice • Improve • Succeed
-        </small>
-
+        <strong>DELIGHT MINDSET CLASSES</strong>
+        <small>Learn • Practice • Improve • Succeed</small>
       </span>
 
     </a>
-
 
     <button
       class="menu-btn"
@@ -792,73 +857,56 @@ footer{
       ☰
     </button>
 
-
     <nav id="nav">
 
-      <a href="#home">
-        Home
-      </a>
-
-      <a href="#material">
-        Study Material
-      </a>
-
-      <a href="#announcements">
-        Announcements
-      </a>
-
-      <a href="#results">
-        Results
-      </a>
-
-      <a href="#teachers">
-        Teachers
-      </a>
-
-      <a href="#about">
-        About
-      </a>
-
-      <a href="#contact">
-        Contact
-      </a>
+      <a href="#home">Home</a>
+      <a href="#material">Study Material</a>
+      <a href="#announcements">Announcements</a>
+      <a href="#results">Results</a>
+      <a href="#teachers">Teachers</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
 
     </nav>
+
+    <div class="auth-area">
+
+      <span
+        id="authName"
+        class="auth-name"
+      ></span>
+
+      <button
+        id="authButton"
+        class="auth-btn"
+        onclick="openAuthModal()"
+      >
+        👤 Student Login
+      </button>
+
+    </div>
 
   </div>
 
 </header>
 
 
-
-<!-- =========================
-     MAIN
-========================= -->
-
 <main id="home">
 
-
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
 
 <section class="hero">
 
   <div class="container hero-grid">
 
-
     <div>
 
-      <span class="eyebrow">
-        WELCOME TO
-      </span>
-
+      <span class="eyebrow">WELCOME TO</span>
 
       <h1>
         DELIGHT MINDSET
         <span>CLASSES</span>
       </h1>
-
 
       <p class="hero-text">
         A place for organised study material,
@@ -866,21 +914,13 @@ footer{
         and student achievements.
       </p>
 
-
       <div class="hero-actions">
 
-        <a
-          class="btn primary"
-          href="#material"
-        >
+        <a class="btn primary" href="#material">
           📚 Study Material
         </a>
 
-
-        <a
-          class="btn secondary"
-          href="#results"
-        >
+        <a class="btn secondary" href="#results">
           🏆 View Results
         </a>
 
@@ -888,19 +928,13 @@ footer{
 
     </div>
 
-
-
     <div class="hero-card">
 
-      <div class="hero-icon">
-        DMC
-      </div>
-
+      <div class="hero-icon">DMC</div>
 
       <h3>
         Learn • Practice • Improve • Succeed
       </h3>
-
 
       <p>
         Study resources for Class 9 to Class 12 students.
@@ -908,41 +942,25 @@ footer{
 
     </div>
 
-
   </div>
 
 </section>
 
 
+<!-- ANNOUNCEMENTS -->
 
-<!-- =========================
-     ANNOUNCEMENTS
-========================= -->
-
-<section
-  class="section"
-  id="announcements"
->
+<section class="section" id="announcements">
 
   <div class="container">
-
 
     <div class="section-head">
 
       <div>
-
-        <span class="eyebrow">
-          LATEST UPDATES
-        </span>
-
-        <h2>
-          Announcements
-        </h2>
-
+        <span class="eyebrow">LATEST UPDATES</span>
+        <h2>Announcements</h2>
       </div>
 
     </div>
-
 
     <div
       class="cards"
@@ -950,88 +968,49 @@ footer{
     >
 
       <div class="announcement-card">
-
         <div class="loading">
           ⏳ Loading announcements...
         </div>
-
       </div>
 
     </div>
-
 
   </div>
 
 </section>
 
 
+<!-- STUDY MATERIAL -->
 
-<!-- =========================
-     STUDY MATERIAL
-========================= -->
-
-<section
-  class="section alt"
-  id="material"
->
+<section class="section alt" id="material">
 
   <div class="container">
-
 
     <div class="section-head">
 
       <div>
-
-        <span class="eyebrow">
-          LEARN & PRACTICE
-        </span>
-
-        <h2>
-          Study Material
-        </h2>
-
+        <span class="eyebrow">LEARN & PRACTICE</span>
+        <h2>Study Material</h2>
       </div>
 
     </div>
-
 
     <p style="color:#667085;margin-bottom:25px;">
       Select your class, subject and material type.
     </p>
 
-
-
     <div class="material-selector">
 
+      <select id="classSelect" onchange="loadSubjects()">
 
-      <select
-        id="classSelect"
-        onchange="loadSubjects()"
-      >
+        <option value="">Select Class</option>
 
-        <option value="">
-          Select Class
-        </option>
-
-        <option value="9">
-          Class 9
-        </option>
-
-        <option value="10">
-          Class 10
-        </option>
-
-        <option value="11">
-          Class 11
-        </option>
-
-        <option value="12">
-          Class 12
-        </option>
+        <option value="9">Class 9</option>
+        <option value="10">Class 10</option>
+        <option value="11">Class 11</option>
+        <option value="12">Class 12</option>
 
       </select>
-
-
 
       <select
         id="subjectSelect"
@@ -1039,13 +1018,9 @@ footer{
         disabled
       >
 
-        <option value="">
-          Select Subject
-        </option>
+        <option value="">Select Subject</option>
 
       </select>
-
-
 
       <select
         id="materialSelect"
@@ -1053,81 +1028,51 @@ footer{
         disabled
       >
 
-        <option value="">
-          Select Material Type
-        </option>
+        <option value="">Select Material Type</option>
 
       </select>
 
-
     </div>
-
-
 
     <div
       id="materialResult"
       class="material-result"
     ></div>
 
-
   </div>
 
 </section>
 
 
+<!-- RESULTS -->
 
-<!-- =========================
-     RESULTS
-========================= -->
-
-<section
-  class="section"
-  id="results"
->
+<section class="section" id="results">
 
   <div class="container">
-
 
     <div class="section-head">
 
       <div>
-
-        <span class="eyebrow">
-          STUDENT ACHIEVEMENTS
-        </span>
-
-        <h2>
-          Results
-        </h2>
-
+        <span class="eyebrow">STUDENT ACHIEVEMENTS</span>
+        <h2>Results</h2>
       </div>
 
     </div>
 
-
-
     <div class="result-grid">
-
 
       <article class="result-card">
 
-        <div class="result-number">
-          10
-        </div>
-
+        <div class="result-number">10</div>
 
         <div>
 
-          <h3>
-            Class 10th Results
-          </h3>
-
+          <h3>Class 10th Results</h3>
 
           <p>
             Class 10th students' results
             can be viewed here.
           </p>
-
 
           <button
             class="btn small secondary"
@@ -1140,27 +1085,18 @@ footer{
 
       </article>
 
-
-
       <article class="result-card">
 
-        <div class="result-number">
-          12
-        </div>
-
+        <div class="result-number">12</div>
 
         <div>
 
-          <h3>
-            Class 12th Results
-          </h3>
-
+          <h3>Class 12th Results</h3>
 
           <p>
             Class 12th students' results
             can be viewed here.
           </p>
-
 
           <button
             class="btn small secondary"
@@ -1173,179 +1109,76 @@ footer{
 
       </article>
 
-
     </div>
-
 
     <div
       id="resultsContainer"
       class="student-result-list"
     ></div>
 
-
   </div>
 
 </section>
 
 
+<!-- TEACHERS -->
 
-<!-- =========================
-     TEACHERS
-========================= -->
-
-<section
-  class="section alt"
-  id="teachers"
->
+<section class="section alt" id="teachers">
 
   <div class="container">
-
 
     <div class="section-head">
 
       <div>
-
-        <span class="eyebrow">
-          OUR FACULTY
-        </span>
-
-        <h2>
-          Our Teachers
-        </h2>
-
+        <span class="eyebrow">OUR FACULTY</span>
+        <h2>Our Teachers</h2>
       </div>
 
     </div>
 
-
-
     <div class="teacher-grid">
 
-
       <div class="teacher-card">
-
-        <div class="teacher-avatar">
-          AS
-        </div>
-
-        <h3>
-          Ajay Sir
-        </h3>
-
-        <p>
-          Math
-        </p>
-
+        <div class="teacher-avatar">AS</div>
+        <h3>Ajay Sir</h3>
+        <p>Math</p>
       </div>
 
-
-
       <div class="teacher-card">
-
-        <div class="teacher-avatar">
-          US
-        </div>
-
-        <h3>
-          Utkarsh Sir
-        </h3>
-
-        <p>
-          Physics, Math
-        </p>
-
+        <div class="teacher-avatar">US</div>
+        <h3>Utkarsh Sir</h3>
+        <p>Physics, Math</p>
       </div>
 
-
-
       <div class="teacher-card">
-
-        <div class="teacher-avatar">
-          SS
-        </div>
-
-        <h3>
-          Sujit Sir
-        </h3>
-
-        <p>
-          Science
-        </p>
-
+        <div class="teacher-avatar">SS</div>
+        <h3>Sujit Sir</h3>
+        <p>Science</p>
       </div>
 
-
-
       <div class="teacher-card">
-
-        <div class="teacher-avatar">
-          NS
-        </div>
-
-        <h3>
-          Neeraj Sir
-        </h3>
-
-        <p>
-          English
-        </p>
-
+        <div class="teacher-avatar">NS</div>
+        <h3>Neeraj Sir</h3>
+        <p>English</p>
       </div>
 
-
-
       <div class="teacher-card">
-
-        <div class="teacher-avatar">
-          AS
-        </div>
-
-        <h3>
-          Abhishek Sir
-        </h3>
-
-        <p>
-          English
-        </p>
-
+        <div class="teacher-avatar">AS</div>
+        <h3>Abhishek Sir</h3>
+        <p>English</p>
       </div>
 
-
-
       <div class="teacher-card">
-
-        <div class="teacher-avatar">
-          CM
-        </div>
-
-        <h3>
-          Chandani Ma'am
-        </h3>
-
-        <p>
-          Science
-        </p>
-
+        <div class="teacher-avatar">CM</div>
+        <h3>Chandani Ma'am</h3>
+        <p>Science</p>
       </div>
 
-
-
       <div class="teacher-card">
-
-        <div class="teacher-avatar">
-          AM
-        </div>
-
-        <h3>
-          Akanksha Ma'am
-        </h3>
-
-        <p>
-          Math
-        </p>
-
+        <div class="teacher-avatar">AM</div>
+        <h3>Akanksha Ma'am</h3>
+        <p>Math</p>
       </div>
-
 
     </div>
 
@@ -1354,83 +1187,39 @@ footer{
 </section>
 
 
+<!-- ABOUT -->
 
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section
-  class="section"
-  id="about"
->
+<section class="section" id="about">
 
   <div class="container narrow">
 
+    <span class="eyebrow">ABOUT US</span>
 
-    <span class="eyebrow">
-      ABOUT US
-    </span>
-
-
-    <h2>
-      DELIGHT MINDSET CLASSES
-    </h2>
-
+    <h2>DELIGHT MINDSET CLASSES</h2>
 
     <p class="large">
-
       DELIGHT MINDSET CLASSES was established in 2022.
       We aim to provide students with organised academic
       resources, practice material, important updates and
       support for their academic journey.
-
     </p>
-
-
 
     <div class="about-info">
 
-
       <div class="info-box">
-
-        <strong>
-          🏫 Established
-        </strong>
-
-        <span>
-          2022
-        </span>
-
+        <strong>🏫 Established</strong>
+        <span>2022</span>
       </div>
 
-
-
       <div class="info-box">
-
-        <strong>
-          📍 Location
-        </strong>
-
-        <span>
-          Asnaw Bajar, Bhadohi
-        </span>
-
+        <strong>📍 Location</strong>
+        <span>Asnaw Bajar, Bhadohi</span>
       </div>
 
-
-
       <div class="info-box">
-
-        <strong>
-          📚 Classes
-        </strong>
-
-        <span>
-          Class 9 to Class 12
-        </span>
-
+        <strong>📚 Classes</strong>
+        <span>Class 9 to Class 12</span>
       </div>
-
 
     </div>
 
@@ -1439,91 +1228,52 @@ footer{
 </section>
 
 
+<!-- CONTACT -->
 
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section
-  class="section contact-section"
-  id="contact"
->
+<section class="section contact-section" id="contact">
 
   <div class="container contact-grid">
 
-
     <div>
 
-      <span class="eyebrow">
-        GET IN TOUCH
-      </span>
+      <span class="eyebrow">GET IN TOUCH</span>
 
-
-      <h2>
-        Contact Us
-      </h2>
-
+      <h2>Contact Us</h2>
 
       <p class="large">
-
         For coaching related information,
         contact DELIGHT MINDSET CLASSES.
-
       </p>
 
     </div>
-
-
 
     <div class="contact-card">
 
-
       <p>
-
         📍 <strong>Address:</strong><br>
-
         Asnaw Bajar, Bhadohi
-
       </p>
 
-
-
       <p>
-
         📞 <strong>Mobile:</strong><br>
-
         <a href="tel:9119873468">
           9119873468
         </a>
-
       </p>
-
-
 
       <p>
-
         📅 <strong>Established:</strong><br>
-
         2022
-
       </p>
 
-
     </div>
-
 
   </div>
 
 </section>
 
-
 </main>
 
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
@@ -1542,15 +1292,222 @@ footer{
 </footer>
 
 
+<!-- AUTH MODAL -->
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+<div
+  id="authModal"
+  class="auth-modal"
+>
+
+  <div class="auth-box">
+
+    <button
+      class="auth-close"
+      onclick="closeAuthModal()"
+    >
+      ×
+    </button>
+
+    <div id="authForms">
+
+      <h2>Student Account</h2>
+
+      <p class="auth-subtitle">
+        Register once and use your account for the student features.
+      </p>
+
+      <div class="auth-tabs">
+
+        <button
+          id="loginTab"
+          class="auth-tab active"
+          onclick="showAuthForm('login')"
+        >
+          Login
+        </button>
+
+        <button
+          id="registerTab"
+          class="auth-tab"
+          onclick="showAuthForm('register')"
+        >
+          Register
+        </button>
+
+      </div>
+
+
+      <!-- LOGIN -->
+
+      <form
+        id="loginForm"
+        class="auth-form active"
+        onsubmit="loginStudent(event)"
+      >
+
+        <div class="form-group">
+
+          <label>Email</label>
+
+          <input
+            id="loginEmail"
+            type="email"
+            placeholder="Enter your email"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Password</label>
+
+          <input
+            id="loginPassword"
+            type="password"
+            placeholder="Enter your password"
+            required
+          >
+
+        </div>
+
+        <button
+          class="btn primary auth-submit"
+          type="submit"
+        >
+          Login
+        </button>
+
+      </form>
+
+
+      <!-- REGISTER -->
+
+      <form
+        id="registerForm"
+        class="auth-form"
+        onsubmit="registerStudent(event)"
+      >
+
+        <div class="form-group">
+
+          <label>Student Name</label>
+
+          <input
+            id="registerName"
+            type="text"
+            placeholder="Enter student name"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Email</label>
+
+          <input
+            id="registerEmail"
+            type="email"
+            placeholder="Enter email address"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Class</label>
+
+          <select id="registerClass" required>
+
+            <option value="">
+              Select Class
+            </option>
+
+            <option value="9">
+              Class 9
+            </option>
+
+            <option value="10">
+              Class 10
+            </option>
+
+            <option value="11">
+              Class 11
+            </option>
+
+            <option value="12">
+              Class 12
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Password</label>
+
+          <input
+            id="registerPassword"
+            type="password"
+            minlength="6"
+            placeholder="Minimum 6 characters"
+            required
+          >
+
+        </div>
+
+        <button
+          class="btn primary auth-submit"
+          type="submit"
+        >
+          Create Student Account
+        </button>
+
+      </form>
+
+
+      <div
+        id="authMessage"
+        class="auth-message"
+      ></div>
+
+    </div>
+
+
+    <!-- LOGGED IN -->
+
+    <div
+      id="loggedBox"
+      class="logged-box"
+    >
+
+      <h2>
+        👋 Welcome!
+      </h2>
+
+      <p id="loggedStudentInfo"></p>
+
+      <button
+        class="btn secondary"
+        onclick="logoutStudent()"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 <script>
 
 /* =========================
-   SUPABASE CONNECTION
+   SUPABASE
 ========================= */
 
 const SUPABASE_URL =
@@ -1562,7 +1519,14 @@ const SUPABASE_PUBLISHABLE_KEY =
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
+    SUPABASE_PUBLISHABLE_KEY,
+    {
+      auth:{
+        persistSession:true,
+        autoRefreshToken:true,
+        detectSessionInUrl:true
+      }
+    }
   );
 
 
@@ -1578,7 +1542,6 @@ function toggleMenu(){
     .toggle("show");
 
 }
-
 
 document
   .querySelectorAll("nav a")
@@ -1597,7 +1560,501 @@ document
 
 
 /* =========================
-   LOAD ANNOUNCEMENTS
+   AUTH MODAL
+========================= */
+
+function openAuthModal(){
+
+  document
+    .getElementById("authModal")
+    .classList
+    .add("show");
+
+}
+
+function closeAuthModal(){
+
+  document
+    .getElementById("authModal")
+    .classList
+    .remove("show");
+
+  clearAuthMessage();
+
+}
+
+document
+  .getElementById("authModal")
+  .addEventListener("click",function(event){
+
+    if(event.target === this){
+
+      closeAuthModal();
+
+    }
+
+  });
+
+
+/* =========================
+   AUTH TABS
+========================= */
+
+function showAuthForm(type){
+
+  const loginForm =
+    document.getElementById("loginForm");
+
+  const registerForm =
+    document.getElementById("registerForm");
+
+  const loginTab =
+    document.getElementById("loginTab");
+
+  const registerTab =
+    document.getElementById("registerTab");
+
+  clearAuthMessage();
+
+  if(type === "register"){
+
+    loginForm.classList.remove("active");
+    registerForm.classList.add("active");
+
+    loginTab.classList.remove("active");
+    registerTab.classList.add("active");
+
+  }else{
+
+    registerForm.classList.remove("active");
+    loginForm.classList.add("active");
+
+    registerTab.classList.remove("active");
+    loginTab.classList.add("active");
+
+  }
+
+}
+
+
+/* =========================
+   AUTH MESSAGE
+========================= */
+
+function showAuthMessage(message,type){
+
+  const box =
+    document.getElementById("authMessage");
+
+  box.textContent = message;
+
+  box.className =
+    "auth-message show " +
+    type;
+
+}
+
+function clearAuthMessage(){
+
+  const box =
+    document.getElementById("authMessage");
+
+  box.textContent = "";
+
+  box.className =
+    "auth-message";
+
+}
+
+
+/* =========================
+   REGISTER STUDENT
+========================= */
+
+async function registerStudent(event){
+
+  event.preventDefault();
+
+  clearAuthMessage();
+
+  const name =
+    document
+      .getElementById("registerName")
+      .value
+      .trim();
+
+  const email =
+    document
+      .getElementById("registerEmail")
+      .value
+      .trim();
+
+  const studentClass =
+    document
+      .getElementById("registerClass")
+      .value;
+
+  const password =
+    document
+      .getElementById("registerPassword")
+      .value;
+
+
+  if(!name || !email || !studentClass || !password){
+
+    showAuthMessage(
+      "Please fill all required fields.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(password.length < 6){
+
+    showAuthMessage(
+      "Password must contain at least 6 characters.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const button =
+    event.submitter;
+
+  button.disabled = true;
+  button.textContent = "Creating account...";
+
+
+  try{
+
+    const { data, error } =
+      await supabaseClient.auth.signUp({
+
+        email:email,
+
+        password:password,
+
+        options:{
+          data:{
+            account_type:"student",
+            student_name:name,
+            class:studentClass
+          }
+        }
+
+      });
+
+
+    if(error){
+
+      showAuthMessage(
+        error.message,
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(data.user){
+
+      document
+        .getElementById("registerForm")
+        .reset();
+
+
+      showAuthMessage(
+        "Registration successful! Please check your email and verify your account before login.",
+        "success"
+      );
+
+    }
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showAuthMessage(
+      "Registration failed. Please try again.",
+      "error"
+    );
+
+  }finally{
+
+    button.disabled = false;
+    button.textContent = "Create Student Account";
+
+  }
+
+}
+
+
+/* =========================
+   LOGIN STUDENT
+========================= */
+
+async function loginStudent(event){
+
+  event.preventDefault();
+
+  clearAuthMessage();
+
+  const email =
+    document
+      .getElementById("loginEmail")
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById("loginPassword")
+      .value;
+
+
+  const button =
+    event.submitter;
+
+  button.disabled = true;
+  button.textContent = "Logging in...";
+
+
+  try{
+
+    const { data, error } =
+      await supabaseClient.auth.signInWithPassword({
+
+        email:email,
+        password:password
+
+      });
+
+
+    if(error){
+
+      showAuthMessage(
+        error.message,
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(data.session){
+
+      await updateAuthUI(data.session);
+
+      closeAuthModal();
+
+    }
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showAuthMessage(
+      "Login failed. Please try again.",
+      "error"
+    );
+
+  }finally{
+
+    button.disabled = false;
+    button.textContent = "Login";
+
+  }
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+async function logoutStudent(){
+
+  const { error } =
+    await supabaseClient.auth.signOut();
+
+  if(error){
+
+    alert(
+      "Logout failed. Please try again."
+    );
+
+    return;
+
+  }
+
+  updateAuthUI(null);
+
+  closeAuthModal();
+
+}
+
+
+/* =========================
+   AUTH UI
+========================= */
+
+async function updateAuthUI(session){
+
+  const authButton =
+    document.getElementById("authButton");
+
+  const authName =
+    document.getElementById("authName");
+
+  const authForms =
+    document.getElementById("authForms");
+
+  const loggedBox =
+    document.getElementById("loggedBox");
+
+  const loggedInfo =
+    document.getElementById("loggedStudentInfo");
+
+
+  if(!session || !session.user){
+
+    authButton.textContent =
+      "👤 Student Login";
+
+    authButton.onclick =
+      openAuthModal;
+
+    authName.textContent = "";
+
+    authForms.style.display = "block";
+
+    loggedBox.classList.remove("show");
+
+    return;
+
+  }
+
+
+  let studentName =
+    session.user.user_metadata?.student_name ||
+    "Student";
+
+
+  try{
+
+    const { data } =
+      await supabaseClient
+        .from("students")
+        .select("student_name,class")
+        .eq("id",session.user.id)
+        .maybeSingle();
+
+
+    if(data){
+
+      studentName =
+        data.student_name ||
+        studentName;
+
+      const studentClass =
+        data.class || "";
+
+      loggedInfo.textContent =
+        "Name: " +
+        studentName +
+        (studentClass
+          ? " • Class " + studentClass
+          : "");
+
+    }else{
+
+      loggedInfo.textContent =
+        "Name: " + studentName;
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Student profile error:",
+      error
+    );
+
+    loggedInfo.textContent =
+      "Name: " + studentName;
+
+  }
+
+
+  authName.textContent =
+    "👋 " + studentName;
+
+  authButton.textContent =
+    "My Account";
+
+  authButton.onclick =
+    openAuthModal;
+
+  authForms.style.display =
+    "none";
+
+  loggedBox.classList.add("show");
+
+}
+
+
+/* =========================
+   CHECK SESSION
+========================= */
+
+async function checkStudentSession(){
+
+  const { data } =
+    await supabaseClient.auth.getSession();
+
+  await updateAuthUI(
+    data.session
+  );
+
+}
+
+
+/* =========================
+   AUTH STATE CHANGES
+========================= */
+
+supabaseClient.auth.onAuthStateChange(
+  function(event,session){
+
+    if(
+      event === "SIGNED_IN" ||
+      event === "SIGNED_OUT" ||
+      event === "TOKEN_REFRESHED"
+    ){
+
+      setTimeout(function(){
+
+        updateAuthUI(session);
+
+      },0);
+
+    }
+
+  }
+);
+
+
+/* =========================
+   ANNOUNCEMENTS
 ========================= */
 
 async function loadAnnouncements(){
@@ -1607,57 +2064,26 @@ async function loadAnnouncements(){
       "announcementsContainer"
     );
 
-
-  container.innerHTML = `
-
-    <div class="announcement-card">
-
-      <div class="loading">
-        ⏳ Loading announcements...
-      </div>
-
-    </div>
-
-  `;
-
-
   try{
 
-    const { data, error } =
+    const { data,error } =
       await supabaseClient
         .from("announcements")
         .select("*")
-        .eq("is_active", true)
-        .order("is_pinned", {
-          ascending:false
-        })
-        .order("created_at", {
-          ascending:false
-        });
+        .eq("is_active",true)
+        .order("is_pinned",{ascending:false})
+        .order("created_at",{ascending:false});
 
 
     if(error){
 
-      console.error(
-        "Supabase announcement error:",
-        error
-      );
-
+      console.error(error);
 
       container.innerHTML = `
-
         <div class="announcement-card">
-
-          <h3>
-            ⚠️ Announcements load नहीं हो पाए
-          </h3>
-
-          <p>
-            कृपया थोड़ी देर बाद फिर try करें.
-          </p>
-
+          <h3>⚠️ Announcements load नहीं हो पाए</h3>
+          <p>कृपया थोड़ी देर बाद फिर try करें.</p>
         </div>
-
       `;
 
       return;
@@ -1668,19 +2094,10 @@ async function loadAnnouncements(){
     if(!data || data.length === 0){
 
       container.innerHTML = `
-
         <div class="announcement-card">
-
-          <h3>
-            📢 No Announcements
-          </h3>
-
-          <p>
-            अभी कोई नया announcement available नहीं है.
-          </p>
-
+          <h3>📢 No Announcements</h3>
+          <p>अभी कोई नया announcement available नहीं है.</p>
         </div>
-
       `;
 
       return;
@@ -1689,108 +2106,62 @@ async function loadAnnouncements(){
 
 
     container.innerHTML =
-      data
-        .map(function(announcement){
+      data.map(function(item){
 
-          const createdDate =
-            announcement.created_at
-              ? new Date(
-                  announcement.created_at
-                ).toLocaleDateString(
-                  "en-IN",
-                  {
-                    day:"2-digit",
-                    month:"short",
-                    year:"numeric"
-                  }
-                )
-              : "";
+        const date =
+          item.created_at
+          ? new Date(item.created_at)
+              .toLocaleDateString(
+                "en-IN",
+                {
+                  day:"2-digit",
+                  month:"short",
+                  year:"numeric"
+                }
+              )
+          : "";
 
 
-          return `
+        return `
+          <div class="announcement-card">
 
-            <div class="announcement-card">
+            ${
+              item.is_pinned
+              ? `<span class="pin">📌 IMPORTANT</span>`
+              : ""
+            }
 
-              ${
-                announcement.is_pinned
+            <h3>
+              ${escapeHTML(
+                item.title || "Announcement"
+              )}
+            </h3>
 
-                ?
+            <p>
+              ${escapeHTML(
+                item.message || ""
+              ).replace(/\n/g,"<br>")}
+            </p>
 
-                `
-                <span class="pin">
-                  📌 IMPORTANT
-                </span>
-                `
-
-                :
-
-                ""
-              }
-
-
-              <h3>
-                ${escapeHTML(
-                  announcement.title ||
-                  "Announcement"
-                )}
-              </h3>
-
-
-              <p>
-                ${escapeHTML(
-                  announcement.message ||
-                  ""
-                ).replace(/\n/g,"<br>")}
-              </p>
-
-
-              ${
-                createdDate
-
-                ?
-
-                `
+            ${
+              date
+              ? `
                 <span class="announcement-date">
-                  📅 ${createdDate}
+                  📅 ${date}
                 </span>
-                `
+              `
+              : ""
+            }
 
-                :
+          </div>
+        `;
 
-                ""
-              }
-
-            </div>
-
-          `;
-
-        })
-        .join("");
+      }).join("");
 
 
   }catch(error){
 
-    console.error(
-      "Unexpected announcement error:",
-      error
-    );
-
-
-    container.innerHTML = `
-
-      <div class="announcement-card">
-
-        <h3>
-          ⚠️ Something went wrong
-        </h3>
-
-        <p>
-          कृपया page refresh करके फिर try करें.
-        </p>
-
-      </div>
-
-    `;
+    console.error(error);
 
   }
 
@@ -1798,7 +2169,7 @@ async function loadAnnouncements(){
 
 
 /* =========================
-   SUBJECT DATA
+   SUBJECTS
 ========================= */
 
 const subjects = {
@@ -1834,10 +2205,6 @@ const subjects = {
 };
 
 
-/* =========================
-   MATERIAL TYPES
-========================= */
-
 const materialTypes = [
 
   "Notes",
@@ -1852,22 +2219,30 @@ const materialTypes = [
 
 
 /* =========================
-   LOAD SUBJECTS
+   SUBJECT SELECT
 ========================= */
 
 function loadSubjects(){
 
   const classValue =
-    document.getElementById("classSelect").value;
+    document.getElementById(
+      "classSelect"
+    ).value;
 
   const subjectSelect =
-    document.getElementById("subjectSelect");
+    document.getElementById(
+      "subjectSelect"
+    );
 
   const materialSelect =
-    document.getElementById("materialSelect");
+    document.getElementById(
+      "materialSelect"
+    );
 
   const result =
-    document.getElementById("materialResult");
+    document.getElementById(
+      "materialResult"
+    );
 
 
   subjectSelect.innerHTML =
@@ -1881,7 +2256,7 @@ function loadSubjects(){
   materialSelect.disabled = true;
 
 
-  if(classValue === ""){
+  if(!classValue){
 
     subjectSelect.disabled = true;
 
@@ -1890,17 +2265,19 @@ function loadSubjects(){
   }
 
 
-  subjects[classValue].forEach(function(subject){
+  subjects[classValue].forEach(
+    function(subject){
 
-    const option =
-      document.createElement("option");
+      const option =
+        document.createElement("option");
 
-    option.value = subject;
-    option.textContent = subject;
+      option.value = subject;
+      option.textContent = subject;
 
-    subjectSelect.appendChild(option);
+      subjectSelect.appendChild(option);
 
-  });
+    }
+  );
 
 
   subjectSelect.disabled = false;
@@ -1909,19 +2286,25 @@ function loadSubjects(){
 
 
 /* =========================
-   LOAD MATERIAL TYPES
+   MATERIAL TYPES
 ========================= */
 
 function loadMaterialTypes(){
 
   const subject =
-    document.getElementById("subjectSelect").value;
+    document.getElementById(
+      "subjectSelect"
+    ).value;
 
   const materialSelect =
-    document.getElementById("materialSelect");
+    document.getElementById(
+      "materialSelect"
+    );
 
   const result =
-    document.getElementById("materialResult");
+    document.getElementById(
+      "materialResult"
+    );
 
 
   materialSelect.innerHTML =
@@ -1930,7 +2313,7 @@ function loadMaterialTypes(){
   result.innerHTML = "";
 
 
-  if(subject === ""){
+  if(!subject){
 
     materialSelect.disabled = true;
 
@@ -1939,17 +2322,19 @@ function loadMaterialTypes(){
   }
 
 
-  materialTypes.forEach(function(type){
+  materialTypes.forEach(
+    function(type){
 
-    const option =
-      document.createElement("option");
+      const option =
+        document.createElement("option");
 
-    option.value = type;
-    option.textContent = type;
+      option.value = type;
+      option.textContent = type;
 
-    materialSelect.appendChild(option);
+      materialSelect.appendChild(option);
 
-  });
+    }
+  );
 
 
   materialSelect.disabled = false;
@@ -1958,25 +2343,33 @@ function loadMaterialTypes(){
 
 
 /* =========================
-   LOAD MATERIALS FROM SUPABASE
+   SHOW MATERIALS
 ========================= */
 
 async function showMaterials(){
 
   const classValue =
-    document.getElementById("classSelect").value;
+    document.getElementById(
+      "classSelect"
+    ).value;
 
   const subject =
-    document.getElementById("subjectSelect").value;
+    document.getElementById(
+      "subjectSelect"
+    ).value;
 
   const type =
-    document.getElementById("materialSelect").value;
+    document.getElementById(
+      "materialSelect"
+    ).value;
 
   const result =
-    document.getElementById("materialResult");
+    document.getElementById(
+      "materialResult"
+    );
 
 
-  if(type === ""){
+  if(!type){
 
     result.innerHTML = "";
 
@@ -1986,61 +2379,36 @@ async function showMaterials(){
 
 
   result.innerHTML = `
-
     <div class="material-result-card">
-
       <div class="loading">
         ⏳ Loading study material...
       </div>
-
     </div>
-
   `;
 
 
   try{
 
-    const { data, error } =
+    const { data,error } =
       await supabaseClient
         .from("materials")
         .select("*")
-        .eq("class", classValue)
-        .eq("subject", subject)
-        .eq("material_type", type)
-        .order("created_at", {
-          ascending:false
-        });
+        .eq("class",classValue)
+        .eq("subject",subject)
+        .eq("material_type",type)
+        .order("created_at",{ascending:false});
 
 
     if(error){
 
-      console.error(
-        "Supabase material error:",
-        error
-      );
+      console.error(error);
 
       result.innerHTML = `
-
         <div class="material-result-card">
-
-          <div class="material-empty no-material">
-
-            <div class="no-material-icon">
-              ⚠️
-            </div>
-
-            <h3>
-              Material Load नहीं हो पाया
-            </h3>
-
-            <p>
-              कृपया थोड़ी देर बाद फिर try करें.
-            </p>
-
+          <div class="material-empty">
+            ⚠️ Material Load नहीं हो पाया.
           </div>
-
         </div>
-
       `;
 
       return;
@@ -2048,74 +2416,99 @@ async function showMaterials(){
     }
 
 
-    let materialHTML = "";
+    if(!data || data.length === 0){
 
+      result.innerHTML = `
+        <div class="material-result-card">
 
-    if(data && data.length > 0){
+          <div class="material-empty">
 
-      materialHTML = `
+            <h3>📚 No Material Available</h3>
 
-        <div class="material-list">
+            <p>
+              अभी इस section में कोई material upload
+              नहीं किया गया है.
+            </p>
 
+          </div>
+
+        </div>
       `;
 
+      return;
 
-      for(const material of data){
-
-        let fileURL = "#";
-
-
-        if(material.file_path){
-
-          const { data: signedData, error: signedError } =
-            await supabaseClient
-              .storage
-              .from("study-materials")
-              .createSignedUrl(
-                material.file_path,
-                3600
-              );
+    }
 
 
-          if(!signedError && signedData){
+    let html = `
+      <div class="material-result-card">
 
-            fileURL =
-              signedData.signedUrl;
+        <h3>
+          📚 ${escapeHTML(type)}
+        </h3>
 
-          }
+        <p class="material-info">
+          Class ${escapeHTML(classValue)}
+          • ${escapeHTML(subject)}
+        </p>
+
+        <div class="material-list">
+    `;
+
+
+    for(const material of data){
+
+      let fileURL = "#";
+
+
+      if(material.file_path){
+
+        const { data:signedData,error:signedError } =
+          await supabaseClient
+            .storage
+            .from("study-materials")
+            .createSignedUrl(
+              material.file_path,
+              3600
+            );
+
+
+        if(!signedError && signedData){
+
+          fileURL =
+            signedData.signedUrl;
 
         }
 
+      }
 
-        materialHTML += `
 
-          <div class="material-item">
+      html += `
 
-            <div class="material-item-info">
+        <div class="material-item">
 
-              <strong>
-                📄 ${escapeHTML(
-                  material.title ||
-                  material.file_name ||
-                  "Study Material"
-                )}
-              </strong>
+          <div class="material-item-info">
 
-              <span>
-                ${escapeHTML(
-                  material.file_name ||
-                  "Study Material"
-                )}
-              </span>
+            <strong>
+              📄 ${escapeHTML(
+                material.title ||
+                material.file_name ||
+                "Study Material"
+              )}
+            </strong>
 
-            </div>
+            <span>
+              ${escapeHTML(
+                material.file_name ||
+                "Study Material"
+              )}
+            </span>
 
-            ${
-              fileURL !== "#"
+          </div>
 
-              ?
-
-              `
+          ${
+            fileURL !== "#"
+            ? `
               <a
                 class="material-download"
                 href="${fileURL}"
@@ -2124,55 +2517,16 @@ async function showMaterials(){
               >
                 Open
               </a>
-              `
-
-              :
-
-              `
+            `
+            : `
               <span
                 class="material-download"
                 style="background:#98a2b3;"
               >
                 Unavailable
               </span>
-              `
-
-            }
-
-          </div>
-
-        `;
-
-      }
-
-
-      materialHTML += `
-        </div>
-      `;
-
-
-    }else{
-
-      materialHTML = `
-
-        <div class="material-empty no-material">
-
-          <div class="no-material-icon">
-            📚
-          </div>
-
-          <h3>
-            No Material Available
-          </h3>
-
-          <p>
-            अभी इस section में कोई material upload नहीं किया गया है.
-          </p>
-
-          <p style="margin-top:6px;">
-            Admin द्वारा material upload होने के बाद
-            यहाँ दिखाई देगा.
-          </p>
+            `
+          }
 
         </div>
 
@@ -2181,56 +2535,25 @@ async function showMaterials(){
     }
 
 
-    result.innerHTML = `
-
-      <div class="material-result-card">
-
-        <h3>
-          📚 ${escapeHTML(type)}
-        </h3>
-
-        <p class="material-info">
-          Class ${escapeHTML(classValue)} •
-          ${escapeHTML(subject)}
-        </p>
-
-        ${materialHTML}
-
+    html += `
+        </div>
       </div>
-
     `;
+
+
+    result.innerHTML = html;
 
 
   }catch(error){
 
-    console.error(
-      "Unexpected material error:",
-      error
-    );
-
+    console.error(error);
 
     result.innerHTML = `
-
       <div class="material-result-card">
-
-        <div class="material-empty no-material">
-
-          <div class="no-material-icon">
-            ⚠️
-          </div>
-
-          <h3>
-            Something went wrong
-          </h3>
-
-          <p>
-            कृपया page refresh करके फिर try करें.
-          </p>
-
+        <div class="material-empty">
+          ⚠️ Something went wrong.
         </div>
-
       </div>
-
     `;
 
   }
@@ -2239,7 +2562,7 @@ async function showMaterials(){
 
 
 /* =========================
-   RESULTS FROM SUPABASE
+   RESULTS
 ========================= */
 
 async function loadResults(classValue){
@@ -2251,53 +2574,34 @@ async function loadResults(classValue){
 
 
   container.innerHTML = `
-
     <div class="student-result-item">
-
-      <div class="result-loading">
+      <div class="loading">
         ⏳ Loading results...
       </div>
-
     </div>
-
   `;
 
 
   try{
 
-    const { data, error } =
+    const { data,error } =
       await supabaseClient
         .from("results")
         .select("*")
-        .eq("class", classValue)
-        .eq("is_active", true)
-        .order("percentage", {
-          ascending:false
-        });
+        .eq("class",classValue)
+        .eq("is_active",true)
+        .order("percentage",{ascending:false});
 
 
     if(error){
 
-      console.error(
-        "Supabase results error:",
-        error
-      );
-
+      console.error(error);
 
       container.innerHTML = `
-
         <div class="student-result-item">
-
-          <strong>
-            ⚠️ Results load नहीं हो पाए
-          </strong>
-
-          <span>
-            कृपया थोड़ी देर बाद फिर try करें.
-          </span>
-
+          <strong>⚠️ Results load नहीं हो पाए</strong>
+          <span>कृपया थोड़ी देर बाद फिर try करें.</span>
         </div>
-
       `;
 
       return;
@@ -2308,20 +2612,13 @@ async function loadResults(classValue){
     if(!data || data.length === 0){
 
       container.innerHTML = `
-
         <div class="student-result-item">
-
-          <strong>
-            📊 No Results Available
-          </strong>
-
+          <strong>📊 No Results Available</strong>
           <span>
             Class ${escapeHTML(classValue)}
             के results अभी upload नहीं किए गए हैं.
           </span>
-
         </div>
-
       `;
 
       return;
@@ -2329,8 +2626,8 @@ async function loadResults(classValue){
     }
 
 
-    container.innerHTML = data
-      .map(function(result){
+    container.innerHTML =
+      data.map(function(item){
 
         return `
 
@@ -2338,121 +2635,68 @@ async function loadResults(classValue){
 
             <strong>
               🏆 ${escapeHTML(
-                result.student_name ||
-                "Student"
+                item.student_name || "Student"
               )}
             </strong>
 
             ${
-              result.roll_number
-
-              ?
-
+              item.roll_number
+              ? `
+                <span>
+                  Roll Number:
+                  ${escapeHTML(item.roll_number)}
+                </span>
               `
-              <span>
-                Roll Number:
-                ${escapeHTML(
-                  result.roll_number
-                )}
-              </span>
-              `
-
-              :
-
-              ""
+              : ""
             }
 
-
             ${
-              result.marks
-
-              ?
-
+              item.marks !== null &&
+              item.marks !== undefined &&
+              item.marks !== ""
+              ? `
+                <span>
+                  Marks:
+                  ${escapeHTML(item.marks)}
+                </span>
               `
-              <span>
-                Marks:
-                ${escapeHTML(
-                  result.marks
-                )}
-              </span>
-              `
-
-              :
-
-              ""
+              : ""
             }
 
-
             ${
-              result.percentage
-
-              ?
-
+              item.percentage !== null &&
+              item.percentage !== undefined &&
+              item.percentage !== ""
+              ? `
+                <span>
+                  Percentage:
+                  ${escapeHTML(item.percentage)}%
+                </span>
               `
-              <span>
-                Percentage:
-                ${escapeHTML(
-                  result.percentage
-                )}%
-              </span>
-              `
-
-              :
-
-              ""
+              : ""
             }
 
-
             ${
-              result.rank
-
-              ?
-
+              item.rank
+              ? `
+                <span>
+                  Rank:
+                  ${escapeHTML(item.rank)}
+                </span>
               `
-              <span>
-                Rank:
-                ${escapeHTML(
-                  result.rank
-                )}
-              </span>
-              `
-
-              :
-
-              ""
+              : ""
             }
 
           </div>
 
         `;
 
-      })
-      .join("");
+      }).join("");
 
 
   }catch(error){
 
-    console.error(
-      "Unexpected results error:",
-      error
-    );
-
-
-    container.innerHTML = `
-
-      <div class="student-result-item">
-
-        <strong>
-          ⚠️ Something went wrong
-        </strong>
-
-        <span>
-          कृपया page refresh करके फिर try करें.
-        </span>
-
-      </div>
-
-    `;
+    console.error(error);
 
   }
 
@@ -2476,13 +2720,14 @@ function escapeHTML(value){
 
 
 /* =========================
-   START ANNOUNCEMENTS
+   START
 ========================= */
 
 loadAnnouncements();
 
-</script>
+checkStudentSession();
 
+</script>
 
 </body>
 </html>
