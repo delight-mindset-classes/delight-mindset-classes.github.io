@@ -578,6 +578,7 @@ nav a:hover{
   padding:10px;
   border-radius:8px;
   font-size:13px;
+  word-break:break-word;
 }
 
 .doubt-message.show{
@@ -3105,10 +3106,14 @@ async function submitDoubt(event){
 
     if(error){
 
-      console.error(error);
+      console.error(
+        "Doubt submit error:",
+        error
+      );
 
       showDoubtMessage(
-        "Doubt submit नहीं हो पाया. Please try again.",
+        "Doubt submit नहीं हो पाया: " +
+        (error.message || "Unknown error"),
         "error"
       );
 
@@ -3133,10 +3138,14 @@ async function submitDoubt(event){
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Doubt submit exception:",
+      error
+    );
 
     showDoubtMessage(
-      "Something went wrong. Please try again.",
+      "Something went wrong: " +
+      (error.message || "Unknown error"),
       "error"
     );
 
@@ -3224,11 +3233,17 @@ async function loadMyDoubts(){
       sessionData.session.user.id;
 
 
+    /*
+      IMPORTANT:
+      doubts table में replied_at column नहीं है,
+      इसलिए केवल existing columns select किए जा रहे हैं.
+    */
+
     const { data,error } =
       await supabaseClient
         .from("doubts")
         .select(
-          "id,subject,doubt_text,reply_text,status,created_at,replied_at"
+          "id,subject,doubt_text,reply_text,status,created_at"
         )
         .eq("student_id",studentId)
         .order("created_at",{ascending:false});
@@ -3236,11 +3251,15 @@ async function loadMyDoubts(){
 
     if(error){
 
-      console.error(error);
+      console.error(
+        "Load doubts error:",
+        error
+      );
 
       container.innerHTML = `
         <div class="doubt-empty">
-          ⚠️ Your doubts load नहीं हो पाए.
+          ⚠️ Your doubts load नहीं हो पाए.<br><br>
+          ${escapeHTML(error.message || "Unknown error")}
         </div>
       `;
 
@@ -3285,22 +3304,6 @@ async function loadMyDoubts(){
         const createdDate =
           doubt.created_at
           ? new Date(doubt.created_at)
-              .toLocaleString(
-                "en-IN",
-                {
-                  day:"2-digit",
-                  month:"short",
-                  year:"numeric",
-                  hour:"2-digit",
-                  minute:"2-digit"
-                }
-              )
-          : "";
-
-
-        const repliedDate =
-          doubt.replied_at
-          ? new Date(doubt.replied_at)
               .toLocaleString(
                 "en-IN",
                 {
@@ -3366,16 +3369,6 @@ async function loadMyDoubts(){
                     )}
                   </p>
 
-                  ${
-                    repliedDate
-                    ? `
-                      <div class="doubt-date">
-                        Replied: ${repliedDate}
-                      </div>
-                    `
-                    : ""
-                  }
-
                 </div>
               `
               : `
@@ -3394,11 +3387,15 @@ async function loadMyDoubts(){
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Load doubts exception:",
+      error
+    );
 
     container.innerHTML = `
       <div class="doubt-empty">
-        ⚠️ Something went wrong.
+        ⚠️ Something went wrong.<br><br>
+        ${escapeHTML(error.message || "Unknown error")}
       </div>
     `;
 
