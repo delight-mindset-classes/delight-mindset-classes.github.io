@@ -9,7 +9,7 @@
 
 <meta
   name="description"
-  content="DELIGHT MINDSET CLASSES - Study Material, Results, Teachers and Announcements"
+  content="DELIGHT MINDSET CLASSES - Study Material, Results, Teachers, Announcements and Student Doubts"
 >
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -38,7 +38,9 @@ body{
   margin:auto;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .site-header{
   position:sticky;
@@ -113,7 +115,9 @@ nav a:hover{
   cursor:pointer;
 }
 
-/* AUTH BUTTON */
+/* =========================
+   AUTH BUTTON
+========================= */
 
 .auth-area{
   display:flex;
@@ -138,7 +142,9 @@ nav a:hover{
   color:#344054;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
   background:linear-gradient(135deg,#eef2ff,#ffffff);
@@ -239,7 +245,9 @@ nav a:hover{
   margin-top:8px;
 }
 
-/* SECTIONS */
+/* =========================
+   SECTIONS
+========================= */
 
 .section{
   padding:70px 0;
@@ -263,7 +271,9 @@ nav a:hover{
   margin-top:4px;
 }
 
-/* ANNOUNCEMENTS */
+/* =========================
+   ANNOUNCEMENTS
+========================= */
 
 .cards{
   display:grid;
@@ -304,7 +314,9 @@ nav a:hover{
   margin-top:12px;
 }
 
-/* MATERIAL */
+/* =========================
+   MATERIAL
+========================= */
 
 .material-selector{
   display:grid;
@@ -396,7 +408,195 @@ nav a:hover{
   font-weight:700;
 }
 
-/* RESULTS */
+/* =========================
+   DOUBT SECTION
+========================= */
+
+.doubt-login-box{
+  background:white;
+  border:1px solid #e0e5ed;
+  border-radius:16px;
+  padding:28px;
+  text-align:center;
+}
+
+.doubt-login-box h3{
+  margin-bottom:8px;
+}
+
+.doubt-login-box p{
+  color:#667085;
+  margin-bottom:18px;
+}
+
+.doubt-layout{
+  display:grid;
+  grid-template-columns:380px 1fr;
+  gap:25px;
+  align-items:start;
+}
+
+.doubt-form-card,
+.doubt-list-card{
+  background:white;
+  border:1px solid #e0e5ed;
+  border-radius:16px;
+  padding:25px;
+  box-shadow:0 8px 25px rgba(30,45,80,.05);
+}
+
+.doubt-form-card h3,
+.doubt-list-card h3{
+  margin-bottom:5px;
+}
+
+.doubt-subtitle{
+  color:#667085;
+  font-size:14px;
+  margin-bottom:20px;
+}
+
+.doubt-form-group{
+  margin-bottom:15px;
+}
+
+.doubt-form-group label{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.doubt-form-group select,
+.doubt-form-group textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #d9dee8;
+  border-radius:9px;
+  outline:none;
+  font-size:14px;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+.doubt-form-group textarea{
+  min-height:150px;
+  resize:vertical;
+}
+
+.doubt-form-group select:focus,
+.doubt-form-group textarea:focus{
+  border-color:#4355d8;
+}
+
+.doubt-submit{
+  width:100%;
+}
+
+.doubt-list{
+  display:grid;
+  gap:15px;
+}
+
+.doubt-card{
+  border:1px solid #e1e6ef;
+  border-radius:13px;
+  padding:18px;
+  background:#fbfcfe;
+}
+
+.doubt-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.doubt-subject{
+  font-weight:800;
+  color:#4355d8;
+}
+
+.doubt-status{
+  padding:4px 9px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.doubt-status.pending{
+  background:#fff7e6;
+  color:#b54708;
+}
+
+.doubt-status.replied{
+  background:#ecfdf3;
+  color:#027a48;
+}
+
+.doubt-text{
+  color:#344054;
+  white-space:pre-wrap;
+}
+
+.doubt-date{
+  color:#98a2b3;
+  font-size:12px;
+  margin-top:10px;
+}
+
+.doubt-reply{
+  margin-top:15px;
+  padding:15px;
+  border-left:4px solid #4355d8;
+  background:#eef2ff;
+  border-radius:8px;
+}
+
+.doubt-reply strong{
+  display:block;
+  margin-bottom:5px;
+  color:#344054;
+}
+
+.doubt-reply p{
+  color:#344054;
+  white-space:pre-wrap;
+}
+
+.doubt-empty{
+  padding:20px;
+  border:1px dashed #d0d5dd;
+  border-radius:12px;
+  color:#667085;
+  text-align:center;
+}
+
+.doubt-message{
+  display:none;
+  margin-top:13px;
+  padding:10px;
+  border-radius:8px;
+  font-size:13px;
+}
+
+.doubt-message.show{
+  display:block;
+}
+
+.doubt-message.success{
+  background:#ecfdf3;
+  color:#027a48;
+}
+
+.doubt-message.error{
+  background:#fef3f2;
+  color:#b42318;
+}
+
+/* =========================
+   RESULTS
+========================= */
 
 .result-grid{
   display:grid;
@@ -458,7 +658,9 @@ nav a:hover{
   margin-top:3px;
 }
 
-/* TEACHERS */
+/* =========================
+   TEACHERS
+========================= */
 
 .teacher-grid{
   display:grid;
@@ -495,7 +697,9 @@ nav a:hover{
   color:#667085;
 }
 
-/* ABOUT */
+/* =========================
+   ABOUT
+========================= */
 
 .narrow{
   max-width:850px;
@@ -529,7 +733,9 @@ nav a:hover{
   color:#667085;
 }
 
-/* CONTACT */
+/* =========================
+   CONTACT
+========================= */
 
 .contact-section{
   background:#f3f6fa;
@@ -559,7 +765,9 @@ nav a:hover{
   text-decoration:none;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
   background:#101828;
@@ -577,7 +785,9 @@ footer{
   color:#b7c0cc;
 }
 
-/* AUTH MODAL */
+/* =========================
+   AUTH MODAL
+========================= */
 
 .auth-modal{
   display:none;
@@ -725,7 +935,11 @@ footer{
   color:#667085;
 }
 
-@media(max-width:850px){
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
 
   .menu-btn{
     display:block;
@@ -757,16 +971,13 @@ footer{
   }
 
   .result-grid,
-  .contact-grid{
+  .contact-grid,
+  .doubt-layout{
     grid-template-columns:1fr;
   }
 
   .material-selector{
     grid-template-columns:1fr;
-  }
-
-  .auth-area{
-    margin-left:auto;
   }
 
 }
@@ -827,6 +1038,11 @@ footer{
     align-items:flex-start;
   }
 
+  .doubt-card-top{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
 }
 
 </style>
@@ -861,6 +1077,7 @@ footer{
 
       <a href="#home">Home</a>
       <a href="#material">Study Material</a>
+      <a href="#doubts">Doubt Section</a>
       <a href="#announcements">Announcements</a>
       <a href="#results">Results</a>
       <a href="#teachers">Teachers</a>
@@ -893,7 +1110,9 @@ footer{
 
 <main id="home">
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
@@ -947,7 +1166,9 @@ footer{
 </section>
 
 
-<!-- ANNOUNCEMENTS -->
+<!-- =========================
+     ANNOUNCEMENTS
+========================= -->
 
 <section class="section" id="announcements">
 
@@ -980,7 +1201,9 @@ footer{
 </section>
 
 
-<!-- STUDY MATERIAL -->
+<!-- =========================
+     STUDY MATERIAL
+========================= -->
 
 <section class="section alt" id="material">
 
@@ -1044,9 +1267,153 @@ footer{
 </section>
 
 
-<!-- RESULTS -->
+<!-- =========================
+     DOUBT SECTION
+========================= -->
 
-<section class="section" id="results">
+<section class="section" id="doubts">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+        <span class="eyebrow">ASK YOUR TEACHER</span>
+        <h2>Doubt Section</h2>
+      </div>
+
+    </div>
+
+    <div id="doubtLoginBox" class="doubt-login-box">
+
+      <h3>🔐 Student Login Required</h3>
+
+      <p>
+        Doubt submit karne aur apne doubts ke replies
+        dekhne ke liye student account me login karein.
+      </p>
+
+      <button
+        class="btn primary"
+        onclick="openAuthModal()"
+      >
+        👤 Student Login
+      </button>
+
+    </div>
+
+
+    <div
+      id="doubtContent"
+      class="doubt-layout"
+      style="display:none;"
+    >
+
+      <!-- SUBMIT DOUBT -->
+
+      <div class="doubt-form-card">
+
+        <h3>📝 Ask a Doubt</h3>
+
+        <p class="doubt-subtitle">
+          Apna subject select karke doubt clearly likhein.
+        </p>
+
+        <form
+          id="doubtForm"
+          onsubmit="submitDoubt(event)"
+        >
+
+          <div class="doubt-form-group">
+
+            <label for="doubtSubject">
+              Subject
+            </label>
+
+            <select
+              id="doubtSubject"
+              required
+            >
+
+              <option value="">
+                Select Subject
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="doubt-form-group">
+
+            <label for="doubtText">
+              Your Doubt
+            </label>
+
+            <textarea
+              id="doubtText"
+              placeholder="Apna doubt yahan clearly likhein..."
+              required
+            ></textarea>
+
+          </div>
+
+
+          <button
+            id="doubtSubmitButton"
+            class="btn primary doubt-submit"
+            type="submit"
+          >
+            Submit Doubt
+          </button>
+
+        </form>
+
+
+        <div
+          id="doubtMessage"
+          class="doubt-message"
+        ></div>
+
+      </div>
+
+
+      <!-- MY DOUBTS -->
+
+      <div class="doubt-list-card">
+
+        <h3>💬 My Doubts</h3>
+
+        <p class="doubt-subtitle">
+          Yahan sirf aapke submitted doubts aur
+          teacher/admin ke replies dikhेंगे.
+        </p>
+
+        <div
+          id="myDoubtsContainer"
+          class="doubt-list"
+        >
+
+          <div class="doubt-empty">
+            ⏳ Loading your doubts...
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     RESULTS
+========================= -->
+
+<section class="section alt" id="results">
 
   <div class="container">
 
@@ -1121,9 +1488,11 @@ footer{
 </section>
 
 
-<!-- TEACHERS -->
+<!-- =========================
+     TEACHERS
+========================= -->
 
-<section class="section alt" id="teachers">
+<section class="section" id="teachers">
 
   <div class="container">
 
@@ -1187,9 +1556,11 @@ footer{
 </section>
 
 
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
 
-<section class="section" id="about">
+<section class="section alt" id="about">
 
   <div class="container narrow">
 
@@ -1228,7 +1599,9 @@ footer{
 </section>
 
 
-<!-- CONTACT -->
+<!-- =========================
+     CONTACT
+========================= -->
 
 <section class="section contact-section" id="contact">
 
@@ -1292,7 +1665,9 @@ footer{
 </footer>
 
 
-<!-- AUTH MODAL -->
+<!-- =========================
+     AUTH MODAL
+========================= -->
 
 <div
   id="authModal"
@@ -1733,7 +2108,7 @@ async function registerStudent(event){
 
   try{
 
-    const { data, error } =
+    const { data,error } =
       await supabaseClient.auth.signUp({
 
         email:email,
@@ -1828,7 +2203,7 @@ async function loginStudent(event){
 
   try{
 
-    const { data, error } =
+    const { data,error } =
       await supabaseClient.auth.signInWithPassword({
 
         email:email,
@@ -1924,6 +2299,12 @@ async function updateAuthUI(session){
   const loggedInfo =
     document.getElementById("loggedStudentInfo");
 
+  const doubtLoginBox =
+    document.getElementById("doubtLoginBox");
+
+  const doubtContent =
+    document.getElementById("doubtContent");
+
 
   if(!session || !session.user){
 
@@ -1939,6 +2320,10 @@ async function updateAuthUI(session){
 
     loggedBox.classList.remove("show");
 
+    doubtLoginBox.style.display = "block";
+
+    doubtContent.style.display = "none";
+
     return;
 
   }
@@ -1947,6 +2332,8 @@ async function updateAuthUI(session){
   let studentName =
     session.user.user_metadata?.student_name ||
     "Student";
+
+  let studentClass = "";
 
 
   try{
@@ -1965,20 +2352,8 @@ async function updateAuthUI(session){
         data.student_name ||
         studentName;
 
-      const studentClass =
+      studentClass =
         data.class || "";
-
-      loggedInfo.textContent =
-        "Name: " +
-        studentName +
-        (studentClass
-          ? " • Class " + studentClass
-          : "");
-
-    }else{
-
-      loggedInfo.textContent =
-        "Name: " + studentName;
 
     }
 
@@ -1988,9 +2363,6 @@ async function updateAuthUI(session){
       "Student profile error:",
       error
     );
-
-    loggedInfo.textContent =
-      "Name: " + studentName;
 
   }
 
@@ -2004,10 +2376,32 @@ async function updateAuthUI(session){
   authButton.onclick =
     openAuthModal;
 
+
+  loggedInfo.textContent =
+    "Name: " +
+    studentName +
+    (
+      studentClass
+      ? " • Class " + studentClass
+      : ""
+    );
+
+
   authForms.style.display =
     "none";
 
   loggedBox.classList.add("show");
+
+  doubtLoginBox.style.display =
+    "none";
+
+  doubtContent.style.display =
+    "grid";
+
+
+  loadDoubtSubjects();
+
+  loadMyDoubts();
 
 }
 
@@ -2463,7 +2857,10 @@ async function showMaterials(){
 
       if(material.file_path){
 
-        const { data:signedData,error:signedError } =
+        const {
+          data:signedData,
+          error:signedError
+        } =
           await supabaseClient
             .storage
             .from("study-materials")
@@ -2553,6 +2950,455 @@ async function showMaterials(){
         <div class="material-empty">
           ⚠️ Something went wrong.
         </div>
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =========================
+   DOUBT SUBJECTS
+========================= */
+
+function loadDoubtSubjects(){
+
+  const select =
+    document.getElementById(
+      "doubtSubject"
+    );
+
+  if(!select){
+    return;
+  }
+
+  select.innerHTML =
+    '<option value="">Select Subject</option>';
+
+
+  Object.keys(subjects).forEach(function(classNumber){
+
+    subjects[classNumber].forEach(function(subject){
+
+      const exists =
+        Array.from(select.options)
+          .some(function(option){
+            return option.value === subject;
+          });
+
+
+      if(!exists){
+
+        const option =
+          document.createElement("option");
+
+        option.value = subject;
+        option.textContent = subject;
+
+        select.appendChild(option);
+
+      }
+
+    });
+
+  });
+
+}
+
+
+/* =========================
+   SUBMIT DOUBT
+========================= */
+
+async function submitDoubt(event){
+
+  event.preventDefault();
+
+
+  const messageBox =
+    document.getElementById(
+      "doubtMessage"
+    );
+
+  const button =
+    document.getElementById(
+      "doubtSubmitButton"
+    );
+
+  const subject =
+    document.getElementById(
+      "doubtSubject"
+    ).value;
+
+  const doubtText =
+    document.getElementById(
+      "doubtText"
+    ).value.trim();
+
+
+  messageBox.className =
+    "doubt-message";
+
+  messageBox.textContent = "";
+
+
+  if(!subject || !doubtText){
+
+    showDoubtMessage(
+      "Please select a subject and write your doubt.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  button.disabled = true;
+  button.textContent = "Submitting...";
+
+
+  try{
+
+    const {
+      data:sessionData,
+      error:sessionError
+    } =
+      await supabaseClient.auth.getSession();
+
+
+    if(
+      sessionError ||
+      !sessionData ||
+      !sessionData.session
+    ){
+
+      showDoubtMessage(
+        "Please login first.",
+        "error"
+      );
+
+      openAuthModal();
+
+      return;
+
+    }
+
+
+    const studentId =
+      sessionData.session.user.id;
+
+
+    const { error } =
+      await supabaseClient
+        .from("doubts")
+        .insert({
+
+          student_id:studentId,
+          subject:subject,
+          doubt_text:doubtText,
+          status:"pending"
+
+        });
+
+
+    if(error){
+
+      console.error(error);
+
+      showDoubtMessage(
+        "Doubt submit नहीं हो पाया. Please try again.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    document
+      .getElementById("doubtForm")
+      .reset();
+
+
+    showDoubtMessage(
+      "✅ Your doubt has been submitted successfully.",
+      "success"
+    );
+
+
+    await loadMyDoubts();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showDoubtMessage(
+      "Something went wrong. Please try again.",
+      "error"
+    );
+
+  }finally{
+
+    button.disabled = false;
+    button.textContent = "Submit Doubt";
+
+  }
+
+}
+
+
+/* =========================
+   DOUBT MESSAGE
+========================= */
+
+function showDoubtMessage(message,type){
+
+  const box =
+    document.getElementById(
+      "doubtMessage"
+    );
+
+  box.textContent = message;
+
+  box.className =
+    "doubt-message show " +
+    type;
+
+}
+
+
+/* =========================
+   LOAD MY DOUBTS
+========================= */
+
+async function loadMyDoubts(){
+
+  const container =
+    document.getElementById(
+      "myDoubtsContainer"
+    );
+
+
+  if(!container){
+    return;
+  }
+
+
+  container.innerHTML = `
+    <div class="doubt-empty">
+      ⏳ Loading your doubts...
+    </div>
+  `;
+
+
+  try{
+
+    const {
+      data:sessionData,
+      error:sessionError
+    } =
+      await supabaseClient.auth.getSession();
+
+
+    if(
+      sessionError ||
+      !sessionData ||
+      !sessionData.session
+    ){
+
+      container.innerHTML = `
+        <div class="doubt-empty">
+          🔐 Please login to view your doubts.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    const studentId =
+      sessionData.session.user.id;
+
+
+    const { data,error } =
+      await supabaseClient
+        .from("doubts")
+        .select(
+          "id,subject,doubt_text,reply_text,status,created_at,replied_at"
+        )
+        .eq("student_id",studentId)
+        .order("created_at",{ascending:false});
+
+
+    if(error){
+
+      console.error(error);
+
+      container.innerHTML = `
+        <div class="doubt-empty">
+          ⚠️ Your doubts load नहीं हो पाए.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    if(!data || data.length === 0){
+
+      container.innerHTML = `
+        <div class="doubt-empty">
+          💬 अभी आपने कोई doubt submit नहीं किया है.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      data.map(function(doubt){
+
+        const isReplied =
+          doubt.status === "replied" ||
+          Boolean(doubt.reply_text);
+
+
+        const statusText =
+          isReplied
+          ? "Replied"
+          : "Pending";
+
+
+        const statusClass =
+          isReplied
+          ? "replied"
+          : "pending";
+
+
+        const createdDate =
+          doubt.created_at
+          ? new Date(doubt.created_at)
+              .toLocaleString(
+                "en-IN",
+                {
+                  day:"2-digit",
+                  month:"short",
+                  year:"numeric",
+                  hour:"2-digit",
+                  minute:"2-digit"
+                }
+              )
+          : "";
+
+
+        const repliedDate =
+          doubt.replied_at
+          ? new Date(doubt.replied_at)
+              .toLocaleString(
+                "en-IN",
+                {
+                  day:"2-digit",
+                  month:"short",
+                  year:"numeric",
+                  hour:"2-digit",
+                  minute:"2-digit"
+                }
+              )
+          : "";
+
+
+        return `
+
+          <div class="doubt-card">
+
+            <div class="doubt-card-top">
+
+              <span class="doubt-subject">
+                📚 ${escapeHTML(
+                  doubt.subject
+                )}
+              </span>
+
+              <span class="doubt-status ${statusClass}">
+                ${statusText}
+              </span>
+
+            </div>
+
+
+            <div class="doubt-text">
+              ${escapeHTML(
+                doubt.doubt_text
+              )}
+            </div>
+
+
+            ${
+              createdDate
+              ? `
+                <div class="doubt-date">
+                  Submitted: ${createdDate}
+                </div>
+              `
+              : ""
+            }
+
+
+            ${
+              doubt.reply_text
+              ? `
+                <div class="doubt-reply">
+
+                  <strong>
+                    👨‍🏫 Teacher/Admin Reply
+                  </strong>
+
+                  <p>
+                    ${escapeHTML(
+                      doubt.reply_text
+                    )}
+                  </p>
+
+                  ${
+                    repliedDate
+                    ? `
+                      <div class="doubt-date">
+                        Replied: ${repliedDate}
+                      </div>
+                    `
+                    : ""
+                  }
+
+                </div>
+              `
+              : `
+                <div class="doubt-date">
+                  ⏳ Waiting for teacher/admin reply...
+                </div>
+              `
+            }
+
+          </div>
+
+        `;
+
+      }).join("");
+
+
+  }catch(error){
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="doubt-empty">
+        ⚠️ Something went wrong.
       </div>
     `;
 
