@@ -289,7 +289,7 @@ nav a:hover{
 }
 
 .announcement-card h3{
-  margin-bottom:7px;
+  margin-bottom:8px;
 }
 
 .announcement-card p{
@@ -298,48 +298,47 @@ nav a:hover{
 
 .pin{
   display:inline-block;
-  background:#e9edff;
-  color:#4355d8;
-  padding:4px 9px;
-  border-radius:20px;
+  background:#fff4d6;
+  color:#9a6700;
+  padding:4px 8px;
+  border-radius:6px;
   font-size:11px;
-  font-weight:700;
-  margin-bottom:8px;
+  font-weight:800;
+  margin-bottom:10px;
 }
 
 .announcement-date{
   display:block;
+  margin-top:12px;
   color:#98a2b3;
   font-size:12px;
-  margin-top:12px;
+}
+
+.loading{
+  color:#667085;
 }
 
 /* =========================
-   MATERIAL
+   STUDY MATERIAL
 ========================= */
 
 .material-selector{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:15px;
-  margin-top:20px;
 }
 
 .material-selector select{
   width:100%;
-  padding:14px;
+  padding:13px;
   border:1px solid #d9dee8;
   border-radius:10px;
   background:white;
-  color:#172033;
-  font-size:15px;
-  cursor:pointer;
-  outline:none;
+  font-size:14px;
 }
 
 .material-selector select:disabled{
   background:#f2f4f7;
-  color:#98a2b3;
 }
 
 .material-result{
@@ -348,10 +347,9 @@ nav a:hover{
 
 .material-result-card{
   background:white;
-  border:1px solid #e0e5ed;
-  border-radius:16px;
-  padding:25px;
-  box-shadow:0 8px 25px rgba(30,45,80,.06);
+  border:1px solid #e1e6ef;
+  border-radius:15px;
+  padding:24px;
 }
 
 .material-result-card h3{
@@ -363,16 +361,9 @@ nav a:hover{
   margin-bottom:18px;
 }
 
-.material-empty{
-  padding:18px;
-  border-radius:12px;
-  background:#f8fafc;
-  border:1px dashed #d0d5dd;
-  color:#667085;
-}
-
 .material-list{
-  display:grid;
+  display:flex;
+  flex-direction:column;
   gap:12px;
 }
 
@@ -381,24 +372,23 @@ nav a:hover{
   align-items:center;
   justify-content:space-between;
   gap:15px;
-  padding:15px;
   border:1px solid #e4e7ec;
-  border-radius:12px;
-  background:white;
+  padding:15px;
+  border-radius:10px;
 }
 
-.material-item-info strong{
-  display:block;
-  margin-bottom:3px;
+.material-item-info{
+  display:flex;
+  flex-direction:column;
 }
 
 .material-item-info span{
-  color:#667085;
-  font-size:13px;
+  color:#98a2b3;
+  font-size:12px;
 }
 
 .material-download{
-  flex-shrink:0;
+  display:inline-block;
   background:#4355d8;
   color:white;
   text-decoration:none;
@@ -408,40 +398,28 @@ nav a:hover{
   font-weight:700;
 }
 
-/* =========================
-   DOUBT SECTION
-========================= */
-
-.doubt-login-box{
-  background:white;
-  border:1px solid #e0e5ed;
-  border-radius:16px;
-  padding:28px;
+.material-empty{
   text-align:center;
-}
-
-.doubt-login-box h3{
-  margin-bottom:8px;
-}
-
-.doubt-login-box p{
   color:#667085;
-  margin-bottom:18px;
+  padding:20px;
 }
+
+/* =========================
+   DOUBTS
+========================= */
 
 .doubt-layout{
   display:grid;
-  grid-template-columns:380px 1fr;
-  gap:25px;
-  align-items:start;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
 }
 
 .doubt-form-card,
 .doubt-list-card{
   background:white;
-  border:1px solid #e0e5ed;
+  border:1px solid #e1e6ef;
   border-radius:16px;
-  padding:25px;
+  padding:24px;
   box-shadow:0 8px 25px rgba(30,45,80,.05);
 }
 
@@ -452,12 +430,12 @@ nav a:hover{
 
 .doubt-subtitle{
   color:#667085;
-  font-size:14px;
+  font-size:13px;
   margin-bottom:20px;
 }
 
 .doubt-form-group{
-  margin-bottom:15px;
+  margin-bottom:16px;
 }
 
 .doubt-form-group label{
@@ -473,13 +451,13 @@ nav a:hover{
   padding:12px;
   border:1px solid #d9dee8;
   border-radius:9px;
-  outline:none;
-  font-size:14px;
   font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;
+  outline:none;
 }
 
 .doubt-form-group textarea{
-  min-height:150px;
+  min-height:130px;
   resize:vertical;
 }
 
@@ -492,93 +470,12 @@ nav a:hover{
   width:100%;
 }
 
-.doubt-list{
-  display:grid;
-  gap:15px;
-}
-
-.doubt-card{
-  border:1px solid #e1e6ef;
-  border-radius:13px;
-  padding:18px;
-  background:#fbfcfe;
-}
-
-.doubt-card-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:10px;
-}
-
-.doubt-subject{
-  font-weight:800;
-  color:#4355d8;
-}
-
-.doubt-status{
-  padding:4px 9px;
-  border-radius:20px;
-  font-size:11px;
-  font-weight:800;
-}
-
-.doubt-status.pending{
-  background:#fff7e6;
-  color:#b54708;
-}
-
-.doubt-status.replied{
-  background:#ecfdf3;
-  color:#027a48;
-}
-
-.doubt-text{
-  color:#344054;
-  white-space:pre-wrap;
-}
-
-.doubt-date{
-  color:#98a2b3;
-  font-size:12px;
-  margin-top:10px;
-}
-
-.doubt-reply{
-  margin-top:15px;
-  padding:15px;
-  border-left:4px solid #4355d8;
-  background:#eef2ff;
-  border-radius:8px;
-}
-
-.doubt-reply strong{
-  display:block;
-  margin-bottom:5px;
-  color:#344054;
-}
-
-.doubt-reply p{
-  color:#344054;
-  white-space:pre-wrap;
-}
-
-.doubt-empty{
-  padding:20px;
-  border:1px dashed #d0d5dd;
-  border-radius:12px;
-  color:#667085;
-  text-align:center;
-}
-
 .doubt-message{
   display:none;
-  margin-top:13px;
-  padding:10px;
+  margin-top:15px;
+  padding:11px;
   border-radius:8px;
   font-size:13px;
-  word-break:break-word;
 }
 
 .doubt-message.show{
@@ -595,6 +492,89 @@ nav a:hover{
   color:#b42318;
 }
 
+.doubt-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.doubt-empty{
+  text-align:center;
+  color:#667085;
+  background:#f8fafc;
+  border-radius:10px;
+  padding:18px;
+}
+
+.doubt-card{
+  border:1px solid #e4e7ec;
+  border-radius:12px;
+  padding:16px;
+  background:#fcfcfd;
+}
+
+.doubt-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.doubt-card-top div{
+  display:flex;
+  flex-direction:column;
+}
+
+.doubt-card-top div span{
+  font-size:11px;
+  color:#98a2b3;
+}
+
+.doubt-status{
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.doubt-status.pending{
+  background:#fff4d6;
+  color:#9a6700;
+}
+
+.doubt-status.replied{
+  background:#ecfdf3;
+  color:#027a48;
+}
+
+.doubt-question,
+.doubt-reply{
+  padding:13px;
+  border-radius:9px;
+  margin-top:10px;
+}
+
+.doubt-question{
+  background:#f2f4ff;
+}
+
+.doubt-reply{
+  background:#ecfdf3;
+}
+
+.doubt-reply.waiting{
+  background:#fff8e8;
+}
+
+.doubt-question p,
+.doubt-reply p{
+  margin-top:5px;
+  font-size:13px;
+  color:#475467;
+}
+
 /* =========================
    RESULTS
 ========================= */
@@ -606,31 +586,30 @@ nav a:hover{
 }
 
 .result-card{
-  display:flex;
-  gap:20px;
-  align-items:center;
   background:white;
   border:1px solid #e1e6ef;
   border-radius:16px;
-  padding:25px;
+  padding:24px;
+  display:flex;
+  gap:18px;
+  align-items:center;
 }
 
 .result-number{
   width:70px;
   height:70px;
   border-radius:18px;
+  background:#eef2ff;
+  color:#4355d8;
   display:grid;
   place-items:center;
-  background:#e9edff;
-  color:#4355d8;
-  font-size:27px;
+  font-size:24px;
   font-weight:900;
-  flex-shrink:0;
 }
 
 .result-card p{
   color:#667085;
-  margin:5px 0 14px;
+  margin:5px 0 15px;
 }
 
 .student-result-list{
@@ -644,19 +623,14 @@ nav a:hover{
   border:1px solid #e1e6ef;
   border-radius:12px;
   padding:17px;
-}
-
-.student-result-item strong{
-  display:block;
-  font-size:17px;
-  margin-bottom:5px;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
 }
 
 .student-result-item span{
   color:#667085;
-  font-size:14px;
-  display:block;
-  margin-top:3px;
+  font-size:13px;
 }
 
 /* =========================
@@ -665,37 +639,34 @@ nav a:hover{
 
 .teacher-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
   gap:18px;
 }
 
 .teacher-card{
   background:white;
-  border:1px solid #e0e5ed;
+  border:1px solid #e1e6ef;
   border-radius:16px;
-  padding:24px;
+  padding:25px 18px;
   text-align:center;
 }
 
 .teacher-avatar{
-  width:70px;
-  height:70px;
-  margin:auto;
+  width:65px;
+  height:65px;
+  margin:auto auto 12px;
   border-radius:50%;
   display:grid;
   place-items:center;
-  background:#e9edff;
+  background:#eef2ff;
   color:#4355d8;
-  font-size:22px;
-  font-weight:800;
-}
-
-.teacher-card h3{
-  margin-top:13px;
+  font-weight:900;
+  font-size:20px;
 }
 
 .teacher-card p{
   color:#667085;
+  font-size:13px;
 }
 
 /* =========================
@@ -703,12 +674,12 @@ nav a:hover{
 ========================= */
 
 .narrow{
-  max-width:850px;
+  max-width:900px;
 }
 
 .large{
+  font-size:17px;
   color:#667085;
-  font-size:18px;
   margin-top:15px;
 }
 
@@ -716,18 +687,17 @@ nav a:hover{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:15px;
-  margin-top:25px;
+  margin-top:30px;
 }
 
 .info-box{
-  background:#f5f7fa;
+  background:white;
+  border:1px solid #e1e6ef;
   border-radius:12px;
   padding:18px;
-}
-
-.info-box strong{
-  display:block;
-  margin-bottom:5px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
 }
 
 .info-box span{
@@ -738,32 +708,32 @@ nav a:hover{
    CONTACT
 ========================= */
 
-.contact-section{
-  background:#f3f6fa;
-}
-
 .contact-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:35px;
+  gap:40px;
   align-items:center;
 }
 
 .contact-card{
   background:white;
-  border:1px solid #e0e5ed;
+  border:1px solid #e1e6ef;
   border-radius:16px;
   padding:25px;
 }
 
 .contact-card p{
-  margin:13px 0;
+  margin-bottom:18px;
+}
+
+.contact-card p:last-child{
+  margin-bottom:0;
 }
 
 .contact-card a{
   color:#4355d8;
-  font-weight:700;
   text-decoration:none;
+  font-weight:700;
 }
 
 /* =========================
@@ -771,9 +741,9 @@ nav a:hover{
 ========================= */
 
 footer{
-  background:#101828;
+  background:#172033;
   color:white;
-  padding:32px 0;
+  padding:25px 0;
 }
 
 .footer-wrap{
@@ -783,157 +753,125 @@ footer{
 }
 
 .footer-wrap span{
-  color:#b7c0cc;
+  color:#98a2b3;
 }
 
 /* =========================
-   AUTH MODAL
+   REGISTRATION GATE
 ========================= */
 
-.auth-modal{
-  display:none;
+.registration-gate{
   position:fixed;
   inset:0;
   z-index:5000;
-  background:rgba(16,24,40,.55);
-  padding:20px;
+  background:linear-gradient(135deg,#eef2ff,#ffffff);
+  overflow-y:auto;
+  display:flex;
   align-items:center;
   justify-content:center;
+  padding:25px;
 }
 
-.auth-modal.show{
-  display:flex;
-}
-
-.auth-box{
-  width:min(450px,100%);
-  background:white;
-  border-radius:20px;
-  padding:30px;
-  box-shadow:0 20px 60px rgba(0,0,0,.2);
-  position:relative;
-}
-
-.auth-close{
-  position:absolute;
-  right:18px;
-  top:14px;
-  border:0;
-  background:none;
-  font-size:25px;
-  cursor:pointer;
-}
-
-.auth-box h2{
-  margin-bottom:5px;
-}
-
-.auth-subtitle{
-  color:#667085;
-  font-size:14px;
-  margin-bottom:22px;
-}
-
-.auth-tabs{
-  display:flex;
-  gap:8px;
-  margin-bottom:20px;
-}
-
-.auth-tab{
-  flex:1;
-  padding:10px;
-  border:1px solid #d9dee8;
-  background:white;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:700;
-}
-
-.auth-tab.active{
-  background:#4355d8;
-  color:white;
-  border-color:#4355d8;
-}
-
-.auth-form{
+.registration-gate.hidden{
   display:none;
 }
 
-.auth-form.active{
-  display:block;
+.registration-box{
+  width:min(550px,100%);
+  background:white;
+  border:1px solid #e1e6ef;
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 20px 60px rgba(30,45,80,.12);
 }
 
-.form-group{
-  margin-bottom:14px;
+.registration-brand{
+  text-align:center;
+  margin-bottom:25px;
 }
 
-.form-group label{
+.registration-brand .brand-mark{
+  margin:auto auto 12px;
+}
+
+.registration-brand h1{
+  font-size:25px;
+}
+
+.registration-brand p{
+  color:#667085;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.registration-form{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.registration-form-group label{
   display:block;
   font-size:13px;
   font-weight:700;
   margin-bottom:6px;
 }
 
-.form-group input,
-.form-group select{
+.registration-form-group input,
+.registration-form-group textarea,
+.registration-form-group select{
   width:100%;
   padding:12px;
   border:1px solid #d9dee8;
   border-radius:9px;
   outline:none;
   font-size:14px;
+  font-family:Arial,Helvetica,sans-serif;
+  background:white;
 }
 
-.form-group input:focus,
-.form-group select:focus{
+.registration-form-group textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.registration-form-group input:focus,
+.registration-form-group textarea:focus,
+.registration-form-group select:focus{
   border-color:#4355d8;
 }
 
-.auth-submit{
+.registration-submit{
   width:100%;
-  margin-top:6px;
+  margin-top:5px;
 }
 
-.auth-message{
-  margin-top:14px;
+.registration-message{
+  display:none;
   padding:11px;
   border-radius:8px;
   font-size:13px;
-  display:none;
 }
 
-.auth-message.show{
+.registration-message.show{
   display:block;
 }
 
-.auth-message.success{
-  background:#ecfdf3;
-  color:#027a48;
-}
-
-.auth-message.error{
+.registration-message.error{
   background:#fef3f2;
   color:#b42318;
 }
 
-.logged-box{
-  display:none;
+.registration-message.success{
+  background:#ecfdf3;
+  color:#027a48;
 }
 
-.logged-box.show{
-  display:block;
-}
-
-.logged-box p{
-  color:#667085;
-  margin:10px 0 18px;
-}
-
-.loading{
+.registration-note{
   text-align:center;
-  padding:20px;
-  color:#667085;
+  color:#98a2b3;
+  font-size:12px;
+  margin-top:12px;
 }
 
 /* =========================
@@ -1044,12 +982,166 @@ footer{
     flex-direction:column;
   }
 
+  .registration-box{
+    padding:22px 18px;
+    border-radius:17px;
+  }
+
+  .registration-brand h1{
+    font-size:21px;
+  }
+
 }
 
 </style>
 </head>
 
 <body>
+
+
+<!-- =========================
+     STUDENT REGISTRATION GATE
+========================= -->
+
+<div id="registrationGate" class="registration-gate">
+
+  <div class="registration-box">
+
+    <div class="registration-brand">
+
+      <div class="brand-mark">DMC</div>
+
+      <h1>DELIGHT MINDSET CLASSES</h1>
+
+      <p>
+        Website me enter karne se pehle student registration complete karein.
+      </p>
+
+    </div>
+
+    <form
+      id="studentRegistrationForm"
+      class="registration-form"
+      onsubmit="submitStudentRegistration(event)"
+    >
+
+      <div class="registration-form-group">
+        <label for="regStudentName">1. Student Name</label>
+        <input
+          id="regStudentName"
+          type="text"
+          placeholder="Enter student name"
+          required
+        >
+      </div>
+
+      <div class="registration-form-group">
+        <label for="regFatherName">2. Father Name</label>
+        <input
+          id="regFatherName"
+          type="text"
+          placeholder="Enter father name"
+          required
+        >
+      </div>
+
+      <div class="registration-form-group">
+        <label for="regMotherName">3. Mother Name</label>
+        <input
+          id="regMotherName"
+          type="text"
+          placeholder="Enter mother name"
+          required
+        >
+      </div>
+
+      <div class="registration-form-group">
+        <label for="regAddress">4. Address</label>
+        <textarea
+          id="regAddress"
+          placeholder="Enter full address"
+          required
+        ></textarea>
+      </div>
+
+      <div class="registration-form-group">
+        <label for="regPersonalMobile">5. Personal Mobile No.</label>
+        <input
+          id="regPersonalMobile"
+          type="tel"
+          inputmode="numeric"
+          placeholder="Enter personal mobile number"
+          required
+        >
+      </div>
+
+      <div class="registration-form-group">
+        <label for="regParentsMobile">6. Parents Mobile No.</label>
+        <input
+          id="regParentsMobile"
+          type="tel"
+          inputmode="numeric"
+          placeholder="Enter parents mobile number"
+          required
+        >
+      </div>
+
+      <div class="registration-form-group">
+        <label for="regClass">7. Class</label>
+        <select id="regClass" required>
+          <option value="">Select Class</option>
+          <option value="9">Class 9</option>
+          <option value="10">Class 10</option>
+          <option value="11">Class 11</option>
+          <option value="12">Class 12</option>
+        </select>
+      </div>
+
+      <div class="registration-form-group">
+        <label for="regSchoolName">8. School Name</label>
+        <input
+          id="regSchoolName"
+          type="text"
+          placeholder="Enter school name"
+          required
+        >
+      </div>
+
+      <div class="registration-form-group">
+        <label for="regFavouriteTeacher">
+          9. What is your favourite teacher?
+        </label>
+
+        <input
+          id="regFavouriteTeacher"
+          type="text"
+          placeholder="Enter your favourite teacher"
+        >
+      </div>
+
+      <button
+        id="studentRegistrationButton"
+        class="btn primary registration-submit"
+        type="submit"
+      >
+        Enter Website →
+      </button>
+
+      <div
+        id="registrationMessage"
+        class="registration-message"
+      ></div>
+
+    </form>
+
+    <p class="registration-note">
+      Registration ek baar complete karne ke baad isi browser me form dobara nahi aayega.
+    </p>
+
+  </div>
+
+</div>
+
 
 <header class="site-header">
 
@@ -1090,16 +1182,17 @@ footer{
     <div class="auth-area">
 
       <span
-        id="authName"
+        id="studentHeaderName"
         class="auth-name"
       ></span>
 
       <button
-        id="authButton"
+        id="studentDetailsButton"
         class="auth-btn"
-        onclick="openAuthModal()"
+        type="button"
+        onclick="showSavedStudentDetails()"
       >
-        👤 Student Login
+        👤 My Details
       </button>
 
     </div>
@@ -1110,6 +1203,7 @@ footer{
 
 
 <main id="home">
+
 
 <!-- =========================
      HERO
@@ -1285,29 +1379,9 @@ footer{
 
     </div>
 
-    <div id="doubtLoginBox" class="doubt-login-box">
-
-      <h3>🔐 Student Login Required</h3>
-
-      <p>
-        Doubt submit karne aur apne doubts ke replies
-        dekhne ke liye student account me login karein.
-      </p>
-
-      <button
-        class="btn primary"
-        onclick="openAuthModal()"
-      >
-        👤 Student Login
-      </button>
-
-    </div>
-
-
     <div
       id="doubtContent"
       class="doubt-layout"
-      style="display:none;"
     >
 
       <!-- SUBMIT DOUBT -->
@@ -1387,7 +1461,7 @@ footer{
 
         <p class="doubt-subtitle">
           Yahan sirf aapke submitted doubts aur
-          teacher/admin ke replies dikhेंगे.
+          teacher/admin ke replies dikhenge.
         </p>
 
         <div
@@ -1666,220 +1740,6 @@ footer{
 </footer>
 
 
-<!-- =========================
-     AUTH MODAL
-========================= -->
-
-<div
-  id="authModal"
-  class="auth-modal"
->
-
-  <div class="auth-box">
-
-    <button
-      class="auth-close"
-      onclick="closeAuthModal()"
-    >
-      ×
-    </button>
-
-    <div id="authForms">
-
-      <h2>Student Account</h2>
-
-      <p class="auth-subtitle">
-        Register once and use your account for the student features.
-      </p>
-
-      <div class="auth-tabs">
-
-        <button
-          id="loginTab"
-          class="auth-tab active"
-          onclick="showAuthForm('login')"
-        >
-          Login
-        </button>
-
-        <button
-          id="registerTab"
-          class="auth-tab"
-          onclick="showAuthForm('register')"
-        >
-          Register
-        </button>
-
-      </div>
-
-
-      <!-- LOGIN -->
-
-      <form
-        id="loginForm"
-        class="auth-form active"
-        onsubmit="loginStudent(event)"
-      >
-
-        <div class="form-group">
-
-          <label>Email</label>
-
-          <input
-            id="loginEmail"
-            type="email"
-            placeholder="Enter your email"
-            required
-          >
-
-        </div>
-
-        <div class="form-group">
-
-          <label>Password</label>
-
-          <input
-            id="loginPassword"
-            type="password"
-            placeholder="Enter your password"
-            required
-          >
-
-        </div>
-
-        <button
-          class="btn primary auth-submit"
-          type="submit"
-        >
-          Login
-        </button>
-
-      </form>
-
-
-      <!-- REGISTER -->
-
-      <form
-        id="registerForm"
-        class="auth-form"
-        onsubmit="registerStudent(event)"
-      >
-
-        <div class="form-group">
-
-          <label>Student Name</label>
-
-          <input
-            id="registerName"
-            type="text"
-            placeholder="Enter student name"
-            required
-          >
-
-        </div>
-
-        <div class="form-group">
-
-          <label>Email</label>
-
-          <input
-            id="registerEmail"
-            type="email"
-            placeholder="Enter email address"
-            required
-          >
-
-        </div>
-
-        <div class="form-group">
-
-          <label>Class</label>
-
-          <select id="registerClass" required>
-
-            <option value="">
-              Select Class
-            </option>
-
-            <option value="9">
-              Class 9
-            </option>
-
-            <option value="10">
-              Class 10
-            </option>
-
-            <option value="11">
-              Class 11
-            </option>
-
-            <option value="12">
-              Class 12
-            </option>
-
-          </select>
-
-        </div>
-
-        <div class="form-group">
-
-          <label>Password</label>
-
-          <input
-            id="registerPassword"
-            type="password"
-            minlength="6"
-            placeholder="Minimum 6 characters"
-            required
-          >
-
-        </div>
-
-        <button
-          class="btn primary auth-submit"
-          type="submit"
-        >
-          Create Student Account
-        </button>
-
-      </form>
-
-
-      <div
-        id="authMessage"
-        class="auth-message"
-      ></div>
-
-    </div>
-
-
-    <!-- LOGGED IN -->
-
-    <div
-      id="loggedBox"
-      class="logged-box"
-    >
-
-      <h2>
-        👋 Welcome!
-      </h2>
-
-      <p id="loggedStudentInfo"></p>
-
-      <button
-        class="btn secondary"
-        onclick="logoutStudent()"
-      >
-        Logout
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
 <script>
 
 /* =========================
@@ -1936,287 +1796,248 @@ document
 
 
 /* =========================
-   AUTH MODAL
+   STUDENT REGISTRATION
 ========================= */
 
-function openAuthModal(){
+const STUDENT_REGISTRATION_STORAGE_KEY =
+  "dmc_student_registration_v1";
 
-  document
-    .getElementById("authModal")
-    .classList
-    .add("show");
 
-}
+function getSavedStudentRegistration(){
 
-function closeAuthModal(){
+  try{
 
-  document
-    .getElementById("authModal")
-    .classList
-    .remove("show");
+    const raw =
+      localStorage.getItem(
+        STUDENT_REGISTRATION_STORAGE_KEY
+      );
 
-  clearAuthMessage();
-
-}
-
-document
-  .getElementById("authModal")
-  .addEventListener("click",function(event){
-
-    if(event.target === this){
-
-      closeAuthModal();
-
+    if(!raw){
+      return null;
     }
 
-  });
+    return JSON.parse(raw);
 
+  }catch(error){
 
-/* =========================
-   AUTH TABS
-========================= */
+    console.error(
+      "Saved registration read error:",
+      error
+    );
 
-function showAuthForm(type){
-
-  const loginForm =
-    document.getElementById("loginForm");
-
-  const registerForm =
-    document.getElementById("registerForm");
-
-  const loginTab =
-    document.getElementById("loginTab");
-
-  const registerTab =
-    document.getElementById("registerTab");
-
-  clearAuthMessage();
-
-  if(type === "register"){
-
-    loginForm.classList.remove("active");
-    registerForm.classList.add("active");
-
-    loginTab.classList.remove("active");
-    registerTab.classList.add("active");
-
-  }else{
-
-    registerForm.classList.remove("active");
-    loginForm.classList.add("active");
-
-    registerTab.classList.remove("active");
-    loginTab.classList.add("active");
+    return null;
 
   }
 
 }
 
 
-/* =========================
-   AUTH MESSAGE
-========================= */
+function updateRegistrationUI(){
 
-function showAuthMessage(message,type){
+  const savedStudent =
+    getSavedStudentRegistration();
+
+  const gate =
+    document.getElementById(
+      "registrationGate"
+    );
+
+  const headerName =
+    document.getElementById(
+      "studentHeaderName"
+    );
+
+  if(!gate){
+    return;
+  }
+
+  if(savedStudent){
+
+    gate.classList.add("hidden");
+
+    if(headerName){
+
+      headerName.textContent =
+        "👋 " +
+        (savedStudent.student_name || "Student");
+
+    }
+
+  }else{
+
+    gate.classList.remove("hidden");
+
+    if(headerName){
+      headerName.textContent = "";
+    }
+
+  }
+
+}
+
+
+function showRegistrationMessage(message,type){
 
   const box =
-    document.getElementById("authMessage");
+    document.getElementById(
+      "registrationMessage"
+    );
+
+  if(!box){
+    return;
+  }
 
   box.textContent = message;
 
   box.className =
-    "auth-message show " +
+    "registration-message show " +
     type;
 
 }
 
-function clearAuthMessage(){
 
-  const box =
-    document.getElementById("authMessage");
-
-  box.textContent = "";
-
-  box.className =
-    "auth-message";
-
-}
-
-
-/* =========================
-   REGISTER STUDENT
-========================= */
-
-async function registerStudent(event){
+async function submitStudentRegistration(event){
 
   event.preventDefault();
 
-  clearAuthMessage();
+  const button =
+    document.getElementById(
+      "studentRegistrationButton"
+    );
 
   const name =
     document
-      .getElementById("registerName")
+      .getElementById("regStudentName")
       .value
       .trim();
 
-  const email =
+  const fatherName =
     document
-      .getElementById("registerEmail")
+      .getElementById("regFatherName")
+      .value
+      .trim();
+
+  const motherName =
+    document
+      .getElementById("regMotherName")
+      .value
+      .trim();
+
+  const address =
+    document
+      .getElementById("regAddress")
+      .value
+      .trim();
+
+  const personalMobile =
+    document
+      .getElementById("regPersonalMobile")
+      .value
+      .trim();
+
+  const parentsMobile =
+    document
+      .getElementById("regParentsMobile")
       .value
       .trim();
 
   const studentClass =
     document
-      .getElementById("registerClass")
+      .getElementById("regClass")
       .value;
 
-  const password =
+  const schoolName =
     document
-      .getElementById("registerPassword")
-      .value;
-
-
-  if(!name || !email || !studentClass || !password){
-
-    showAuthMessage(
-      "Please fill all required fields.",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  if(password.length < 6){
-
-    showAuthMessage(
-      "Password must contain at least 6 characters.",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  const button =
-    event.submitter;
-
-  button.disabled = true;
-  button.textContent = "Creating account...";
-
-
-  try{
-
-    const { data,error } =
-      await supabaseClient.auth.signUp({
-
-        email:email,
-
-        password:password,
-
-        options:{
-          data:{
-            account_type:"student",
-            student_name:name,
-            class:studentClass
-          }
-        }
-
-      });
-
-
-    if(error){
-
-      showAuthMessage(
-        error.message,
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    if(data.user){
-
-      document
-        .getElementById("registerForm")
-        .reset();
-
-
-      showAuthMessage(
-        "Registration successful! Please check your email and verify your account before login.",
-        "success"
-      );
-
-    }
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showAuthMessage(
-      "Registration failed. Please try again.",
-      "error"
-    );
-
-  }finally{
-
-    button.disabled = false;
-    button.textContent = "Create Student Account";
-
-  }
-
-}
-
-
-/* =========================
-   LOGIN STUDENT
-========================= */
-
-async function loginStudent(event){
-
-  event.preventDefault();
-
-  clearAuthMessage();
-
-  const email =
-    document
-      .getElementById("loginEmail")
+      .getElementById("regSchoolName")
       .value
       .trim();
 
-  const password =
+  const favouriteTeacher =
     document
-      .getElementById("loginPassword")
-      .value;
+      .getElementById("regFavouriteTeacher")
+      .value
+      .trim();
 
 
-  const button =
-    event.submitter;
+  if(
+    !name ||
+    !fatherName ||
+    !motherName ||
+    !address ||
+    !personalMobile ||
+    !parentsMobile ||
+    !studentClass ||
+    !schoolName
+  ){
+
+    showRegistrationMessage(
+      "Please fill all required details.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const cleanPersonalMobile =
+    personalMobile.replace(/\s+/g,"");
+
+  const cleanParentsMobile =
+    parentsMobile.replace(/\s+/g,"");
+
+
+  if(
+    !/^[0-9+\-()]{8,15}$/.test(cleanPersonalMobile) ||
+    !/^[0-9+\-()]{8,15}$/.test(cleanParentsMobile)
+  ){
+
+    showRegistrationMessage(
+      "Please enter valid mobile numbers.",
+      "error"
+    );
+
+    return;
+
+  }
+
 
   button.disabled = true;
-  button.textContent = "Logging in...";
+  button.textContent = "Submitting...";
 
 
   try{
 
-    const { data,error } =
-      await supabaseClient.auth.signInWithPassword({
+    const registrationId =
+      crypto.randomUUID();
 
-        email:email,
-        password:password
-
-      });
+    const { error } =
+      await supabaseClient
+        .from("student_registrations")
+        .insert({
+          id:registrationId,
+          student_name:name,
+          father_name:fatherName,
+          mother_name:motherName,
+          address:address,
+          personal_mobile:cleanPersonalMobile,
+          parents_mobile:cleanParentsMobile,
+          class:studentClass,
+          school_name:schoolName,
+          favourite_teacher:favouriteTeacher || null
+        });
 
 
     if(error){
 
-      showAuthMessage(
-        error.message,
+      console.error(
+        "Student registration error:",
+        error
+      );
+
+      showRegistrationMessage(
+        "Registration submit नहीं हो पाया: " +
+        (error.message || "Unknown error"),
         "error"
       );
 
@@ -2225,227 +2046,113 @@ async function loginStudent(event){
     }
 
 
-    if(data.session){
-
-      await updateAuthUI(data.session);
-
-      closeAuthModal();
-
-    }
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showAuthMessage(
-      "Login failed. Please try again.",
-      "error"
+    localStorage.setItem(
+      STUDENT_REGISTRATION_STORAGE_KEY,
+      JSON.stringify({
+        id:registrationId,
+        student_name:name,
+        father_name:fatherName,
+        mother_name:motherName,
+        address:address,
+        personal_mobile:cleanPersonalMobile,
+        parents_mobile:cleanParentsMobile,
+        class:studentClass,
+        school_name:schoolName,
+        favourite_teacher:favouriteTeacher || null
+      })
     );
 
-  }finally{
 
-    button.disabled = false;
-    button.textContent = "Login";
-
-  }
-
-}
-
-
-/* =========================
-   LOGOUT
-========================= */
-
-async function logoutStudent(){
-
-  const { error } =
-    await supabaseClient.auth.signOut();
-
-  if(error){
-
-    alert(
-      "Logout failed. Please try again."
+    showRegistrationMessage(
+      "✅ Registration successful! Website open ho rahi hai...",
+      "success"
     );
 
-    return;
 
-  }
+    setTimeout(function(){
 
-  updateAuthUI(null);
+      updateRegistrationUI();
 
-  closeAuthModal();
+      loadDoubtSubjects();
+      loadMyDoubts();
 
-}
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
 
+    },500);
 
-/* =========================
-   AUTH UI
-========================= */
-
-async function updateAuthUI(session){
-
-  const authButton =
-    document.getElementById("authButton");
-
-  const authName =
-    document.getElementById("authName");
-
-  const authForms =
-    document.getElementById("authForms");
-
-  const loggedBox =
-    document.getElementById("loggedBox");
-
-  const loggedInfo =
-    document.getElementById("loggedStudentInfo");
-
-  const doubtLoginBox =
-    document.getElementById("doubtLoginBox");
-
-  const doubtContent =
-    document.getElementById("doubtContent");
-
-
-  if(!session || !session.user){
-
-    authButton.textContent =
-      "👤 Student Login";
-
-    authButton.onclick =
-      openAuthModal;
-
-    authName.textContent = "";
-
-    authForms.style.display = "block";
-
-    loggedBox.classList.remove("show");
-
-    doubtLoginBox.style.display = "block";
-
-    doubtContent.style.display = "none";
-
-    return;
-
-  }
-
-
-  let studentName =
-    session.user.user_metadata?.student_name ||
-    "Student";
-
-  let studentClass = "";
-
-
-  try{
-
-    const { data } =
-      await supabaseClient
-        .from("students")
-        .select("student_name,class")
-        .eq("id",session.user.id)
-        .maybeSingle();
-
-
-    if(data){
-
-      studentName =
-        data.student_name ||
-        studentName;
-
-      studentClass =
-        data.class || "";
-
-    }
 
   }catch(error){
 
     console.error(
-      "Student profile error:",
+      "Student registration exception:",
       error
     );
 
-  }
-
-
-  authName.textContent =
-    "👋 " + studentName;
-
-  authButton.textContent =
-    "My Account";
-
-  authButton.onclick =
-    openAuthModal;
-
-
-  loggedInfo.textContent =
-    "Name: " +
-    studentName +
-    (
-      studentClass
-      ? " • Class " + studentClass
-      : ""
+    showRegistrationMessage(
+      "Something went wrong. Please try again.",
+      "error"
     );
 
+  }finally{
 
-  authForms.style.display =
-    "none";
+    button.disabled = false;
+    button.textContent = "Enter Website →";
 
-  loggedBox.classList.add("show");
-
-  doubtLoginBox.style.display =
-    "none";
-
-  doubtContent.style.display =
-    "grid";
-
-
-  loadDoubtSubjects();
-
-  loadMyDoubts();
+  }
 
 }
 
 
-/* =========================
-   CHECK SESSION
-========================= */
+function showSavedStudentDetails(){
 
-async function checkStudentSession(){
+  const student =
+    getSavedStudentRegistration();
 
-  const { data } =
-    await supabaseClient.auth.getSession();
+  if(!student){
 
-  await updateAuthUI(
-    data.session
+    updateRegistrationUI();
+
+    return;
+
+  }
+
+  const favouriteTeacher =
+    student.favourite_teacher ||
+    "Not provided";
+
+  alert(
+    "Student Details\n\n" +
+    "Student Name: " +
+    (student.student_name || "") +
+    "\nFather Name: " +
+    (student.father_name || "") +
+    "\nMother Name: " +
+    (student.mother_name || "") +
+    "\nAddress: " +
+    (student.address || "") +
+    "\nPersonal Mobile: " +
+    (student.personal_mobile || "") +
+    "\nParents Mobile: " +
+    (student.parents_mobile || "") +
+    "\nClass: " +
+    (student.class || "") +
+    "\nSchool Name: " +
+    (student.school_name || "") +
+    "\nFavourite Teacher: " +
+    favouriteTeacher
   );
 
 }
 
 
-/* =========================
-   AUTH STATE CHANGES
-========================= */
+function initializeStudentRegistration(){
 
-supabaseClient.auth.onAuthStateChange(
-  function(event,session){
+  updateRegistrationUI();
 
-    if(
-      event === "SIGNED_IN" ||
-      event === "SIGNED_OUT" ||
-      event === "TOKEN_REFRESHED"
-    ){
-
-      setTimeout(function(){
-
-        updateAuthUI(session);
-
-      },0);
-
-    }
-
-  }
-);
+}
 
 
 /* =========================
@@ -2978,30 +2685,26 @@ function loadDoubtSubjects(){
     '<option value="">Select Subject</option>';
 
 
-  Object.keys(subjects).forEach(function(classNumber){
+  const student =
+    getSavedStudentRegistration();
 
-    subjects[classNumber].forEach(function(subject){
-
-      const exists =
-        Array.from(select.options)
-          .some(function(option){
-            return option.value === subject;
-          });
+  let studentClass =
+    student ? String(student.class) : "";
 
 
-      if(!exists){
+  let list =
+    subjects[studentClass] || [];
 
-        const option =
-          document.createElement("option");
 
-        option.value = subject;
-        option.textContent = subject;
+  list.forEach(function(subject){
 
-        select.appendChild(option);
+    const option =
+      document.createElement("option");
 
-      }
+    option.value = subject;
+    option.textContent = subject;
 
-    });
+    select.appendChild(option);
 
   });
 
@@ -3009,45 +2712,51 @@ function loadDoubtSubjects(){
 
 
 /* =========================
-   SUBMIT DOUBT
+   DOUBT SECTION
 ========================= */
 
 async function submitDoubt(event){
 
   event.preventDefault();
 
+  const student =
+    getSavedStudentRegistration();
 
-  const messageBox =
-    document.getElementById(
-      "doubtMessage"
-    );
+  const subject =
+    document
+      .getElementById("doubtSubject")
+      .value;
+
+  const doubtText =
+    document
+      .getElementById("doubtText")
+      .value
+      .trim();
 
   const button =
     document.getElementById(
       "doubtSubmitButton"
     );
 
-  const subject =
-    document.getElementById(
-      "doubtSubject"
-    ).value;
 
-  const doubtText =
-    document.getElementById(
-      "doubtText"
-    ).value.trim();
+  if(!student || !student.id){
 
+    showDoubtMessage(
+      "Student registration नहीं मिली. कृपया registration complete करें.",
+      "error"
+    );
 
-  messageBox.className =
-    "doubt-message";
+    updateRegistrationUI();
 
-  messageBox.textContent = "";
+    return;
+
+  }
 
 
   if(!subject || !doubtText){
 
     showDoubtMessage(
-      "Please select a subject and write your doubt.",
+      "Subject और doubt दोनों भरना जरूरी है.",
       "error"
     );
 
@@ -3062,46 +2771,15 @@ async function submitDoubt(event){
 
   try{
 
-    const {
-      data:sessionData,
-      error:sessionError
-    } =
-      await supabaseClient.auth.getSession();
-
-
-    if(
-      sessionError ||
-      !sessionData ||
-      !sessionData.session
-    ){
-
-      showDoubtMessage(
-        "Please login first.",
-        "error"
-      );
-
-      openAuthModal();
-
-      return;
-
-    }
-
-
-    const studentId =
-      sessionData.session.user.id;
-
-
     const { error } =
-      await supabaseClient
-        .from("doubts")
-        .insert({
-
-          student_id:studentId,
-          subject:subject,
-          doubt_text:doubtText,
-          status:"pending"
-
-        });
+      await supabaseClient.rpc(
+        "submit_student_doubt",
+        {
+          p_registration_id:student.id,
+          p_subject:subject,
+          p_doubt_text:doubtText
+        }
+      );
 
 
     if(error){
@@ -3128,7 +2806,7 @@ async function submitDoubt(event){
 
 
     showDoubtMessage(
-      "✅ Your doubt has been submitted successfully.",
+      "✅ Doubt successfully submit हो गया. Teacher/Admin के reply का wait करें.",
       "success"
     );
 
@@ -3144,8 +2822,7 @@ async function submitDoubt(event){
     );
 
     showDoubtMessage(
-      "Something went wrong: " +
-      (error.message || "Unknown error"),
+      "Something went wrong. Please try again.",
       "error"
     );
 
@@ -3159,16 +2836,16 @@ async function submitDoubt(event){
 }
 
 
-/* =========================
-   DOUBT MESSAGE
-========================= */
-
 function showDoubtMessage(message,type){
 
   const box =
     document.getElementById(
       "doubtMessage"
     );
+
+  if(!box){
+    return;
+  }
 
   box.textContent = message;
 
@@ -3179,10 +2856,6 @@ function showDoubtMessage(message,type){
 }
 
 
-/* =========================
-   LOAD MY DOUBTS
-========================= */
-
 async function loadMyDoubts(){
 
   const container =
@@ -3190,9 +2863,25 @@ async function loadMyDoubts(){
       "myDoubtsContainer"
     );
 
+  const student =
+    getSavedStudentRegistration();
+
 
   if(!container){
     return;
+  }
+
+
+  if(!student || !student.id){
+
+    container.innerHTML = `
+      <div class="doubt-empty">
+        Registration complete karne ke baad yahan aapke doubts dikhenge.
+      </div>
+    `;
+
+    return;
+
   }
 
 
@@ -3205,61 +2894,25 @@ async function loadMyDoubts(){
 
   try{
 
-    const {
-      data:sessionData,
-      error:sessionError
-    } =
-      await supabaseClient.auth.getSession();
-
-
-    if(
-      sessionError ||
-      !sessionData ||
-      !sessionData.session
-    ){
-
-      container.innerHTML = `
-        <div class="doubt-empty">
-          🔐 Please login to view your doubts.
-        </div>
-      `;
-
-      return;
-
-    }
-
-
-    const studentId =
-      sessionData.session.user.id;
-
-
-    /*
-      IMPORTANT:
-      doubts table में replied_at column नहीं है,
-      इसलिए केवल existing columns select किए जा रहे हैं.
-    */
-
     const { data,error } =
-      await supabaseClient
-        .from("doubts")
-        .select(
-          "id,subject,doubt_text,reply_text,status,created_at"
-        )
-        .eq("student_id",studentId)
-        .order("created_at",{ascending:false});
+      await supabaseClient.rpc(
+        "get_student_doubts",
+        {
+          p_registration_id:student.id
+        }
+      );
 
 
     if(error){
 
       console.error(
-        "Load doubts error:",
+        "Doubt history error:",
         error
       );
 
       container.innerHTML = `
         <div class="doubt-empty">
-          ⚠️ Your doubts load नहीं हो पाए.<br><br>
-          ${escapeHTML(error.message || "Unknown error")}
+          ⚠️ Doubts load नहीं हो पाए. Please try again.
         </div>
       `;
 
@@ -3272,7 +2925,7 @@ async function loadMyDoubts(){
 
       container.innerHTML = `
         <div class="doubt-empty">
-          💬 अभी आपने कोई doubt submit नहीं किया है.
+          अभी आपने कोई doubt submit नहीं किया है.
         </div>
       `;
 
@@ -3282,38 +2935,42 @@ async function loadMyDoubts(){
 
 
     container.innerHTML =
-      data.map(function(doubt){
+      data.map(function(item){
 
-        const isReplied =
-          doubt.status === "replied" ||
-          Boolean(doubt.reply_text);
+        const status =
+          String(
+            item.status || "pending"
+          ).toLowerCase();
 
-
-        const statusText =
-          isReplied
-          ? "Replied"
-          : "Pending";
-
+        const replied =
+          status === "replied" ||
+          !!item.reply_text;
 
         const statusClass =
-          isReplied
+          replied
           ? "replied"
           : "pending";
 
+        const statusText =
+          replied
+          ? "REPLIED"
+          : "PENDING";
 
-        const createdDate =
-          doubt.created_at
-          ? new Date(doubt.created_at)
-              .toLocaleString(
-                "en-IN",
-                {
-                  day:"2-digit",
-                  month:"short",
-                  year:"numeric",
-                  hour:"2-digit",
-                  minute:"2-digit"
-                }
-              )
+
+        const date =
+          item.created_at
+          ? new Date(
+              item.created_at
+            ).toLocaleString(
+              "en-IN",
+              {
+                day:"2-digit",
+                month:"short",
+                year:"numeric",
+                hour:"2-digit",
+                minute:"2-digit"
+              }
+            )
           : "";
 
 
@@ -3323,60 +2980,75 @@ async function loadMyDoubts(){
 
             <div class="doubt-card-top">
 
-              <span class="doubt-subject">
-                📚 ${escapeHTML(
-                  doubt.subject
-                )}
-              </span>
+              <div>
 
-              <span class="doubt-status ${statusClass}">
+                <strong>
+                  ${escapeHTML(
+                    item.subject ||
+                    "Doubt"
+                  )}
+                </strong>
+
+                <span>
+                  ${escapeHTML(date)}
+                </span>
+
+              </div>
+
+              <span
+                class="doubt-status ${statusClass}"
+              >
+                ${replied ? "✅" : "⏳"}
                 ${statusText}
               </span>
 
             </div>
 
 
-            <div class="doubt-text">
-              ${escapeHTML(
-                doubt.doubt_text
-              )}
+            <div class="doubt-question">
+
+              <strong>
+                Your Doubt:
+              </strong>
+
+              <p>
+                ${escapeHTML(
+                  item.doubt_text || ""
+                ).replace(
+                  /\n/g,
+                  "<br>"
+                )}
+              </p>
+
             </div>
 
 
-            ${
-              createdDate
-              ? `
-                <div class="doubt-date">
-                  Submitted: ${createdDate}
-                </div>
-              `
-              : ""
-            }
+            <div
+              class="doubt-reply ${
+                replied ? "" : "waiting"
+              }"
+            >
 
+              <strong>
+                👨‍🏫 Teacher/Admin Reply:
+              </strong>
 
-            ${
-              doubt.reply_text
-              ? `
-                <div class="doubt-reply">
+              <p>
 
-                  <strong>
-                    👨‍🏫 Teacher/Admin Reply
-                  </strong>
+                ${
+                  replied
+                  ? escapeHTML(
+                      item.reply_text || ""
+                    ).replace(
+                      /\n/g,
+                      "<br>"
+                    )
+                  : "⏳ अभी reply नहीं आया है. Teacher/Admin आपके doubt को देख रहे हैं."
+                }
 
-                  <p>
-                    ${escapeHTML(
-                      doubt.reply_text
-                    )}
-                  </p>
+              </p>
 
-                </div>
-              `
-              : `
-                <div class="doubt-date">
-                  ⏳ Waiting for teacher/admin reply...
-                </div>
-              `
-            }
+            </div>
 
           </div>
 
@@ -3387,15 +3059,11 @@ async function loadMyDoubts(){
 
   }catch(error){
 
-    console.error(
-      "Load doubts exception:",
-      error
-    );
+    console.error(error);
 
     container.innerHTML = `
       <div class="doubt-empty">
-        ⚠️ Something went wrong.<br><br>
-        ${escapeHTML(error.message || "Unknown error")}
+        ⚠️ Something went wrong.
       </div>
     `;
 
@@ -3433,7 +3101,10 @@ async function loadResults(classValue){
         .select("*")
         .eq("class",classValue)
         .eq("is_active",true)
-        .order("percentage",{ascending:false});
+        .order(
+          "percentage",
+          {ascending:false}
+        );
 
 
     if(error){
@@ -3442,8 +3113,14 @@ async function loadResults(classValue){
 
       container.innerHTML = `
         <div class="student-result-item">
-          <strong>⚠️ Results load नहीं हो पाए</strong>
-          <span>कृपया थोड़ी देर बाद फिर try करें.</span>
+          <strong>
+            ⚠️ Results load नहीं हो पाए
+          </strong>
+
+          <span>
+            कृपया थोड़ी देर बाद फिर try करें.
+          </span>
+
         </div>
       `;
 
@@ -3456,11 +3133,16 @@ async function loadResults(classValue){
 
       container.innerHTML = `
         <div class="student-result-item">
-          <strong>📊 No Results Available</strong>
+
+          <strong>
+            📊 No Results Available
+          </strong>
+
           <span>
             Class ${escapeHTML(classValue)}
             के results अभी upload नहीं किए गए हैं.
           </span>
+
         </div>
       `;
 
@@ -3478,7 +3160,8 @@ async function loadResults(classValue){
 
             <strong>
               🏆 ${escapeHTML(
-                item.student_name || "Student"
+                item.student_name ||
+                "Student"
               )}
             </strong>
 
@@ -3487,7 +3170,9 @@ async function loadResults(classValue){
               ? `
                 <span>
                   Roll Number:
-                  ${escapeHTML(item.roll_number)}
+                  ${escapeHTML(
+                    item.roll_number
+                  )}
                 </span>
               `
               : ""
@@ -3500,7 +3185,9 @@ async function loadResults(classValue){
               ? `
                 <span>
                   Marks:
-                  ${escapeHTML(item.marks)}
+                  ${escapeHTML(
+                    item.marks
+                  )}
                 </span>
               `
               : ""
@@ -3513,7 +3200,9 @@ async function loadResults(classValue){
               ? `
                 <span>
                   Percentage:
-                  ${escapeHTML(item.percentage)}%
+                  ${escapeHTML(
+                    item.percentage
+                  )}%
                 </span>
               `
               : ""
@@ -3524,7 +3213,9 @@ async function loadResults(classValue){
               ? `
                 <span>
                   Rank:
-                  ${escapeHTML(item.rank)}
+                  ${escapeHTML(
+                    item.rank
+                  )}
                 </span>
               `
               : ""
@@ -3568,7 +3259,11 @@ function escapeHTML(value){
 
 loadAnnouncements();
 
-checkStudentSession();
+initializeStudentRegistration();
+
+loadDoubtSubjects();
+
+loadMyDoubts();
 
 </script>
 
