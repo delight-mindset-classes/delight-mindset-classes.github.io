@@ -819,9 +819,17 @@ nav a:hover{
 /* =========================
    COMMUNITY
 ========================= */
-.community-fullscreen{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;max-width:none!important;margin:0!important;z-index:9999;overflow-y:auto;background:#f7f9fc;padding:24px 0 40px;box-sizing:border-box}
-.community-fullscreen .container{max-width:1200px;margin:0 auto}
-.community-fullscreen .community-fullscreen-header{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:22px}
+.community-launch-card{background:#fff;border:1px solid #e0e5ed;border-radius:18px;padding:28px;display:flex;align-items:center;gap:20px;box-shadow:0 8px 25px rgba(30,45,80,.05)}
+.community-launch-icon{width:58px;height:58px;border-radius:16px;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-size:28px;flex:0 0 auto}
+.community-launch-content{flex:1}
+.community-launch-content h2{margin:5px 0 6px}
+.community-launch-content p{margin:0;color:#667085}
+.community-start-btn{white-space:nowrap}
+.community-fullscreen-panel{display:none;position:fixed;inset:0;width:100vw;height:100vh;z-index:99999;background:#f7f9fc;overflow-y:auto;box-sizing:border-box}
+.community-fullscreen-panel.show{display:block}
+.community-fullscreen-head{position:sticky;top:0;z-index:3;background:#fff;border-bottom:1px solid #e4e7ec;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.community-fullscreen-title{font-size:22px;font-weight:800;color:#172033;margin-top:3px}
+.community-fullscreen-body{max-width:1200px;margin:0 auto;padding:28px 20px 50px}
 .community-close-btn{border:1px solid #d9dee8;background:#fff;color:#344054;border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:700;font-size:13px;box-shadow:0 2px 8px rgba(30,45,80,.06)}
 .community-close-btn:hover{background:#f2f4f7}
 body.community-open{overflow:hidden}
@@ -1451,6 +1459,16 @@ footer{
 
 
 
+
+@media(max-width:700px){
+  .community-launch-card{flex-direction:column;align-items:flex-start;padding:22px}
+  .community-start-btn{width:100%}
+  .community-fullscreen-head{padding:13px 14px}
+  .community-fullscreen-title{font-size:18px}
+  .community-fullscreen-body{padding:18px 12px 35px}
+  .community-layout{grid-template-columns:1fr}
+  .community-create-card{position:static}
+}
 </style>
 </head>
 
@@ -1865,34 +1883,52 @@ footer{
 ========================= -->
 <section class="section alt" id="community">
   <div class="container">
-    <div class="community-fullscreen-header">
-      <div><span class="eyebrow">STUDENT COMMUNITY</span><h2>Community</h2></div>
+    <div class="community-launch-card">
+      <div class="community-launch-icon">💬</div>
+      <div class="community-launch-content">
+        <span class="eyebrow">STUDENT COMMUNITY</span>
+        <h2>Community</h2>
+        <p>Questions, study discussions aur useful tips students ke saath share karein.</p>
+      </div>
+      <button type="button" class="btn primary community-start-btn" onclick="openCommunityFullscreen(event)">
+        Start Communication →
+      </button>
+    </div>
+  </div>
+
+  <div id="communityFullscreenPanel" class="community-fullscreen-panel" aria-hidden="true">
+    <div class="community-fullscreen-head">
+      <div>
+        <span class="eyebrow">STUDENT COMMUNITY</span>
+        <div class="community-fullscreen-title">💬 Community</div>
+      </div>
       <button type="button" class="community-close-btn" onclick="closeCommunityFullscreen()">✕ Close Community</button>
     </div>
-    <p style="color:#667085;margin-bottom:25px;">
-      Students yahan questions, study discussions aur useful tips share kar sakte hain.
-    </p>
-    <div class="community-layout">
-      <div class="community-create-card">
-        <h3>✍️ Create a Post</h3>
-        <p class="community-subtitle">Apna study-related question ya useful post community ke saath share karein.</p>
-        <form id="communityPostForm" onsubmit="submitCommunityPost(event)">
-          <div class="community-form-group">
-            <label for="communityPostTitle">Post Title</label>
-            <input id="communityPostTitle" type="text" maxlength="120" placeholder="Example: Physics ka ye question samjha do" required>
-          </div>
-          <div class="community-form-group">
-            <label for="communityPostContent">Your Post</label>
-            <textarea id="communityPostContent" maxlength="2000" placeholder="Apna question ya message clearly likhein..." required></textarea>
-          </div>
-          <button id="communityPostButton" class="btn primary community-submit" type="submit">Publish Post</button>
-        </form>
-        <div id="communityMessage" class="community-message"></div>
-      </div>
-      <div class="community-feed-card">
-        <h3>💬 Community Feed</h3>
-        <p class="community-subtitle">Latest student posts, likes aur comments.</p>
-        <div id="communityFeed" class="community-feed"><div class="community-loading">⏳ Loading community...</div></div>
+
+    <div class="community-fullscreen-body">
+      <div class="community-layout">
+        <div class="community-create-card">
+          <h3>✍️ Create a Post</h3>
+          <p class="community-subtitle">Apna study-related question ya useful post community ke saath share karein.</p>
+          <form id="communityPostForm" onsubmit="submitCommunityPost(event)">
+            <div class="community-form-group">
+              <label for="communityPostTitle">Post Title</label>
+              <input id="communityPostTitle" type="text" maxlength="120" placeholder="Example: Physics ka ye question samjha do" required>
+            </div>
+            <div class="community-form-group">
+              <label for="communityPostContent">Your Post</label>
+              <textarea id="communityPostContent" maxlength="2000" placeholder="Apna question ya message clearly likhein..." required></textarea>
+            </div>
+            <button id="communityPostButton" class="btn primary community-submit" type="submit">Publish Post</button>
+          </form>
+          <div id="communityMessage" class="community-message"></div>
+        </div>
+
+        <div class="community-feed-card">
+          <h3>💬 Community Feed</h3>
+          <p class="community-subtitle">Latest student posts, likes aur comments.</p>
+          <div id="communityFeed" class="community-feed"><div class="community-loading">⏳ Loading community...</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -2319,9 +2355,10 @@ function formatCommunityDate(value){
 }
 function openCommunityFullscreen(event){
   if(event) event.preventDefault();
-  const section=document.getElementById("community");
-  if(!section) return;
-  section.classList.add("community-fullscreen");
+  const panel=document.getElementById("communityFullscreenPanel");
+  if(!panel) return;
+  panel.classList.add("show");
+  panel.setAttribute("aria-hidden","false");
   document.body.classList.add("community-open");
   history.replaceState(null,"",window.location.pathname+window.location.search+"#community");
   loadCommunityFeed();
@@ -2329,9 +2366,10 @@ function openCommunityFullscreen(event){
 }
 
 function closeCommunityFullscreen(){
-  const section=document.getElementById("community");
-  if(!section) return;
-  section.classList.remove("community-fullscreen");
+  const panel=document.getElementById("communityFullscreenPanel");
+  if(!panel) return;
+  panel.classList.remove("show");
+  panel.setAttribute("aria-hidden","true");
   document.body.classList.remove("community-open");
   history.replaceState(null,"",window.location.pathname+window.location.search);
 }
@@ -2380,6 +2418,28 @@ async function submitCommunityComment(postId,event){
   }catch(error){console.error(error);alert("Something went wrong. Please try again.");}
   finally{if(button){button.disabled=false;button.textContent="Comment";}}
 }
+async function deleteCommunityPost(postId){
+  const student=await getCommunityStudent();
+  if(!student){showCommunityMessage("Please complete student registration first.","error");return;}
+  if(!confirm("Kya aap apni post delete karna chahte hain?")) return;
+  try{
+    const {error}=await supabaseClient.rpc("delete_my_community_post",{
+      p_post_id:postId,
+      p_registration_id:student.id
+    });
+    if(error){
+      console.error("Community delete error:",error);
+      showCommunityMessage("Post delete nahi ho payi: "+(error.message||"Unknown error"),"error");
+      return;
+    }
+    showCommunityMessage("✅ Post deleted successfully.","success");
+    await loadCommunityFeed();
+  }catch(error){
+    console.error("Community delete exception:",error);
+    showCommunityMessage("Something went wrong. Please try again.","error");
+  }
+}
+
 async function loadCommunityFeed(){
   const container=document.getElementById("communityFeed"); if(!container)return;
   const student=await getCommunityStudent();
@@ -2406,6 +2466,7 @@ async function loadCommunityFeed(){
         <div class="community-actions">
           <button class="community-action-btn ${liked?"liked":""}" type="button" onclick="toggleCommunityLike('${post.id}')">${liked?"❤️":"🤍"} Like ${count}</button>
           <button class="community-action-btn" type="button" onclick="document.getElementById('communityCommentInput_${post.id}').focus()">💬 Comment ${pcs.length}</button>
+          ${post.student_id===student.id?`<button class="community-action-btn community-delete-btn" type="button" onclick="deleteCommunityPost('${post.id}')">🗑️ Delete</button>`:""}
         </div>
         <div class="community-comments"><div class="community-comment-list">${commentsHTML}</div>
           <form class="community-comment-form" onsubmit="submitCommunityComment('${post.id}',event)">
@@ -4155,6 +4216,7 @@ window.submitCommunityPost = submitCommunityPost;
 window.toggleCommunityLike = toggleCommunityLike;
 window.submitCommunityComment = submitCommunityComment;
 window.loadCommunityFeed = loadCommunityFeed;
+window.deleteCommunityPost = deleteCommunityPost;
 
 document.addEventListener("DOMContentLoaded", function(){
   const classSelect = document.getElementById("dppClassSelect");
