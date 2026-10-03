@@ -819,6 +819,12 @@ nav a:hover{
 /* =========================
    COMMUNITY
 ========================= */
+.community-fullscreen{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;max-width:none!important;margin:0!important;z-index:9999;overflow-y:auto;background:#f7f9fc;padding:24px 0 40px;box-sizing:border-box}
+.community-fullscreen .container{max-width:1200px;margin:0 auto}
+.community-fullscreen .community-fullscreen-header{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:22px}
+.community-close-btn{border:1px solid #d9dee8;background:#fff;color:#344054;border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:700;font-size:13px;box-shadow:0 2px 8px rgba(30,45,80,.06)}
+.community-close-btn:hover{background:#f2f4f7}
+body.community-open{overflow:hidden}
 .community-layout{display:grid;grid-template-columns:340px 1fr;gap:22px;align-items:start}
 .community-create-card,.community-feed-card{background:white;border:1px solid #e0e5ed;border-radius:16px;padding:22px;box-shadow:0 8px 25px rgba(30,45,80,.05)}
 .community-create-card{position:sticky;top:95px}
@@ -1620,7 +1626,7 @@ footer{
       <a href="#home">Home</a>
       <a href="#material">Study Material</a>
       <a href="#dpp">DPP Quiz</a>
-      <a href="#community">Community</a>
+      <a href="#community" onclick="openCommunityFullscreen(event)">Community</a>
       <a href="#doubts">Doubt Section</a>
       <a href="#announcements">Announcements</a>
       <a href="#results">Results</a>
@@ -1859,8 +1865,9 @@ footer{
 ========================= -->
 <section class="section alt" id="community">
   <div class="container">
-    <div class="section-head">
+    <div class="community-fullscreen-header">
       <div><span class="eyebrow">STUDENT COMMUNITY</span><h2>Community</h2></div>
+      <button type="button" class="community-close-btn" onclick="closeCommunityFullscreen()">✕ Close Community</button>
     </div>
     <p style="color:#667085;margin-bottom:25px;">
       Students yahan questions, study discussions aur useful tips share kar sakte hain.
@@ -2286,9 +2293,19 @@ footer{
 /* =========================
    COMMUNITY
 ========================= */
-function getCommunityStudent(){
+async function getCommunityStudent(){
   const student=getSavedStudentRegistration();
-  return student&&student.id&&student.student_name?student:null;
+  if(!student||!student.id||!student.student_name){return null;}
+  try{
+    const {data,error}=await supabaseClient.from("student_registrations").select("id,student_name,is_active").eq("id",student.id).maybeSingle();
+    if(error){console.error("Community student verification error:",error);return null;}
+    if(!data||data.is_active===false){
+      localStorage.removeItem(STUDENT_REGISTRATION_STORAGE_KEY);
+      updateRegistrationUI();
+      return null;
+    }
+    return {...student,id:data.id,student_name:data.student_name};
+  }catch(error){console.error("Community student verification exception:",error);return null;}
 }
 function showCommunityMessage(message,type){
   const box=document.getElementById("communityMessage"); if(!box)return;
@@ -2300,9 +2317,28 @@ function formatCommunityDate(value){
   const date=new Date(value); if(Number.isNaN(date.getTime()))return "";
   return date.toLocaleString("en-IN",{day:"numeric",month:"short",year:"numeric",hour:"numeric",minute:"2-digit"});
 }
+function openCommunityFullscreen(event){
+  if(event) event.preventDefault();
+  const section=document.getElementById("community");
+  if(!section) return;
+  section.classList.add("community-fullscreen");
+  document.body.classList.add("community-open");
+  history.replaceState(null,"",window.location.pathname+window.location.search+"#community");
+  loadCommunityFeed();
+  window.scrollTo(0,0);
+}
+
+function closeCommunityFullscreen(){
+  const section=document.getElementById("community");
+  if(!section) return;
+  section.classList.remove("community-fullscreen");
+  document.body.classList.remove("community-open");
+  history.replaceState(null,"",window.location.pathname+window.location.search);
+}
+
 async function submitCommunityPost(event){
   event.preventDefault();
-  const student=getCommunityStudent();
+  const student=await getCommunityStudent();
   if(!student){showCommunityMessage("Please complete student registration first.","error");return;}
   const title=document.getElementById("communityPostTitle").value.trim();
   const content=document.getElementById("communityPostContent").value.trim();
@@ -2318,7 +2354,7 @@ async function submitCommunityPost(event){
   finally{button.disabled=false;button.textContent="Publish Post";}
 }
 async function toggleCommunityLike(postId){
-  const student=getCommunityStudent(); if(!student)return;
+  const student=await getCommunityStudent(); if(!student)return;
   try{
     const {data:existingLike,error:findError}=await supabaseClient.from("community_likes").select("id").eq("post_id",postId).eq("student_id",student.id).maybeSingle();
     if(findError){console.error(findError);return;}
@@ -2332,7 +2368,7 @@ async function toggleCommunityLike(postId){
 }
 async function submitCommunityComment(postId,event){
   event.preventDefault();
-  const student=getCommunityStudent(); if(!student)return;
+  const student=await getCommunityStudent(); if(!student)return;
   const input=document.getElementById("communityCommentInput_"+postId); if(!input)return;
   const commentText=input.value.trim(); if(!commentText)return;
   if(commentText.length>500){alert("Comment 500 characters se zyada nahi hona chahiye.");return;}
@@ -2346,7 +2382,7 @@ async function submitCommunityComment(postId,event){
 }
 async function loadCommunityFeed(){
   const container=document.getElementById("communityFeed"); if(!container)return;
-  const student=getCommunityStudent();
+  const student=await getCommunityStudent();
   if(!student){container.innerHTML='<div class="community-empty">👤 Student registration complete karne ke baad Community use kar sakte hain.</div>';return;}
   container.innerHTML='<div class="community-loading">⏳ Loading community...</div>';
   try{
@@ -2833,20 +2869,103 @@ function loadDoubtSubjects(){
    DOUBT SECTION
 ========================= */
 
-/*
-  Student login/auth ko abhi remove kiya gaya hai.
-  Doubt submit system ko next step me student registration
-  ke saath connect kiya jayega.
-*/
-
 async function submitDoubt(event){
 
   event.preventDefault();
 
-  showDoubtMessage(
-    "Doubt submission ko registration system ke saath connect karna next step hai.",
-    "error"
-  );
+  const student = getSavedStudentRegistration();
+  const subjectEl = document.getElementById("doubtSubject");
+  const doubtEl = document.getElementById("doubtText");
+  const button = event.submitter || document.querySelector("#doubtForm button[type=submit]");
+
+  if(!student || !student.id){
+    showDoubtMessage(
+      "Registration nahi mili. Please student registration complete karein.",
+      "error"
+    );
+    updateRegistrationUI();
+    return;
+  }
+
+  const subject = subjectEl ? subjectEl.value.trim() : "";
+  const doubtText = doubtEl ? doubtEl.value.trim() : "";
+
+  if(!subject){
+    showDoubtMessage("Please subject select karein.","error");
+    return;
+  }
+
+  if(!doubtText){
+    showDoubtMessage("Please apna doubt likhein.","error");
+    return;
+  }
+
+  if(button){
+    button.disabled = true;
+    button.textContent = "Submitting...";
+  }
+
+  try{
+
+    const { error } = await supabaseClient.rpc(
+      "submit_student_doubt",
+      {
+        p_registration_id: student.id,
+        p_subject: subject,
+        p_doubt_text: doubtText
+      }
+    );
+
+    if(error){
+      console.error("Doubt submission error:", error);
+
+      if(
+        String(error.message || "").toLowerCase().includes("student registration not found")
+      ){
+        localStorage.removeItem(STUDENT_REGISTRATION_STORAGE_KEY);
+        updateRegistrationUI();
+        showDoubtMessage(
+          "Registration record nahi mila. Please dobara register karein.",
+          "error"
+        );
+      }else{
+        showDoubtMessage(
+          "Doubt submit nahi ho paya: " + (error.message || "Unknown error"),
+          "error"
+        );
+      }
+
+      return;
+    }
+
+    if(doubtEl){
+      doubtEl.value = "";
+    }
+
+    showDoubtMessage(
+      "✅ Doubt successfully submit ho gaya. Teacher/Admin ise dekh kar reply kar sakte hain.",
+      "success"
+    );
+
+    await loadMyDoubts();
+
+  }catch(error){
+
+    console.error("Doubt submission exception:", error);
+
+    showDoubtMessage(
+      "Something went wrong. Please try again.",
+      "error"
+    );
+
+  }finally{
+
+    if(button){
+      button.disabled = false;
+      button.textContent = "Submit Doubt";
+    }
+
+  }
 
 }
 
@@ -2874,19 +2993,126 @@ function showDoubtMessage(message,type){
 async function loadMyDoubts(){
 
   const container =
-    document.getElementById(
-      "myDoubtsContainer"
-    );
+    document.getElementById("myDoubtsContainer");
+
+  const student =
+    getSavedStudentRegistration();
 
   if(!container){
     return;
   }
 
+  if(!student || !student.id){
+    container.innerHTML = `
+      <div class="doubt-empty">
+        Registration complete karne ke baad yahan aapke doubts dikhेंगे.
+      </div>
+    `;
+    return;
+  }
+
   container.innerHTML = `
     <div class="doubt-empty">
-      💬 Doubt history registration system ke saath connect hone ke baad available hogi.
+      ⏳ Loading your doubts...
     </div>
   `;
+
+  try{
+
+    const { data,error } =
+      await supabaseClient.rpc(
+        "get_student_doubts",
+        {
+          p_registration_id: student.id
+        }
+      );
+
+    if(error){
+      console.error("Doubt history error:",error);
+
+      container.innerHTML = `
+        <div class="doubt-empty">
+          ⚠️ Doubts load नहीं हो पाए. Please try again.
+        </div>
+      `;
+      return;
+    }
+
+    if(!data || data.length === 0){
+      container.innerHTML = `
+        <div class="doubt-empty">
+          अभी आपने कोई doubt submit नहीं किया है.
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = data.map(function(doubt){
+
+      const status =
+        String(doubt.status || "pending").toLowerCase();
+
+      const statusText =
+        status === "replied" ? "Replied" : "Pending";
+
+      return `
+        <div class="doubt-card">
+
+          <div class="doubt-card-top">
+            <span class="doubt-subject">
+              ${escapeHTML(doubt.subject || "- ")}
+            </span>
+
+            <span class="doubt-status ${status === "replied" ? "replied" : "pending"}">
+              ${statusText}
+            </span>
+          </div>
+
+          <div class="doubt-text">
+            ${escapeHTML(doubt.doubt_text || "")}
+          </div>
+
+          ${
+            doubt.reply_text
+            ? `
+              <div class="doubt-reply">
+                <strong>👨‍🏫 Teacher/Admin Reply</strong>
+                <p>${escapeHTML(doubt.reply_text)}</p>
+              </div>
+            `
+            : `
+              <div class="doubt-date">
+                ⏳ Teacher/Admin ka reply abhi pending hai.
+              </div>
+            `
+          }
+
+          ${
+            doubt.created_at
+            ? `
+              <div class="doubt-date">
+                Submitted: ${new Date(doubt.created_at).toLocaleString("en-IN")}
+              </div>
+            `
+            : ""
+          }
+
+        </div>
+      `;
+
+    }).join("");
+
+  }catch(error){
+
+    console.error("Doubt history exception:",error);
+
+    container.innerHTML = `
+      <div class="doubt-empty">
+        ⚠️ Doubts load नहीं हो पाए. Please try again.
+      </div>
+    `;
+
+  }
 
 }
 
@@ -3316,9 +3542,15 @@ function showSavedStudentDetails(){
 }
 
 
-function initializeStudentRegistration(){
+async function initializeStudentRegistration(){
 
   updateRegistrationUI();
+
+  // Doubt subject dropdown ko registration/load ke time populate karo
+  loadDoubtSubjects();
+
+  // Saved student ke doubts bhi load karo
+  await loadMyDoubts();
 
 }
 
@@ -3931,6 +4163,12 @@ document.addEventListener("DOMContentLoaded", function(){
   if(subjectSelect) subjectSelect.addEventListener("change", loadStudentDPPs);
 });
 
+
+window.addEventListener("load",function(){
+  if(window.location.hash==="#community"){
+    openCommunityFullscreen();
+  }
+});
 </script>
 
 
