@@ -627,6 +627,170 @@ footer{
   font-size:13px;
 }
 
+
+/* =========================================
+   DPP QUIZ MANAGER
+========================================= */
+
+.dpp-manager-card{
+  grid-column:1/-1;
+}
+
+.dpp-question-builder{
+  display:grid;
+  gap:14px;
+  margin-top:18px;
+}
+
+.dpp-question-card{
+  border:1px solid #e0e5ed;
+  border-radius:12px;
+  padding:16px;
+  background:#fafbfc;
+}
+
+.dpp-question-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.dpp-question-number{
+  font-weight:800;
+  color:#4355d8;
+}
+
+.dpp-option-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.dpp-question-card input,
+.dpp-question-card textarea,
+.dpp-question-card select{
+  width:100%;
+  padding:10px;
+  border:1px solid #d9dee8;
+  border-radius:8px;
+  font-size:13px;
+  outline:none;
+  background:white;
+}
+
+.dpp-question-card textarea{
+  min-height:70px;
+  resize:vertical;
+}
+
+.dpp-question-card input:focus,
+.dpp-question-card textarea:focus,
+.dpp-question-card select:focus{
+  border-color:#4355d8;
+  box-shadow:0 0 0 3px rgba(67,85,216,.08);
+}
+
+.dpp-inline-label{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:5px;
+}
+
+.dpp-form-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.dpp-list{
+  margin-top:20px;
+  display:grid;
+  gap:12px;
+}
+
+.dpp-item{
+  border:1px solid #e0e5ed;
+  border-radius:12px;
+  padding:16px;
+  background:#fafbfc;
+}
+
+.dpp-item-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.dpp-item-title{
+  font-weight:800;
+  font-size:16px;
+}
+
+.dpp-item-meta{
+  color:#667085;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.dpp-item-description{
+  color:#667085;
+  font-size:13px;
+  margin-top:8px;
+}
+
+.dpp-item-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+
+.dpp-edit-btn{
+  background:#eef1ff;
+  color:#4355d8;
+}
+
+.dpp-question-count{
+  display:inline-block;
+  margin-top:8px;
+  padding:4px 9px;
+  border-radius:20px;
+  background:#ecfdf3;
+  color:#027a48;
+  font-size:11px;
+  font-weight:700;
+}
+
+.dpp-builder-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+
+.dpp-section-divider{
+  height:1px;
+  background:#e5e7eb;
+  margin:25px 0;
+}
+
+@media(max-width:750px){
+  .dpp-option-grid,
+  .dpp-form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .dpp-item-top,
+  .dpp-question-top{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
 .hidden{
   display:none !important;
 }
@@ -1242,6 +1406,127 @@ Loading student doubts...
 
 
 
+
+
+<!-- =====================================
+     DPP QUIZ MANAGER
+===================================== -->
+
+<div
+class="admin-card dpp-manager-card"
+id="dppManager"
+>
+
+<h3>📝 DPP Quiz Manager</h3>
+
+<p class="admin-card-description">
+Create PW-style MCQ DPPs. Students will attempt these as quizzes from the main website.
+</p>
+
+<div class="dpp-form-grid">
+
+<div class="form-group">
+<label>Select Class</label>
+<select id="dppClass">
+<option value="">Select Class</option>
+<option value="9">Class 9</option>
+<option value="10">Class 10</option>
+<option value="11">Class 11</option>
+<option value="12">Class 12</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Select Subject</label>
+<select id="dppSubject">
+<option value="">Select Subject</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Chapter / Topic</label>
+<input type="text" id="dppChapter" placeholder="Example: Laws of Motion">
+</div>
+
+</div>
+
+<div class="form-group">
+<label>DPP Title</label>
+<input type="text" id="dppTitle" placeholder="Example: Laws of Motion DPP 01">
+</div>
+
+<div class="form-group">
+<label>Description</label>
+<textarea id="dppDescription" placeholder="Optional short description for students..."></textarea>
+</div>
+
+<div class="dpp-section-divider"></div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+<div>
+<strong>Questions</strong>
+<div class="dpp-item-meta">Add MCQs with 4 options, correct answer and explanation.</div>
+</div>
+
+<button
+class="btn primary"
+type="button"
+onclick="addDPPQuestion()"
+>
+➕ Add Question
+</button>
+</div>
+
+<div
+id="dppQuestionBuilder"
+class="dpp-question-builder"
+>
+
+<div class="info-box" id="dppNoQuestions">
+अभी कोई question add नहीं किया गया है। ऊपर “Add Question” दबाएँ।
+</div>
+
+</div>
+
+<div class="dpp-builder-actions">
+
+<button
+id="saveDPPButton"
+class="btn primary"
+type="button"
+onclick="saveDPP()"
+>
+💾 Save DPP
+</button>
+
+<button
+id="cancelDPPButton"
+class="btn"
+type="button"
+onclick="resetDPPForm()"
+style="background:#eef2f6;color:#344054;"
+>
+↩️ Clear Form
+</button>
+
+</div>
+
+<div id="dppMessage" class="message"></div>
+
+<div class="dpp-section-divider"></div>
+
+<h3>📚 Saved DPPs</h3>
+
+<div
+id="dppList"
+class="dpp-list"
+>
+<div class="info-box">Loading DPPs...</div>
+</div>
+
+</div>
+
+
 <!-- =====================================
      UPLOADED MATERIALS
 ===================================== -->
@@ -1332,6 +1617,13 @@ const subjects = {
 
 };
 
+
+
+/* =====================================================
+   DPP CLASS CHANGE
+===================================================== */
+
+document.getElementById("dppClass")?.addEventListener("change",loadDPPSubjects);
 
 /* =====================================================
    CLASS CHANGE
@@ -1585,6 +1877,7 @@ loadAnnouncements();
 loadResults();
 loadStudents();
 loadDoubts();
+loadDPPs();
 
 }
 
@@ -4319,6 +4612,439 @@ text
 
 }
 
+
+
+/* =====================================================
+   DPP QUIZ MANAGER
+===================================================== */
+
+const dppSubjects = {
+  "9":["Maths","Science","English"],
+  "10":["Maths","Science","English"],
+  "11":["Physics","Chemistry","Maths","Biology","English"],
+  "12":["Physics","Chemistry","Maths","Biology","English"]
+};
+
+let dppEditingId = null;
+let dppQuestionCounter = 0;
+
+function loadDPPSubjects(){
+  const classSelect = document.getElementById("dppClass");
+  const subjectSelect = document.getElementById("dppSubject");
+  if(!classSelect || !subjectSelect) return;
+
+  subjectSelect.innerHTML = '<option value="">Select Subject</option>';
+  const list = dppSubjects[classSelect.value] || [];
+
+  list.forEach(function(subject){
+    const option = document.createElement("option");
+    option.value = subject;
+    option.textContent = subject;
+    subjectSelect.appendChild(option);
+  });
+}
+
+function addDPPQuestion(questionData = null){
+  const builder = document.getElementById("dppQuestionBuilder");
+  if(!builder) return;
+
+  const empty = document.getElementById("dppNoQuestions");
+  if(empty) empty.remove();
+
+  dppQuestionCounter++;
+  const number = builder.querySelectorAll(".dpp-question-card").length + 1;
+  const card = document.createElement("div");
+  card.className = "dpp-question-card";
+  card.dataset.questionId = questionData?.id || "";
+
+  const q = questionData || {};
+
+  card.innerHTML = `
+    <div class="dpp-question-top">
+      <div class="dpp-question-number">Question ${number}</div>
+      <button type="button" class="small-btn delete-btn" onclick="removeDPPQuestion(this)">🗑️ Remove</button>
+    </div>
+
+    <div class="form-group">
+      <label class="dpp-inline-label">Question</label>
+      <textarea class="dpp-q-text" placeholder="Enter question...">${escapeHTML(q.question_text || "")}</textarea>
+    </div>
+
+    <div class="dpp-option-grid">
+      <div>
+        <label class="dpp-inline-label">Option A</label>
+        <input class="dpp-option-a" type="text" placeholder="Option A" value="${escapeHTML(q.option_a || "")}">
+      </div>
+      <div>
+        <label class="dpp-inline-label">Option B</label>
+        <input class="dpp-option-b" type="text" placeholder="Option B" value="${escapeHTML(q.option_b || "")}">
+      </div>
+      <div>
+        <label class="dpp-inline-label">Option C</label>
+        <input class="dpp-option-c" type="text" placeholder="Option C" value="${escapeHTML(q.option_c || "")}">
+      </div>
+      <div>
+        <label class="dpp-inline-label">Option D</label>
+        <input class="dpp-option-d" type="text" placeholder="Option D" value="${escapeHTML(q.option_d || "")}">
+      </div>
+    </div>
+
+    <div class="dpp-option-grid" style="margin-top:10px;">
+      <div>
+        <label class="dpp-inline-label">Correct Answer</label>
+        <select class="dpp-correct-option">
+          <option value="">Select correct option</option>
+          <option value="A" ${q.correct_option === "A" ? "selected" : ""}>A</option>
+          <option value="B" ${q.correct_option === "B" ? "selected" : ""}>B</option>
+          <option value="C" ${q.correct_option === "C" ? "selected" : ""}>C</option>
+          <option value="D" ${q.correct_option === "D" ? "selected" : ""}>D</option>
+        </select>
+      </div>
+      <div>
+        <label class="dpp-inline-label">Marks / Negative</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <input class="dpp-marks" type="number" step="0.5" value="${q.marks ?? 4}" placeholder="Marks">
+          <input class="dpp-negative" type="number" step="0.5" value="${q.negative_marks ?? 1}" placeholder="Negative">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-top:10px;margin-bottom:0;">
+      <label class="dpp-inline-label">Explanation</label>
+      <textarea class="dpp-explanation" placeholder="Optional explanation shown after answering...">${escapeHTML(q.explanation || "")}</textarea>
+    </div>
+  `;
+
+  builder.appendChild(card);
+  renumberDPPQuestions();
+}
+
+function removeDPPQuestion(button){
+  const card = button.closest(".dpp-question-card");
+  if(!card) return;
+  card.remove();
+  renumberDPPQuestions();
+
+  const builder = document.getElementById("dppQuestionBuilder");
+  if(builder && builder.querySelectorAll(".dpp-question-card").length === 0){
+    builder.innerHTML = '<div class="info-box" id="dppNoQuestions">अभी कोई question add नहीं किया गया है। ऊपर “Add Question” दबाएँ।</div>';
+  }
+}
+
+function renumberDPPQuestions(){
+  document.querySelectorAll("#dppQuestionBuilder .dpp-question-card").forEach(function(card,index){
+    const label = card.querySelector(".dpp-question-number");
+    if(label) label.textContent = "Question " + (index + 1);
+  });
+}
+
+function getDPPQuestionData(){
+  const cards = document.querySelectorAll("#dppQuestionBuilder .dpp-question-card");
+  const questions = [];
+
+  cards.forEach(function(card,index){
+    questions.push({
+      id: card.dataset.questionId || null,
+      question_no: index + 1,
+      question_text: card.querySelector(".dpp-q-text")?.value.trim() || "",
+      option_a: card.querySelector(".dpp-option-a")?.value.trim() || "",
+      option_b: card.querySelector(".dpp-option-b")?.value.trim() || "",
+      option_c: card.querySelector(".dpp-option-c")?.value.trim() || "",
+      option_d: card.querySelector(".dpp-option-d")?.value.trim() || "",
+      correct_option: card.querySelector(".dpp-correct-option")?.value || "",
+      explanation: card.querySelector(".dpp-explanation")?.value.trim() || "",
+      marks: Number(card.querySelector(".dpp-marks")?.value || 4),
+      negative_marks: Number(card.querySelector(".dpp-negative")?.value || 1)
+    });
+  });
+
+  return questions;
+}
+
+function showDPPMessage(text,type){
+  const box = document.getElementById("dppMessage");
+  if(!box) return;
+  box.textContent = text;
+  box.className = "message " + type;
+}
+
+function resetDPPForm(){
+  dppEditingId = null;
+
+  ["dppClass","dppSubject","dppChapter","dppTitle","dppDescription"].forEach(function(id){
+    const el = document.getElementById(id);
+    if(el) el.value = "";
+  });
+
+  const subject = document.getElementById("dppSubject");
+  if(subject) subject.innerHTML = '<option value="">Select Subject</option>';
+
+  const builder = document.getElementById("dppQuestionBuilder");
+  if(builder) builder.innerHTML = '<div class="info-box" id="dppNoQuestions">अभी कोई question add नहीं किया गया है। ऊपर “Add Question” दबाएँ।</div>';
+
+  const button = document.getElementById("saveDPPButton");
+  if(button) button.textContent = "💾 Save DPP";
+
+  const message = document.getElementById("dppMessage");
+  if(message){
+    message.textContent = "";
+    message.className = "message";
+  }
+}
+
+async function saveDPP(){
+  const button = document.getElementById("saveDPPButton");
+  const classValue = document.getElementById("dppClass")?.value;
+  const subject = document.getElementById("dppSubject")?.value;
+  const chapter = document.getElementById("dppChapter")?.value.trim();
+  const title = document.getElementById("dppTitle")?.value.trim();
+  const description = document.getElementById("dppDescription")?.value.trim() || null;
+  const questions = getDPPQuestionData();
+
+  if(!classValue || !subject || !chapter || !title){
+    showDPPMessage("Class, subject, chapter और DPP title भरना जरूरी है।","error");
+    return;
+  }
+
+  if(questions.length === 0){
+    showDPPMessage("कम से कम 1 question add करें।","error");
+    return;
+  }
+
+  for(let i=0;i<questions.length;i++){
+    const q = questions[i];
+    if(!q.question_text || !q.option_a || !q.option_b || !q.option_c || !q.option_d || !q.correct_option){
+      showDPPMessage("Question " + (i+1) + " में question, चारों options और correct answer पूरा भरें।","error");
+      return;
+    }
+    if(!Number.isFinite(q.marks) || !Number.isFinite(q.negative_marks)){
+      showDPPMessage("Question " + (i+1) + " के marks/negative marks सही भरें।","error");
+      return;
+    }
+  }
+
+  if(button) button.disabled = true;
+  showDPPMessage(dppEditingId ? "DPP update हो रहा है..." : "DPP save हो रहा है...","success");
+
+  try{
+    let dppId = dppEditingId;
+
+    if(dppId){
+      const {error:updateError} = await supabaseClient
+        .from("dpp_sets")
+        .update({
+          class: classValue,
+          subject: subject,
+          chapter: chapter,
+          title: title,
+          description: description
+        })
+        .eq("id", dppId);
+
+      if(updateError) throw updateError;
+
+      const {error:deleteError} = await supabaseClient
+        .from("dpp_questions")
+        .delete()
+        .eq("dpp_id", dppId);
+
+      if(deleteError) throw deleteError;
+    }else{
+      const {data,error:insertError} = await supabaseClient
+        .from("dpp_sets")
+        .insert({
+          class: classValue,
+          subject: subject,
+          chapter: chapter,
+          title: title,
+          description: description,
+          is_active: true
+        })
+        .select("id")
+        .single();
+
+      if(insertError) throw insertError;
+      dppId = data.id;
+    }
+
+    const rows = questions.map(function(q){
+      return {
+        dpp_id: dppId,
+        question_no: q.question_no,
+        question_text: q.question_text,
+        option_a: q.option_a,
+        option_b: q.option_b,
+        option_c: q.option_c,
+        option_d: q.option_d,
+        correct_option: q.correct_option,
+        explanation: q.explanation || null,
+        marks: q.marks,
+        negative_marks: q.negative_marks
+      };
+    });
+
+    const {error:questionError} = await supabaseClient
+      .from("dpp_questions")
+      .insert(rows);
+
+    if(questionError) throw questionError;
+
+    showDPPMessage(dppEditingId ? "✅ DPP updated successfully!" : "✅ DPP created successfully!","success");
+    resetDPPForm();
+    await loadDPPs();
+
+  }catch(error){
+    console.error("DPP save error:",error);
+    showDPPMessage("DPP save नहीं हुआ: " + (error.message || "Unknown error"),"error");
+  }finally{
+    if(button) button.disabled = false;
+    if(!dppEditingId && button) button.textContent = "💾 Save DPP";
+  }
+}
+
+async function loadDPPs(){
+  const container = document.getElementById("dppList");
+  if(!container) return;
+
+  container.innerHTML = '<div class="info-box">Loading DPPs...</div>';
+
+  try{
+    const {data,error} = await supabaseClient
+      .from("dpp_sets")
+      .select("*")
+      .order("created_at",{ascending:false});
+
+    if(error) throw error;
+
+    if(!data || data.length === 0){
+      container.innerHTML = '<div class="info-box">अभी कोई DPP create नहीं किया गया है।</div>';
+      return;
+    }
+
+    const ids = data.map(d => d.id);
+    const {data:questions,error:qError} = await supabaseClient
+      .from("dpp_questions")
+      .select("dpp_id")
+      .in("dpp_id",ids);
+
+    if(qError) throw qError;
+
+    const counts = {};
+    (questions || []).forEach(function(q){
+      counts[q.dpp_id] = (counts[q.dpp_id] || 0) + 1;
+    });
+
+    container.innerHTML = "";
+
+    data.forEach(function(dpp){
+      const item = document.createElement("div");
+      item.className = "dpp-item";
+
+      const date = dpp.created_at ? new Date(dpp.created_at).toLocaleDateString("en-IN") : "";
+      const status = dpp.is_active ? "🟢 Active" : "⚪ Inactive";
+
+      item.innerHTML = `
+        <div class="dpp-item-top">
+          <div>
+            <div class="dpp-item-title">${escapeHTML(dpp.title)}</div>
+            <div class="dpp-item-meta">Class ${escapeHTML(dpp.class)} • ${escapeHTML(dpp.subject)} • ${escapeHTML(dpp.chapter)}</div>
+            <span class="dpp-question-count">${counts[dpp.id] || 0} Questions</span>
+          </div>
+          <div class="dpp-item-meta">${status}</div>
+        </div>
+
+        ${dpp.description ? `<div class="dpp-item-description">${escapeHTML(dpp.description)}</div>` : ""}
+
+        <div class="dpp-item-meta" style="margin-top:8px;">Created: ${escapeHTML(date)}</div>
+
+        <div class="dpp-item-actions">
+          <button class="small-btn dpp-edit-btn" onclick="editDPP('${dpp.id}')">✏️ Edit</button>
+          <button class="small-btn active-btn" onclick="toggleDPPActive('${dpp.id}',${!!dpp.is_active})">${dpp.is_active ? "Deactivate" : "Activate"}</button>
+          <button class="small-btn delete-btn" onclick="deleteDPP('${dpp.id}')">🗑️ Delete</button>
+        </div>
+      `;
+
+      container.appendChild(item);
+    });
+  }catch(error){
+    console.error("Load DPP error:",error);
+    container.innerHTML = `<div class="info-box">DPPs load नहीं हो पाए।<br><br>${escapeHTML(error.message || "Unknown error")}</div>`;
+  }
+}
+
+async function editDPP(id){
+  try{
+    const {data:dpp,error:dppError} = await supabaseClient
+      .from("dpp_sets")
+      .select("*")
+      .eq("id",id)
+      .single();
+
+    if(dppError) throw dppError;
+
+    const {data:questions,error:qError} = await supabaseClient
+      .from("dpp_questions")
+      .select("*")
+      .eq("dpp_id",id)
+      .order("question_no",{ascending:true});
+
+    if(qError) throw qError;
+
+    dppEditingId = id;
+
+    const classSelect = document.getElementById("dppClass");
+    classSelect.value = dpp.class;
+    loadDPPSubjects();
+    document.getElementById("dppSubject").value = dpp.subject;
+    document.getElementById("dppChapter").value = dpp.chapter || "";
+    document.getElementById("dppTitle").value = dpp.title || "";
+    document.getElementById("dppDescription").value = dpp.description || "";
+
+    const builder = document.getElementById("dppQuestionBuilder");
+    builder.innerHTML = "";
+    (questions || []).forEach(function(q){ addDPPQuestion(q); });
+
+    document.getElementById("saveDPPButton").textContent = "💾 Update DPP";
+    showDPPMessage("✏️ DPP edit mode में है। Changes करके Update DPP दबाएँ।","success");
+
+    document.getElementById("dppManager")?.scrollIntoView({behavior:"smooth",block:"start"});
+  }catch(error){
+    console.error("Edit DPP error:",error);
+    alert("DPP edit नहीं हो पाया:\n\n" + (error.message || "Unknown error"));
+  }
+}
+
+async function toggleDPPActive(id,currentValue){
+  const {error} = await supabaseClient
+    .from("dpp_sets")
+    .update({is_active:!currentValue})
+    .eq("id",id);
+
+  if(error){
+    alert("DPP status update नहीं हुआ:\n\n" + error.message);
+    return;
+  }
+
+  await loadDPPs();
+}
+
+async function deleteDPP(id){
+  const ok = confirm("Are you sure you want to delete this DPP? Its questions will also be deleted.");
+  if(!ok) return;
+
+  const {error} = await supabaseClient
+    .from("dpp_sets")
+    .delete()
+    .eq("id",id);
+
+  if(error){
+    alert("DPP delete नहीं हुआ:\n\n" + error.message);
+    return;
+  }
+
+  if(dppEditingId === id) resetDPPForm();
+  await loadDPPs();
+}
 
 /* =====================================================
    CHECK LOGIN SESSION
